@@ -238,7 +238,7 @@ spTable$SeebName[spTable$TaxonName=="Perovskia x superba"]="Perovskia abrotanoid
 spTable$SeebName[spTable$TaxonName=="Callopistromyia annulipes"]="Callopistromyia annulipes"
 spTable$SeebName[spTable$TaxonName=="Spiranthes cernua x S. odorata"]="Spiranthes cernua (L.) Richard"
 spTable$SeebName[spTable$TaxonName=="Hermetia illucens"]="Hermetia illucens"
-spTable$SeebName[spTable$TaxonName=="Cistus ×purpureus"]="Cistus ×purpureus"
+spTable$SeebName[spTable$TaxonName=="Cistus Ã—purpureus"]="Cistus Ã—purpureus"
 spTable$SeebName[spTable$TaxonName=="Erica herbacea"]="Erica herbacea"
 spTable$SeebName[spTable$TaxonName=="Iris orientalis"]="Iris orientalis"
 spTable$SeebName[spTable$SeebName=="Allium porrum"]="Allium ampeloprasum"
@@ -340,7 +340,7 @@ files= c('full_iNat.csv',
 
 taille_serie = 1000000
 saveName ="CS_1st_rec.csv"
-saveNameGrp = "count_per_lifeForm_and_year.csv"
+saveNameGrp = "count_per_lifeForm_and_country.csv"
 #perSpecies = read.csv(paste(saveDir,'perSpecies.csv',sep=""),sep=";",header=T,stringsAsFactors = F)
 #perGroup = read.csv(paste(saveDir,'perGroup.csv',sep=""),sep=";",header=T,stringsAsFactors = F)
 perGroup = as.data.frame(matrix(NA,0,3));colnames(perGroup)=c('country','LifeForm','count');
