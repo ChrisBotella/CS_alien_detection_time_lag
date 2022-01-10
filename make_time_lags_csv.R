@@ -238,7 +238,7 @@ spTable$SeebName[spTable$TaxonName=="Perovskia x superba"]="Perovskia abrotanoid
 spTable$SeebName[spTable$TaxonName=="Callopistromyia annulipes"]="Callopistromyia annulipes"
 spTable$SeebName[spTable$TaxonName=="Spiranthes cernua x S. odorata"]="Spiranthes cernua (L.) Richard"
 spTable$SeebName[spTable$TaxonName=="Hermetia illucens"]="Hermetia illucens"
-spTable$SeebName[spTable$TaxonName=="Cistus Ã—purpureus"]="Cistus Ã—purpureus"
+spTable$SeebName[spTable$TaxonName=="Cistus ×purpureus"]="Cistus ×purpureus"
 spTable$SeebName[spTable$TaxonName=="Erica herbacea"]="Erica herbacea"
 spTable$SeebName[spTable$TaxonName=="Iris orientalis"]="Iris orientalis"
 spTable$SeebName[spTable$SeebName=="Allium porrum"]="Allium ampeloprasum"
@@ -339,8 +339,8 @@ files= c('full_iNat.csv',
 #write.table(tmp,'full_iNat.csv',sep='\t',row.names=F,col.names=T)
 
 taille_serie = 1000000
-saveName = 'perSpecies_fullData_21_10_12.csv'
-saveNameGrp = 'perGroup_fullData_21_10_12.csv'
+saveName ="CS_1st_rec.csv"
+saveNameGrp = "count_per_lifeForm_and_year.csv"
 #perSpecies = read.csv(paste(saveDir,'perSpecies.csv',sep=""),sep=";",header=T,stringsAsFactors = F)
 #perGroup = read.csv(paste(saveDir,'perGroup.csv',sep=""),sep=";",header=T,stringsAsFactors = F)
 perGroup = as.data.frame(matrix(NA,0,3));colnames(perGroup)=c('country','LifeForm','count');
@@ -432,12 +432,12 @@ firstRecDf=read.csv('official_firstRec_clean_21_10_13.csv',sep=";",header=T,stri
 matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)[,c('species','phylum','class',"LifeForm","SeebName")]
 
 load(file = 'Europe_light')
-perSpecies=read.csv('perSpecies_fullData_21_10_12.csv',sep=";",header=T,stringsAsFactors = F)
+perSpecies=read.csv('CS_1st_rec.csv',sep=";",header=T,stringsAsFactors = F)
 perSpecies=merge(perSpecies,countries[,c('NAME','Region_seeb')],by.x='country',by.y='NAME',all.x=T)
 perSpecies = perSpecies[!is.na(perSpecies$Region_seeb),colnames(perSpecies)!="country"]
 perSpecies$Region_seeb=short.EU.regions.from.Region_seeb(perSpecies$Region_seeb)
 colnames(perSpecies)[5] = 'Region'
-perGroup=read.csv('perGroup_fullData_21_10_12.csv',sep=";",header=T,stringsAsFactors = F)
+perGroup=read.csv('count_per_lifeForm_and_year.csv',sep=";",header=T,stringsAsFactors = F)
 colnames(perGroup)[3]= 'obsEffort_LF'
 perGroup=merge(perGroup,countries[,c('NAME','Region_seeb')],by.x='country',by.y='NAME',all.x=T)
 perGroup = perGroup[!is.na(perGroup$Region_seeb),colnames(perGroup)!="country"]
