@@ -17,6 +17,8 @@ mainDir = "C:/Users/user/pCloud local/boulot/data/CS time lag/"
 
 ### Directories of outputs
 saveDir = paste(mainDir,'21_11_30 analysis with Pablo/',sep="")
+saveDir = paste(mainDir,'preliminary updated/',sep="")
+
 
 ### Directory of country neighborhood data
 bordersDir = paste(mainDir,'neigbor countries/country-borders-master/',sep="")
@@ -212,6 +214,12 @@ countries$Region_seeb[countries$NAME=="Isle of Man"]="United Kingdom"
 countries$Region_seeb[countries$NAME=='Luxembourg']='Luxembourg'
 countries$Region_seeb[countries$NAME=='The former Yugoslav Republic of Macedonia']='Macedonia'
 countries$Region_seeb[countries$NAME=="Sea or Ocean"]='Sea'
+countries = rbind(countries,
+  data.frame(ISO2=c('CY','TR'),UN=NA,
+             NAME=c("Cyprus","Turkey"),
+             AREA=NA,
+             Region_seeb=c("Cyprus","Turkey")))
+
 
 setwd(saveDir)
 save(countries,EU_simpl,EU_rast,file = 'Europe_light')
@@ -238,7 +246,7 @@ spTable$SeebName[spTable$TaxonName=="Perovskia x superba"]="Perovskia abrotanoid
 spTable$SeebName[spTable$TaxonName=="Callopistromyia annulipes"]="Callopistromyia annulipes"
 spTable$SeebName[spTable$TaxonName=="Spiranthes cernua x S. odorata"]="Spiranthes cernua (L.) Richard"
 spTable$SeebName[spTable$TaxonName=="Hermetia illucens"]="Hermetia illucens"
-spTable$SeebName[spTable$TaxonName=="Cistus Ã—purpureus"]="Cistus Ã—purpureus"
+spTable$SeebName[spTable$TaxonName=="Cistus ×purpureus"]="Cistus ×purpureus"
 spTable$SeebName[spTable$TaxonName=="Erica herbacea"]="Erica herbacea"
 spTable$SeebName[spTable$TaxonName=="Iris orientalis"]="Iris orientalis"
 spTable$SeebName[spTable$SeebName=="Allium porrum"]="Allium ampeloprasum"
@@ -290,19 +298,147 @@ write.table(sps,'speciesList_Seeb_sup2010_EU_GBIFtaxo.csv',sep=";",row.names=F,c
 setwd(saveDir)
 load(file = 'Europe_light')
 matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)
+matchin = unique(matchin[,c('TaxonName','species','LifeForm')])
+
 firstObs = read.csv('official_first_rec_updated_21_10_05_CSV.csv',sep=";",header=T)
 
 firstObs = firstObs[firstObs$TaxonName%in%matchin$TaxonName | firstObs$scientificName%in%matchin$SeebName,colnames(firstObs)!='LifeForm']
+firstObs = unique(firstObs[,c('TaxonName','Region','FirstRecord')])
 firstObs = merge(firstObs,matchin[,c('TaxonName','species','LifeForm')],by='TaxonName',all.x=T)
+firstObs = aggregate(list(FirstRecord=firstObs$FirstRecord),
+                     by=list(species=firstObs$species,
+                             LifeForm=firstObs$LifeForm,
+                             Region=firstObs$Region),
+                     min)
 firstObs = firstObs[!is.na(firstObs$species) & !is.na(firstObs$LifeForm),]
+firstObs$Region=as.character(firstObs$Region)
 firstObs$Region=short.EU.regions.from.Region_seeb(firstObs$Region)
-firstObs = firstObs[!is.na(firstObs$Region),]
-firstRecDf = firstObs[,c('species','scientificName','LifeForm',
-                         'Region','FirstRecord')]
-colnames(firstRecDf) = c("species",'seebName','LifeForm',
+firstObs$Region[firstObs$Region=="Czech"]="Czech Republic"
+firstObs$Region[firstObs$Region=="Bosnia"]="Bosnia and Herzegovina"
+
+firstRecDf = firstObs[!is.na(firstObs$Region),]
+colnames(firstRecDf) = c("species",'LifeForm',
                          'Region','off_FirstRec')
 setwd(saveDir)
 write.table(firstRecDf,'official_firstRec_clean_21_10_13.csv',sep=";",col.names=T,row.names=F)
+
+#####
+# Extract species FirstObs GBIF
+#####
+
+setwd(saveDir)
+spTable=read.csv('speciesList_Seeb_sup2010_EU_GBIFtaxo.csv',sep=";",header=T,stringsAsFactors = F)
+
+load(file = 'Europe_light')
+
+spToKeep = unique(spTable$species[!is.na(spTable$species)])
+
+keptCols = c("kingdom","phylum","class",'species',
+             'taxonRank',
+             'decimalLatitude','decimalLongitude',
+             'year')
+
+files= c('full_iNat.csv',
+         'Waarnemingen_be.csv',
+         'algae.csv',
+         'seasearch.csv',
+         'other_vertebrates.csv','non_plant_or_animal.csv',
+         'tracheophyta.csv','invertebrates.csv','observ_org_before_2010.csv',
+         'artportalen_non_birds.csv','artportalen_passeriformes.csv','artportalen_other_birds.csv',
+         'inat_ukbms.csv','naturgucker.csv','norwegiansos.csv',
+         'other.csv','plantnet.csv',
+         #'waarnemingen.csv',
+         'ebird.csv','dof.csv')
+
+#setwd(occDir)
+#tmp=read.csv('full_iNat.csv',sep='\t',header=T)
+#tmp = tmp[,c("kingdom","phylum","class","species","taxonRank",       
+#             "decimalLatitude", "decimalLongitude","year","speciesKey" )  ]
+#write.table(tmp,'full_iNat.csv',sep='\t',row.names=F,col.names=T)
+
+taille_serie = 1000000
+saveName ="CS_1st_rec.csv"
+saveNameGrp = "count_per_lifeForm_and_country.csv"
+#perSpecies = read.csv(paste(saveDir,'perSpecies.csv',sep=""),sep=";",header=T,stringsAsFactors = F)
+#perGroup = read.csv(paste(saveDir,'perGroup.csv',sep=""),sep=";",header=T,stringsAsFactors = F)
+perGroup = as.data.frame(matrix(NA,0,3));colnames(perGroup)=c('country','LifeForm','count');
+perSpecies = as.data.frame(matrix(NA,0,5));colnames(perSpecies)=c('country','species','LifeForm','count','firstRec');
+for(file in files){
+  print(file)
+  setwd(occDir)
+  tmp=df_as_model(file,sep="\t")
+  selec.ind = which(colnames(tmp)%in%keptCols)
+  depasse_pas = T
+  toSkip = 0
+  while (depasse_pas){
+    #perSpecies = read.csv(saveName,sep=";",header=T,stringsAsFactors = F)
+    setwd(occDir)
+    L = data.frame( fread(file, 
+                          sep="\t", 
+                          nrows=taille_serie,
+                          header=FALSE,
+                          skip= 1 + toSkip,
+                          col.names = keptCols,
+                          select=selec.ind,
+                          na.strings = c("NA")) )
+    if (dim(L)[1]<(taille_serie-1)){ depasse_pas=FALSE }
+    
+    # occurrence is identified at the species level and year available
+    L = L[L$taxonRank=='SPECIES' & !is.na(L$year),,drop=F]
+    if(dim(L)[1]>0){
+      L$count = 1
+      ### Get LifeForm
+      L$LifeForm = get.LifeForm(L[,c('kingdom','phylum','class')])
+      ### Get country
+      L$countryId= raster::extract(EU_rast,L[,c("decimalLongitude","decimalLatitude")])
+      L =merge(L,countries[,c('UN','NAME')],by.x='countryId',by.y='UN',all.x=T)
+      colnames(L)[colnames(L)=="NAME"]="country"
+      ### count total occurrences per taxonomic group and country
+      perGroup = rbind(perGroup,L[,c('country','LifeForm','count')])
+      perGroup = aggregate(list(count=perGroup$count),
+                           by=list(country=perGroup$country,
+                                   LifeForm=perGroup$LifeForm),
+                           FUN=sum)
+      
+      setwd(saveDir)
+      write.table(perGroup,saveNameGrp,sep=";",row.names=F,col.names=T)
+      
+      L = L [L$species%in%spToKeep,,drop=F]
+      if(dim(L)[1]>0){
+        L = L[,c("decimalLatitude","decimalLongitude",
+                 "kingdom","phylum","class",
+                 'species',
+                 'year','country','LifeForm','count')]
+        colnames(L)[c(1:2,7)]= c("Latitude","Longitude","firstRec")
+        perSpecies = rbind(perSpecies,L[,c('country','species','LifeForm','count','firstRec')])
+        
+        # count occurrence per species and country 
+        updated = aggregate(list(count=perSpecies$count),
+                            by=list(country=perSpecies$country,
+                                    species=perSpecies$species,
+                                    LifeForm=perSpecies$LifeForm),
+                            FUN=sum) 
+        # first year of obs per species and country
+        updated2 = aggregate(list(firstRec=perSpecies$firstRec),
+                             by=list(country=perSpecies$country,
+                                     species=perSpecies$species,
+                                     LifeForm=perSpecies$LifeForm),
+                             FUN=min) 
+        updated$firstRec = updated2$firstRec
+        perSpecies = updated
+        
+        ### Update files
+        setwd(saveDir)
+        write.table(perSpecies,saveName,sep=";",row.names=F,col.names=T)
+      }
+    }
+    
+    ### Number of rows done
+    toSkip = toSkip + taille_serie
+    print(paste('Number done:',toSkip))
+    gc(reset=T)
+  }
+}
 
 #####
 # Time lag table
@@ -310,20 +446,29 @@ write.table(firstRecDf,'official_firstRec_clean_21_10_13.csv',sep=";",col.names=
 
 setwd(saveDir)
 firstRecDf=read.csv('official_firstRec_clean_21_10_13.csv',sep=";",header=T,stringsAsFactors = F)
-matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)[,c('species','phylum','class',"LifeForm","SeebName")]
+varTab= read.csv('species_variables.csv',sep=";",header=T,stringsAsFactors = F)
 
+
+matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)[,c('species','phylum','class',"LifeForm")]
+matchin = unique(matchin[,c('species','phylum','class',"LifeForm")])
 load(file = 'Europe_light')
 perSpecies=read.csv('CS_1st_rec.csv',sep=";",header=T,stringsAsFactors = F)
-perSpecies=merge(perSpecies,countries[,c('NAME','Region_seeb')],by.x='country',by.y='NAME',all.x=T)
-perSpecies = perSpecies[!is.na(perSpecies$Region_seeb),colnames(perSpecies)!="country"]
-perSpecies$Region_seeb=short.EU.regions.from.Region_seeb(perSpecies$Region_seeb)
-colnames(perSpecies)[5] = 'Region'
-perGroup=read.csv('count_per_lifeForm_and_year.csv',sep=";",header=T,stringsAsFactors = F)
+#perSpecies=merge(perSpecies,countries[,c('NAME','Region_seeb')],by.x='country',by.y='NAME',all.x=T)
+#perSpecies = perSpecies[!is.na(perSpecies$Region_seeb),colnames(perSpecies)!="country"]
+#perSpecies$Region_seeb=short.EU.regions.from.Region_seeb(perSpecies$Region_seeb)
+#colnames(perSpecies)[colnames(perSpecies)=='Region_seeb'] = 'Region'
+perGroup=read.csv('count_per_lifeForm_and_country.csv',sep=";",header=T,stringsAsFactors = F)
 colnames(perGroup)[3]= 'obsEffort_LF'
 perGroup=merge(perGroup,countries[,c('NAME','Region_seeb')],by.x='country',by.y='NAME',all.x=T)
 perGroup = perGroup[!is.na(perGroup$Region_seeb),colnames(perGroup)!="country"]
 perGroup$Region_seeb=short.EU.regions.from.Region_seeb(perGroup$Region_seeb)
-colnames(perGroup)[3] = 'Region'
+colnames(perGroup)[colnames(perGroup)=="Region_seeb"] = 'Region'
+perGroup$Region[perGroup$Region=="Czech"]="Czech Republic"
+perGroup$Region[perGroup$Region=="Bosnia"]="Bosnia and Herzegovina"
+perGroup=aggregate(list(obsEffort_LF=perGroup$obsEffort_LF),
+                   by=list(LifeForm=perGroup$LifeForm,
+                           Region=perGroup$Region),max)
+
 #length(unique(firstRecDf$species[firstRecDf$LifeForm=='Reptiles']))
 #length(unique(firstRecDf$species[firstRecDf$LifeForm=='Arthropods p.p. (Myriapods, Diplopods etc.)']))
 TL = merge(firstRecDf[,c("species",
@@ -334,17 +479,18 @@ TL = merge(firstRecDf[,c("species",
            all.x=T,all.y=T)
 TL = merge(TL,matchin,by="species",all.x=T)
 TL$timeLag = TL$firstRec - TL$off_FirstRec
-TL = unique(TL)
 cat('Number of time lags:',sum(!is.na(TL$timeLag)))
-TL = TL[is.na(TL$off_FirstRec) | TL$off_FirstRec>=2010,]
+TL = merge(TL,varTab,by="species",all.x=T)
 TL = merge(TL,perGroup,by=c('LifeForm','Region'),all.x=T)
+# obsEffort_LF is the number of occurrences in the country per LifeForm
 TL$obsEffort_LF[is.na(TL$obsEffort_LF)]=0
+# Research_effort is the number of alien species official first records per region 
 tab = table(TL$Region[!is.na(TL$off_FirstRec)])
 rEff = data.frame(ResearchEffort= as.numeric(tab),Region=names(tab))
 TL = merge(TL,rEff,by=c('Region'),all.x=T)
 
 setwd(saveDir)
-write.table(TL,'timeLags_21_10_13.csv',sep=";",row.names=T,col.names=T)
+write.table(TL,'timeLags_22_01_11.csv',sep=";",row.names=T,col.names=T)
 
 #####
 # Add nOccTot, detecInNeigborCountryBefore
@@ -388,7 +534,7 @@ for(i in 1:dim(countries)[1]){
 }
 
 setwd(saveDir)
-tl = read.csv('timeLags_21_10_13_variables.csv',sep=",",header=T)
+tl = read.csv('timeLags_22_01_11.csv',sep=";",header=T)
 tl$nOccTotSp = NA
 tl$obsInNeigborCountryBefore = NA
 for(i in 1:dim(tl)[1]){
@@ -417,5 +563,4 @@ for(i in 1:dim(tl)[1]){
 }
 
 setwd(saveDir)
-write.table(tl,'timeLags_21_12_04_add_variables_CB.csv',sep=";",row.names=F,col.names=T)
-
+write.table(tl,'timeLags_22_01_11_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
