@@ -324,119 +324,123 @@ write.table(firstRecDf,'official_firstRec_clean_21_10_13.csv',sep=";",col.names=
 
 #####
 # Extract species FirstObs GBIF
+# (Not reproducible yet: files too heavy)
 #####
 
-setwd(saveDir)
-spTable=read.csv('speciesList_Seeb_sup2010_EU_GBIFtaxo.csv',sep=";",header=T,stringsAsFactors = F)
-
-load(file = 'Europe_light')
-
-spToKeep = unique(spTable$species[!is.na(spTable$species)])
-
-keptCols = c("kingdom","phylum","class",'species',
-             'taxonRank',
-             'decimalLatitude','decimalLongitude',
-             'year')
-
-files= c('full_iNat.csv',
-         'Waarnemingen_be.csv',
-         'algae.csv',
-         'seasearch.csv',
-         'other_vertebrates.csv','non_plant_or_animal.csv',
-         'tracheophyta.csv','invertebrates.csv','observ_org_before_2010.csv',
-         'artportalen_non_birds.csv','artportalen_passeriformes.csv','artportalen_other_birds.csv',
-         'inat_ukbms.csv','naturgucker.csv','norwegiansos.csv',
-         'other.csv','plantnet.csv',
-         #'waarnemingen.csv',
-         'ebird.csv','dof.csv')
-
-#setwd(occDir)
-#tmp=read.csv('full_iNat.csv',sep='\t',header=T)
-#tmp = tmp[,c("kingdom","phylum","class","species","taxonRank",       
-#             "decimalLatitude", "decimalLongitude","year","speciesKey" )  ]
-#write.table(tmp,'full_iNat.csv',sep='\t',row.names=F,col.names=T)
-
-taille_serie = 1000000
-saveName ="CS_1st_rec.csv"
-saveNameGrp = "count_per_lifeForm_and_country.csv"
-#perSpecies = read.csv(paste(saveDir,'perSpecies.csv',sep=""),sep=";",header=T,stringsAsFactors = F)
-#perGroup = read.csv(paste(saveDir,'perGroup.csv',sep=""),sep=";",header=T,stringsAsFactors = F)
-perGroup = as.data.frame(matrix(NA,0,3));colnames(perGroup)=c('country','LifeForm','count');
-perSpecies = as.data.frame(matrix(NA,0,5));colnames(perSpecies)=c('country','species','LifeForm','count','firstRec');
-for(file in files){
-  print(file)
-  setwd(occDir)
-  tmp=df_as_model(file,sep="\t")
-  selec.ind = which(colnames(tmp)%in%keptCols)
-  depasse_pas = T
-  toSkip = 0
-  while (depasse_pas){
-    #perSpecies = read.csv(saveName,sep=";",header=T,stringsAsFactors = F)
+if(F){
+  
+  setwd(saveDir)
+  spTable=read.csv('speciesList_Seeb_sup2010_EU_GBIFtaxo.csv',sep=";",header=T,stringsAsFactors = F)
+  
+  load(file = 'Europe_light')
+  
+  spToKeep = unique(spTable$species[!is.na(spTable$species)])
+  
+  keptCols = c("kingdom","phylum","class",'species',
+               'taxonRank',
+               'decimalLatitude','decimalLongitude',
+               'year')
+  
+  files= c('full_iNat.csv',
+           'Waarnemingen_be.csv',
+           'algae.csv',
+           'seasearch.csv',
+           'other_vertebrates.csv','non_plant_or_animal.csv',
+           'tracheophyta.csv','invertebrates.csv','observ_org_before_2010.csv',
+           'artportalen_non_birds.csv','artportalen_passeriformes.csv','artportalen_other_birds.csv',
+           'inat_ukbms.csv','naturgucker.csv','norwegiansos.csv',
+           'other.csv','plantnet.csv',
+           #'waarnemingen.csv',
+           'ebird.csv','dof.csv')
+  
+  #setwd(occDir)
+  #tmp=read.csv('full_iNat.csv',sep='\t',header=T)
+  #tmp = tmp[,c("kingdom","phylum","class","species","taxonRank",       
+  #             "decimalLatitude", "decimalLongitude","year","speciesKey" )  ]
+  #write.table(tmp,'full_iNat.csv',sep='\t',row.names=F,col.names=T)
+  
+  taille_serie = 1000000
+  saveName ="CS_1st_rec.csv"
+  saveNameGrp = "count_per_lifeForm_and_country.csv"
+  #perSpecies = read.csv(paste(saveDir,'perSpecies.csv',sep=""),sep=";",header=T,stringsAsFactors = F)
+  #perGroup = read.csv(paste(saveDir,'perGroup.csv',sep=""),sep=";",header=T,stringsAsFactors = F)
+  perGroup = as.data.frame(matrix(NA,0,3));colnames(perGroup)=c('country','LifeForm','count');
+  perSpecies = as.data.frame(matrix(NA,0,5));colnames(perSpecies)=c('country','species','LifeForm','count','firstRec');
+  for(file in files){
+    print(file)
     setwd(occDir)
-    L = data.frame( fread(file, 
-                          sep="\t", 
-                          nrows=taille_serie,
-                          header=FALSE,
-                          skip= 1 + toSkip,
-                          col.names = keptCols,
-                          select=selec.ind,
-                          na.strings = c("NA")) )
-    if (dim(L)[1]<(taille_serie-1)){ depasse_pas=FALSE }
-    
-    # occurrence is identified at the species level and year available
-    L = L[L$taxonRank=='SPECIES' & !is.na(L$year),,drop=F]
-    if(dim(L)[1]>0){
-      L$count = 1
-      ### Get LifeForm
-      L$LifeForm = get.LifeForm(L[,c('kingdom','phylum','class')])
-      ### Get country
-      L$countryId= raster::extract(EU_rast,L[,c("decimalLongitude","decimalLatitude")])
-      L =merge(L,countries[,c('UN','NAME')],by.x='countryId',by.y='UN',all.x=T)
-      colnames(L)[colnames(L)=="NAME"]="country"
-      ### count total occurrences per taxonomic group and country
-      perGroup = rbind(perGroup,L[,c('country','LifeForm','count')])
-      perGroup = aggregate(list(count=perGroup$count),
-                           by=list(country=perGroup$country,
-                                   LifeForm=perGroup$LifeForm),
-                           FUN=sum)
+    tmp=df_as_model(file,sep="\t")
+    selec.ind = which(colnames(tmp)%in%keptCols)
+    depasse_pas = T
+    toSkip = 0
+    while (depasse_pas){
+      #perSpecies = read.csv(saveName,sep=";",header=T,stringsAsFactors = F)
+      setwd(occDir)
+      L = data.frame( fread(file, 
+                            sep="\t", 
+                            nrows=taille_serie,
+                            header=FALSE,
+                            skip= 1 + toSkip,
+                            col.names = keptCols,
+                            select=selec.ind,
+                            na.strings = c("NA")) )
+      if (dim(L)[1]<(taille_serie-1)){ depasse_pas=FALSE }
       
-      setwd(saveDir)
-      write.table(perGroup,saveNameGrp,sep=";",row.names=F,col.names=T)
-      
-      L = L [L$species%in%spToKeep,,drop=F]
+      # occurrence is identified at the species level and year available
+      L = L[L$taxonRank=='SPECIES' & !is.na(L$year),,drop=F]
       if(dim(L)[1]>0){
-        L = L[,c("decimalLatitude","decimalLongitude",
-                 "kingdom","phylum","class",
-                 'species',
-                 'year','country','LifeForm','count')]
-        colnames(L)[c(1:2,7)]= c("Latitude","Longitude","firstRec")
-        perSpecies = rbind(perSpecies,L[,c('country','species','LifeForm','count','firstRec')])
+        L$count = 1
+        ### Get LifeForm
+        L$LifeForm = get.LifeForm(L[,c('kingdom','phylum','class')])
+        ### Get country
+        L$countryId= raster::extract(EU_rast,L[,c("decimalLongitude","decimalLatitude")])
+        L =merge(L,countries[,c('UN','NAME')],by.x='countryId',by.y='UN',all.x=T)
+        colnames(L)[colnames(L)=="NAME"]="country"
+        ### count total occurrences per taxonomic group and country
+        perGroup = rbind(perGroup,L[,c('country','LifeForm','count')])
+        perGroup = aggregate(list(count=perGroup$count),
+                             by=list(country=perGroup$country,
+                                     LifeForm=perGroup$LifeForm),
+                             FUN=sum)
         
-        # count occurrence per species and country 
-        updated = aggregate(list(count=perSpecies$count),
-                            by=list(country=perSpecies$country,
-                                    species=perSpecies$species,
-                                    LifeForm=perSpecies$LifeForm),
-                            FUN=sum) 
-        # first year of obs per species and country
-        updated2 = aggregate(list(firstRec=perSpecies$firstRec),
-                             by=list(country=perSpecies$country,
-                                     species=perSpecies$species,
-                                     LifeForm=perSpecies$LifeForm),
-                             FUN=min) 
-        updated$firstRec = updated2$firstRec
-        perSpecies = updated
-        
-        ### Update files
         setwd(saveDir)
-        write.table(perSpecies,saveName,sep=";",row.names=F,col.names=T)
+        write.table(perGroup,saveNameGrp,sep=";",row.names=F,col.names=T)
+        
+        L = L [L$species%in%spToKeep,,drop=F]
+        if(dim(L)[1]>0){
+          L = L[,c("decimalLatitude","decimalLongitude",
+                   "kingdom","phylum","class",
+                   'species',
+                   'year','country','LifeForm','count')]
+          colnames(L)[c(1:2,7)]= c("Latitude","Longitude","firstRec")
+          perSpecies = rbind(perSpecies,L[,c('country','species','LifeForm','count','firstRec')])
+          
+          # count occurrence per species and country 
+          updated = aggregate(list(count=perSpecies$count),
+                              by=list(country=perSpecies$country,
+                                      species=perSpecies$species,
+                                      LifeForm=perSpecies$LifeForm),
+                              FUN=sum) 
+          # first year of obs per species and country
+          updated2 = aggregate(list(firstRec=perSpecies$firstRec),
+                               by=list(country=perSpecies$country,
+                                       species=perSpecies$species,
+                                       LifeForm=perSpecies$LifeForm),
+                               FUN=min) 
+          updated$firstRec = updated2$firstRec
+          perSpecies = updated
+          
+          ### Update files
+          setwd(saveDir)
+          write.table(perSpecies,saveName,sep=";",row.names=F,col.names=T)
+        }
       }
+      
+      ### Number of rows done
+      toSkip = toSkip + taille_serie
+      print(paste('Number done:',toSkip))
+      gc(reset=T)
     }
-    
-    ### Number of rows done
-    toSkip = toSkip + taille_serie
-    print(paste('Number done:',toSkip))
-    gc(reset=T)
   }
 }
 
