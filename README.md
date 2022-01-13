@@ -22,21 +22,37 @@ Requires R installed (tested under R 3.5.1) and the following packages: rgbif, d
 - **make_time_lags_csv.R** and change directory paths in the header of the script to your local paths.  
 - Run R script **make_time_lags_csv.R**.
 
-## Variables description
+## Variable descriptions
+
+Find below a brief description and the origin of the variables associated with the time lags provided in the output table. 
 
 LifeForm and country level variables:
-- Obs_effort_LF: Number of CS occurrences across all species of the same LifeForm in the country.
+- obsEffort_LF: Number of CS occurrences in the country for all species of the LifeForm of the species.
 
 Country level variables:
+- Region: Country name.
+- ResearchEffort: Number of alien species official first records for the country in Seebens database.
 
 Species level variables:
-- scopus:
-- google:
-- Status:
-- eu_status:
-- quarantine_list:
+- phylum: Taxonomic phylum.
+- class: Taxonomic class.
+- LifeForm: The life form, namely one of "Vascular plants", "Birds", "Mammals", "Reptiles", "Insects", "Arthropods p.p. (Myriapods, Diplopods etc.)", "Molluscs", "Invertebrates (excl. Arthropods, Molluscs)", "Algae", "Crustaceans", "Fishes", "Amphibians", "Bryozoa", "Fungi" or "Bacteria and protozoans". See the code for their taxonomic description.
+- nOccTotSp: Total number of records in all CS databases since 1990.
+- scopus: 
+- google: ...Number of Google hits...
+- EASIN_Id:
+- Status: 
+- eu_status: ... is accepted as EU concern or under consideration for it... 
+- mentioned_in_EU_quarantine_species:
 - habitat:
 - TER:
 - FRW:
 - MAR:
 - EST:
+- worst_100_world_ISSG: 
+- worst_100_Europe_DAISIE:
+- partly_native: 
+
+Species AND country level variables:
+- count: Number of CS records for the species in the country since 1990.
+- obsInNeigborCountryBefore: Is there a CS record of the species in a neighborhing country that is earlier than its official first record year in the current country ? This variable is computed using the Country Borders data from: https://www.geodatasource.com 
