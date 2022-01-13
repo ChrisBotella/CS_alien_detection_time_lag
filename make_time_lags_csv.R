@@ -16,12 +16,7 @@ occDir = "C:/Users/cbotella/Documents/work local/data/CS time lag/extraction gbi
 mainDir = "C:/Users/user/pCloud local/boulot/data/CS time lag/"
 
 ### Directories of outputs
-saveDir = paste(mainDir,'21_11_30 analysis with Pablo/',sep="")
 saveDir = paste(mainDir,'preliminary updated/',sep="")
-
-
-### Directory of country neighborhood data
-bordersDir = paste(mainDir,'neigbor countries/country-borders-master/',sep="")
 
 #####
 # Functions
@@ -178,6 +173,17 @@ multiplot <- function(plots=NULL, file, cols=1, layout=NULL) {
     }
   }
 }
+
+change.country=function(tab,
+                        prevName,prevCode,
+                        newName,newCode){
+  tab$country_code[tab$country_code==prevCode]=newCode
+  tab$country_name[tab$country_name==prevName]=newName
+  tab$country_border_code[tab$country_border_code==prevCode]=newCode
+  tab$country_border_name[tab$country_border_name==prevName]=newName
+  return(tab)
+}
+
 
 #####
 # EU countries 
@@ -452,7 +458,6 @@ setwd(saveDir)
 firstRecDf=read.csv('official_firstRec_clean_21_10_13.csv',sep=";",header=T,stringsAsFactors = F)
 varTab= read.csv('species_variables.csv',sep=";",header=T,stringsAsFactors = F)
 
-
 matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)[,c('species','phylum','class',"LifeForm")]
 matchin = unique(matchin[,c('species','phylum','class',"LifeForm")])
 load(file = 'Europe_light')
@@ -493,28 +498,9 @@ tab = table(TL$Region[!is.na(TL$off_FirstRec)])
 rEff = data.frame(ResearchEffort= as.numeric(tab),Region=names(tab))
 TL = merge(TL,rEff,by=c('Region'),all.x=T)
 
-setwd(saveDir)
-write.table(TL,'timeLags_22_01_11.csv',sep=";",row.names=T,col.names=T)
-
-#####
-# Add nOccTot, detecInNeigborCountryBefore
-#####
-
-setwd(saveDir)
-load(file = 'Europe_light')
-setwd(bordersDir)
+### Add nOccTot, detecInNeigborCountryBefore
 bord = read.csv('GEODATASOURCE-COUNTRY-BORDERS.csv',sep=",",header=T,stringsAsFactors = F)
 bord = bord[complete.cases(bord),]
-change.country=function(tab,
-                        prevName,prevCode,
-                        newName,newCode){
-  tab$country_code[tab$country_code==prevCode]=newCode
-  tab$country_name[tab$country_name==prevName]=newName
-  tab$country_border_code[tab$country_border_code==prevCode]=newCode
-  tab$country_border_name[tab$country_border_name==prevName]=newName
-  return(tab)
-}
-
 countries$ISO2=as.character(countries$ISO2)
 bord2 = bord
 for(i in 1:dim(countries)[1]){
@@ -523,7 +509,6 @@ for(i in 1:dim(countries)[1]){
     prevN = unique(c(prevN,
                      bord$country_border_name[bord$country_border_code==countries$ISO2[i]]))
     prevC = countries$ISO2[i]
-    
     if(length(prevN)>0){
       newN = countries$Region_seeb[i]
       newC = unique(countries$ISO2[countries$NAME==newN])
@@ -537,34 +522,34 @@ for(i in 1:dim(countries)[1]){
   }
 }
 
-setwd(saveDir)
-tl = read.csv('timeLags_22_01_11.csv',sep=";",header=T)
-tl$nOccTotSp = NA
-tl$obsInNeigborCountryBefore = NA
-for(i in 1:dim(tl)[1]){
-  tl$nOccTotSp[i] = sum(tl$count[tl$species==tl$species[i]])
-  if(!is.na(tl$off_FirstRec[i])){
-    adjReg = bord2$country_border_name[bord2$country_name==as.character(tl$Region[i])] 
-    adjReg = c(adjReg , bord2$country_name[bord2$country_border_name==as.character(tl$Region[i])] ) 
+TL$nOccTotSp = NA
+TL$obsInNeigborCountryBefore = NA
+for(i in 1:dim(TL)[1]){
+  TL$nOccTotSp[i] = sum(TL$count[TL$species==TL$species[i]])
+  if(!is.na(TL$off_FirstRec[i]) | !is.na(TL$firstRec[i])){
+    adjReg = bord2$country_border_name[bord2$country_name==as.character(TL$Region[i])] 
+    adjReg = c(adjReg , bord2$country_name[bord2$country_border_name==as.character(TL$Region[i])] ) 
     adjReg = unique(adjReg[!is.na(adjReg)])
     adjReg = adjReg[adjReg!=""]
     # Among official first rec
-    tmp = tl$off_FirstRec[tl$species==tl$species[i] & tl$Region%in%adjReg]
+    tmp = TL$off_FirstRec[TL$species==TL$species[i] & TL$Region%in%adjReg]
     tmp = tmp[!is.na(tmp)]
     # Among CS first rec
-    tmp2 = tl$firstRec[tl$species==tl$species[i] & tl$Region%in%adjReg]
+    tmp2 = TL$firstRec[TL$species==TL$species[i] & TL$Region%in%adjReg]
     tmp2 = tmp2[!is.na(tmp2)]
-    earliestRecInAdj = min(tmp2,tmp,na.rm=T)
-    if(!is.na(earliestRecInAdj)){
+    earliestRecInAdj = min(c(tmp2,tmp),na.rm=T)
+    if(!is.na(earliestRecInAdj) & !is.infinite(earliestRecInAdj)){
       # Is earliest off/CS first rec in adjacent country before current official rec  
-      tl$obsInNeigborCountryBefore[i] = earliestRecInAdj<tl$off_FirstRec[i]
+      TL$obsInNeigborCountryBefore[i] = earliestRecInAdj<TL$off_FirstRec[i]
+    }else{
+      TL$obsInNeigborCountryBefore[i] = F
     }
   }
   if(i/20==round(i/20)){
     flush.console()
-    cat('\r Processed ',round(1000*i/dim(tl)[1])/10,'%')
+    cat('\r Processed ',round(1000*i/dim(TL)[1])/10,'%')
   }
 }
 
 setwd(saveDir)
-write.table(tl,'timeLags_22_01_11_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
+write.table(TL,'timeLags_22_01_11_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
