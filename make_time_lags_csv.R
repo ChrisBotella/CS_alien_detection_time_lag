@@ -236,7 +236,7 @@ save(countries,EU_simpl,EU_rast,file = 'Europe_light')
 #####
 
 setwd(paste(mainDir,'preliminary updated/',sep=""))
-firstObs = read.csv('official_first_rec_updated_21_10_05_CSV.csv',sep=";",header=T,stringsAsFactors = F)
+firstObs = read.csv('official_first_rec.csv',sep=";",header=T,stringsAsFactors = F)
 
 # I removed the rows where first rec year < 2010
 # I kept the earliest first rec year when there was several
@@ -306,7 +306,7 @@ load(file = 'Europe_light')
 matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)
 matchin = unique(matchin[,c('TaxonName','species','LifeForm')])
 
-firstObs = read.csv('official_first_rec_updated_21_10_05_CSV.csv',sep=";",header=T)
+firstObs = read.csv('official_first_rec.csv',sep=";",header=T)
 
 firstObs = firstObs[firstObs$TaxonName%in%matchin$TaxonName | firstObs$scientificName%in%matchin$SeebName,colnames(firstObs)!='LifeForm']
 firstObs = unique(firstObs[,c('TaxonName','Region','FirstRecord')])
