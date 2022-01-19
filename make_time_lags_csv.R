@@ -252,7 +252,7 @@ spTable$SeebName[spTable$TaxonName=="Perovskia x superba"]="Perovskia abrotanoid
 spTable$SeebName[spTable$TaxonName=="Callopistromyia annulipes"]="Callopistromyia annulipes"
 spTable$SeebName[spTable$TaxonName=="Spiranthes cernua x S. odorata"]="Spiranthes cernua (L.) Richard"
 spTable$SeebName[spTable$TaxonName=="Hermetia illucens"]="Hermetia illucens"
-spTable$SeebName[spTable$TaxonName=="Cistus ×purpureus"]="Cistus ×purpureus"
+spTable$SeebName[spTable$TaxonName=="Cistus ?purpureus"]="Cistus ?purpureus"
 spTable$SeebName[spTable$TaxonName=="Erica herbacea"]="Erica herbacea"
 spTable$SeebName[spTable$TaxonName=="Iris orientalis"]="Iris orientalis"
 spTable$SeebName[spTable$SeebName=="Allium porrum"]="Allium ampeloprasum"
@@ -550,6 +550,15 @@ for(i in 1:dim(TL)[1]){
     cat('\r Processed ',round(1000*i/dim(TL)[1])/10,'%')
   }
 }
-
 setwd(saveDir)
 write.table(TL,'timeLags_22_01_11_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
+
+
+# Add google per country data
+TL <- read.csv('timeLags_22_01_11_all_variables_clean.csv',sep=";")
+google_country <- read.csv("species_variables/species_country_google.csv")
+google_country$google_country_porc <- google_country$hits
+TL <- merge(TL,google_country[,c(2,4,7)],by.x=c("species","Region"),by.y=c("keyword","location"),all.x=T)
+TL$google_country_tot <- TL$google_country_porc/100 * TL$google
+
+write.table(TL,'timeLags_22_01_19_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
