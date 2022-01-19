@@ -38,11 +38,14 @@ Species level variables:
 - class: Taxonomic class.
 - LifeForm: The life form, namely one of "Vascular plants", "Birds", "Mammals", "Reptiles", "Insects", "Arthropods p.p. (Myriapods, Diplopods etc.)", "Molluscs", "Invertebrates (excl. Arthropods, Molluscs)", "Algae", "Crustaceans", "Fishes", "Amphibians", "Bryozoa", "Fungi" or "Bacteria and protozoans". See the code for their taxonomic description.
 - nOccTotSp: Total number of records in all CS databases since 1990.
-- scopus: 
-- google: ...Number of Google hits...
-- EASIN_Id:
+- scopus: number of records in scopus database for the scientific name of the species
+- google: Number of Google hits in the last 5 years  for the scientific name of the species
+- google_country_porc: % of Google hits in the last 5 years  for the scientific name of the species per country
+- google_country_tot: Number of Google hits in the last 5 years  for the scientific name of the species per country
+- EASIN_Id: 
 - Status: 
-- eu_status: ... is accepted as EU concern or under consideration for it... 
+- eu_status: ... is accepted as EU concern or under consideration for it... according to # https://github.com/trias-project/indicators/blob/master/data/input/eu_concern_species_under_consideration.tsv
+
 - mentioned_in_EU_quarantine_species:
 - habitat:
 - TER:
