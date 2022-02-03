@@ -7,7 +7,7 @@ require(raster)
 
 ### Directory of official first record  
 #firDir = "C:/Users/user/pCloud local/boulot/data/Invasions SA et FR/InvasionsFirstRecord/"
-firDir = "C:/Users/cbotella/pCloud local/boulot/data/Invasions SA et FR/InvasionsFirstRecord/"
+firDir =  "C:/Users/user/pCloud local/boulot/data/CS time lag/update with NZ and AUS/"
 
 ### Directory of CS occurrences (all sources) 
 occDir = "C:/Users/cbotella/Documents/work local/data/CS time lag/extraction gbif/"
@@ -16,7 +16,7 @@ occDir = "C:/Users/cbotella/Documents/work local/data/CS time lag/extraction gbi
 mainDir = "C:/Users/user/pCloud local/boulot/data/CS time lag/"
 
 ### Directories of outputs
-saveDir = paste(mainDir,'preliminary updated/',sep="")
+saveDir = firDir
 
 #####
 # Functions
@@ -36,7 +36,7 @@ regions =c('Belgium','Italy','Norway',
            'Romania','Serbia','San Marino',
            'Moldova','Luxembourg','Liechtenstein',
            'Belarus','Montenegro','Finland',
-           'Andorra','Luxembourg','Macedonia','Sea')
+           'Andorra','Luxembourg','Macedonia','Sea',"New Zealand")
 
 short.EU.regions.from.Region_seeb = function(vec){
   corVec = vec
@@ -221,10 +221,10 @@ countries$Region_seeb[countries$NAME=='Luxembourg']='Luxembourg'
 countries$Region_seeb[countries$NAME=='The former Yugoslav Republic of Macedonia']='Macedonia'
 countries$Region_seeb[countries$NAME=="Sea or Ocean"]='Sea'
 countries = rbind(countries,
-  data.frame(ISO2=c('CY','TR'),UN=NA,
-             NAME=c("Cyprus","Turkey"),
-             AREA=NA,
-             Region_seeb=c("Cyprus","Turkey")))
+                  data.frame(ISO2=c('CY','TR'),UN=NA,
+                             NAME=c("Cyprus","Turkey"),
+                             AREA=NA,
+                             Region_seeb=c("Cyprus","Turkey")))
 
 
 setwd(saveDir)
@@ -235,7 +235,7 @@ save(countries,EU_simpl,EU_rast,file = 'Europe_light')
 # UPDATE Species list under GBIF taxo 
 #####
 
-setwd(paste(mainDir,'preliminary updated/',sep=""))
+setwd(firDir)
 firstObs = read.csv('official_first_rec.csv',sep=";",header=T,stringsAsFactors = F)
 
 # I removed the rows where first rec year < 2010
@@ -243,31 +243,26 @@ firstObs = read.csv('official_first_rec.csv',sep=";",header=T,stringsAsFactors =
 # I removed rows fully highlighted in red
 
 # firstObs$PresentStatus%in%c('casual',"Invasive",'invasive','established','eradicated','alien','In captivity/culture') & 
-spTable = data.frame(unique(firstObs[,c('TaxonName',
-                                        'scientificName',
-                                        'OrigName')]))
-colnames(spTable)[2] = 'SeebName'
+spTable = data.frame(unique(firstObs[,c('TaxonName')]))
+colnames(spTable)[1] = 'SeebName'
 # Manually fix some names that don't match
-spTable$SeebName[spTable$TaxonName=="Perovskia x superba"]="Perovskia abrotanoides"
-spTable$SeebName[spTable$TaxonName=="Callopistromyia annulipes"]="Callopistromyia annulipes"
-spTable$SeebName[spTable$TaxonName=="Spiranthes cernua x S. odorata"]="Spiranthes cernua (L.) Richard"
-spTable$SeebName[spTable$TaxonName=="Hermetia illucens"]="Hermetia illucens"
-spTable$SeebName[spTable$TaxonName=="Cistus ?purpureus"]="Cistus ?purpureus"
-spTable$SeebName[spTable$TaxonName=="Erica herbacea"]="Erica herbacea"
-spTable$SeebName[spTable$TaxonName=="Iris orientalis"]="Iris orientalis"
+spTable$SeebName[spTable$SeebName=="Perovskia x superba"]="Perovskia abrotanoides"
+spTable$SeebName[spTable$SeebName=="Callopistromyia annulipes"]="Callopistromyia annulipes"
+spTable$SeebName[spTable$SeebName=="Spiranthes cernua x S. odorata"]="Spiranthes cernua (L.) Richard"
+spTable$SeebName[spTable$SeebName=="Hermetia illucens"]="Hermetia illucens"
+spTable$SeebName[spTable$SeebName=="Cistus ?purpureus"]="Cistus ?purpureus"
+spTable$SeebName[spTable$SeebName=="Erica herbacea"]="Erica herbacea"
+spTable$SeebName[spTable$SeebName=="Iris orientalis"]="Iris orientalis"
 spTable$SeebName[spTable$SeebName=="Allium porrum"]="Allium ampeloprasum"
 spTable$SeebName[spTable$SeebName=="Mimulus  cupreus"]="Erythranthe cuprea"
 spTable$SeebName[spTable$SeebName=='Candidatus Liberibacter solanacearum']='Liberibacter solanacearum'
 
 # Get GBIF scientificName
-cols = c("usageKey","rank","scientificName",'phylum','class','kingdom',
-         "matchType","confidence","synonym",
-         "status","canonicalName","species","speciesKey")
-
+cols = c("rank",'phylum','class','kingdom',
+         "matchType","species")
 toAdd=as.data.frame(matrix(NA,dim(spTable)[1],length(cols)))
 colnames(toAdd)=cols
 for(i in 1:dim(spTable)[1]){
-  print(i)
   tente = as.data.frame(rgbif::name_backbone(as.character(spTable$SeebName[i])))
   if(sum(!cols%in%colnames(tente))>0){
     for(col in cols[!cols%in%colnames(tente)]){
@@ -278,24 +273,22 @@ for(i in 1:dim(spTable)[1]){
   if(!is.null(dim(tente))){
     toAdd[i,]= tente[1,]
   }
+  if(i/30==round(i/30)){
+    flush.console()
+    cat('\r Processed ',round(1000*i/dim(spTable)[1])/10,'%')
+  }
 }
 spTableFinal = cbind(spTable,toAdd)
 #spTableFinal[toAdd$matchType=="HIGHERRANK",c('SeebName','rank','species','synonym')][10:27,]
 spTableFinal$matchType[spTableFinal$matchType=="HIGHERRANK" & spTableFinal$rank=="SPECIES"]="EXACT"
 spTableFinal = spTableFinal[!spTableFinal$matchType%in%c('HIGHERRANK','NONE'),]
+spTableFinal = spTableFinal[!spTableFinal$rank=="GENUS",]
 
-spTableFinal$LifeForm = get.LifeForm(spTableFinal)
-
-setwd(saveDir)
-write.table(spTableFinal,'matching_names_Seeb_with_GBIF.csv',sep=";",row.names=F,col.names=T)
-
-sps = aggregate(list(nSeebNames=rep(1,dim(spTableFinal)[1])),
-                by=list(species=spTableFinal$species,
-                        scientificName=spTableFinal$scientificName,
-                        LifeForm=spTableFinal$LifeForm),sum)
+toSave = unique(spTableFinal[!is.na(spTableFinal$species),c('SeebName','species',"phylum","class","kingdom")])
+toSave$LifeForm = get.LifeForm(toSave)
 
 setwd(saveDir)
-write.table(sps,'speciesList_Seeb_sup2010_EU_GBIFtaxo.csv',sep=";",row.names=F,col.names=T)
+write.table(toSave,'matching_names_Seeb_with_GBIF.csv',sep=";",row.names=F,col.names=T)
 
 #####
 # Official first rec DF
@@ -304,29 +297,32 @@ write.table(sps,'speciesList_Seeb_sup2010_EU_GBIFtaxo.csv',sep=";",row.names=F,c
 setwd(saveDir)
 load(file = 'Europe_light')
 matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)
-matchin = unique(matchin[,c('TaxonName','species','LifeForm')])
 
-firstObs = read.csv('official_first_rec.csv',sep=";",header=T)
+firstObs = read.csv('official_first_rec.csv',sep=";",header=T,stringsAsFactors = F)
 
-firstObs = firstObs[firstObs$TaxonName%in%matchin$TaxonName | firstObs$scientificName%in%matchin$SeebName,colnames(firstObs)!='LifeForm']
+firstObs = firstObs[firstObs$TaxonName%in%matchin$SeebName,colnames(firstObs)!='LifeForm']
 firstObs = unique(firstObs[,c('TaxonName','Region','FirstRecord')])
-firstObs = merge(firstObs,matchin[,c('TaxonName','species','LifeForm')],by='TaxonName',all.x=T)
+firstObs = merge(firstObs,matchin[,c('SeebName','species','LifeForm')],by.x='TaxonName',by.y="SeebName",all.x=T)
 firstObs = aggregate(list(FirstRecord=firstObs$FirstRecord),
                      by=list(species=firstObs$species,
                              LifeForm=firstObs$LifeForm,
                              Region=firstObs$Region),
                      min)
-firstObs = firstObs[!is.na(firstObs$species) & !is.na(firstObs$LifeForm),]
-firstObs$Region=as.character(firstObs$Region)
+firstObs$Region[firstObs$Region=="Canary Islands"]="Spain"
+firstObs$Region[firstObs$Region=="Balearic Islands"]="Spain"
+firstObs$Region[firstObs$Region=="Great Britain"]="United Kingdom"
+firstObs$Region[firstObs$Region=="Crete"]="Greece"
+firstObs$Region[firstObs$Region=="Azores"]="Portugal"
+firstObs$Region[firstObs$Region=="Faroe Islands"]='Denmark'
 firstObs$Region=short.EU.regions.from.Region_seeb(firstObs$Region)
+firstObs = firstObs[!is.na(firstObs$Region),]
 firstObs$Region[firstObs$Region=="Czech"]="Czech Republic"
 firstObs$Region[firstObs$Region=="Bosnia"]="Bosnia and Herzegovina"
-
-firstRecDf = firstObs[!is.na(firstObs$Region),]
+firstRecDf=firstObs
 colnames(firstRecDf) = c("species",'LifeForm',
                          'Region','off_FirstRec')
 setwd(saveDir)
-write.table(firstRecDf,'official_firstRec_clean_21_10_13.csv',sep=";",col.names=T,row.names=F)
+write.table(firstRecDf,'official_firstRec_clean.csv',sep=";",col.names=T,row.names=F)
 
 #####
 # Extract species FirstObs GBIF
@@ -336,7 +332,7 @@ write.table(firstRecDf,'official_firstRec_clean_21_10_13.csv',sep=";",col.names=
 if(F){
   
   setwd(saveDir)
-  spTable=read.csv('speciesList_Seeb_sup2010_EU_GBIFtaxo.csv',sep=";",header=T,stringsAsFactors = F)
+  spTable=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)
   
   load(file = 'Europe_light')
   
@@ -455,7 +451,7 @@ if(F){
 #####
 
 setwd(saveDir)
-firstRecDf=read.csv('official_firstRec_clean_21_10_13.csv',sep=";",header=T,stringsAsFactors = F)
+firstRecDf=read.csv('official_firstRec_clean.csv',sep=";",header=T,stringsAsFactors = F)
 varTab= read.csv('species_variables.csv',sep=";",header=T,stringsAsFactors = F)
 
 matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)[,c('species','phylum','class',"LifeForm")]
@@ -562,3 +558,4 @@ TL <- merge(TL,google_country[,c(2,4,7)],by.x=c("species","Region"),by.y=c("keyw
 TL$google_country_tot <- TL$google_country_porc/100 * TL$google
 
 write.table(TL,'timeLags_22_01_19_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
+
