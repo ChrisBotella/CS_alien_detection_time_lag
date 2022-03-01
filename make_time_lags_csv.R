@@ -5,19 +5,6 @@ require(maptools)
 require(rgeos)
 require(raster)
 
-### Directory of official first record  
-#firDir = "C:/Users/user/pCloud local/boulot/data/Invasions SA et FR/InvasionsFirstRecord/"
-firDir =  "C:/Users/user/pCloud local/boulot/data/CS time lag/update with NZ and AUS/"
-
-### Directory of CS occurrences (all sources) 
-occDir = "C:/Users/cbotella/Documents/work local/data/CS time lag/extraction gbif/"
-
-#mainDir = "C:/Users/cbotella/pCloud local/boulot/data/CS time lag/"
-mainDir = "C:/Users/user/pCloud local/boulot/data/CS time lag/"
-
-### Directories of outputs
-saveDir = firDir
-
 #####
 # Functions
 #####
@@ -203,8 +190,7 @@ EU_rast <- rasterize(EU_simpl, EU_rast,
 EU_rast=raster::crop(EU_rast,extent(-25, 40, 25, 90))
 EU_rast[is.na(EU_rast)] = 1
 
-setwd(firDir)
-firstObs = read.csv('firstObs.csv',sep=";",header=T)
+firstObs = read.csv('official_first_rec.csv',sep=";",header=T)
 countries$Region_seeb = NA
 for(i in 1:length(regions)){
   countries$Region_seeb[regexpr(regions[i],countries$NAME)>0]= as.character(firstObs$Region[regexpr(regions[i],firstObs$Region)>0][1])
@@ -227,7 +213,6 @@ countries = rbind(countries,
                              Region_seeb=c("Cyprus","Turkey")))
 
 
-setwd(saveDir)
 save(countries,EU_simpl,EU_rast,file = 'Europe_light')
 
 
@@ -235,7 +220,6 @@ save(countries,EU_simpl,EU_rast,file = 'Europe_light')
 # UPDATE Species list under GBIF taxo 
 #####
 
-setwd(firDir)
 firstObs = read.csv('official_first_rec.csv',sep=";",header=T,stringsAsFactors = F)
 
 # I removed the rows where first rec year < 2010
@@ -245,6 +229,7 @@ firstObs = read.csv('official_first_rec.csv',sep=";",header=T,stringsAsFactors =
 # firstObs$PresentStatus%in%c('casual',"Invasive",'invasive','established','eradicated','alien','In captivity/culture') & 
 spTable = data.frame(unique(firstObs[,c('TaxonName')]))
 colnames(spTable)[1] = 'SeebName'
+spTable$SeebName = as.character(spTable$SeebName)
 # Manually fix some names that don't match
 spTable$SeebName[spTable$SeebName=="Perovskia x superba"]="Perovskia abrotanoides"
 spTable$SeebName[spTable$SeebName=="Callopistromyia annulipes"]="Callopistromyia annulipes"
@@ -287,14 +272,12 @@ spTableFinal = spTableFinal[!spTableFinal$rank=="GENUS",]
 toSave = unique(spTableFinal[!is.na(spTableFinal$species),c('SeebName','species',"phylum","class","kingdom")])
 toSave$LifeForm = get.LifeForm(toSave)
 
-setwd(saveDir)
 write.table(toSave,'matching_names_Seeb_with_GBIF.csv',sep=";",row.names=F,col.names=T)
 
 #####
 # Official first rec DF
 #####
 
-setwd(saveDir)
 load(file = 'Europe_light')
 matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)
 
@@ -321,7 +304,7 @@ firstObs$Region[firstObs$Region=="Bosnia"]="Bosnia and Herzegovina"
 firstRecDf=firstObs
 colnames(firstRecDf) = c("species",'LifeForm',
                          'Region','off_FirstRec')
-setwd(saveDir)
+
 write.table(firstRecDf,'official_firstRec_clean.csv',sep=";",col.names=T,row.names=F)
 
 #####
@@ -331,7 +314,6 @@ write.table(firstRecDf,'official_firstRec_clean.csv',sep=";",col.names=T,row.nam
 
 if(F){
   
-  setwd(saveDir)
   spTable=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)
   
   load(file = 'Europe_light')
@@ -370,14 +352,13 @@ if(F){
   perSpecies = as.data.frame(matrix(NA,0,5));colnames(perSpecies)=c('country','species','LifeForm','count','firstRec');
   for(file in files){
     print(file)
-    setwd(occDir)
     tmp=df_as_model(file,sep="\t")
     selec.ind = which(colnames(tmp)%in%keptCols)
     depasse_pas = T
     toSkip = 0
     while (depasse_pas){
       #perSpecies = read.csv(saveName,sep=";",header=T,stringsAsFactors = F)
-      setwd(occDir)
+      
       L = data.frame( fread(file, 
                             sep="\t", 
                             nrows=taille_serie,
@@ -405,7 +386,6 @@ if(F){
                                      LifeForm=perGroup$LifeForm),
                              FUN=sum)
         
-        setwd(saveDir)
         write.table(perGroup,saveNameGrp,sep=";",row.names=F,col.names=T)
         
         L = L [L$species%in%spToKeep,,drop=F]
@@ -433,7 +413,6 @@ if(F){
           perSpecies = updated
           
           ### Update files
-          setwd(saveDir)
           write.table(perSpecies,saveName,sep=";",row.names=F,col.names=T)
         }
       }
@@ -450,7 +429,7 @@ if(F){
 # Time lag table
 #####
 
-setwd(saveDir)
+
 firstRecDf=read.csv('official_firstRec_clean.csv',sep=";",header=T,stringsAsFactors = F)
 varTab= read.csv('species_variables.csv',sep=";",header=T,stringsAsFactors = F)
 
@@ -458,6 +437,7 @@ matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsF
 matchin = unique(matchin[,c('species','phylum','class',"LifeForm")])
 load(file = 'Europe_light')
 perSpecies=read.csv('CS_1st_rec.csv',sep=";",header=T,stringsAsFactors = F)
+colnames(perSpecies)[colnames(perSpecies)=="country"]="Region"
 #perSpecies=merge(perSpecies,countries[,c('NAME','Region_seeb')],by.x='country',by.y='NAME',all.x=T)
 #perSpecies = perSpecies[!is.na(perSpecies$Region_seeb),colnames(perSpecies)!="country"]
 #perSpecies$Region_seeb=short.EU.regions.from.Region_seeb(perSpecies$Region_seeb)
@@ -546,12 +526,7 @@ for(i in 1:dim(TL)[1]){
     cat('\r Processed ',round(1000*i/dim(TL)[1])/10,'%')
   }
 }
-setwd(saveDir)
-write.table(TL,'timeLags_22_01_11_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
 
-
-# Add google per country data
-TL <- read.csv('timeLags_22_01_11_all_variables_clean.csv',sep=";")
 google_country <- read.csv("species_variables/species_country_google.csv")
 google_country$google_country_porc <- google_country$hits
 TL <- merge(TL,google_country[,c(2,4,7)],by.x=c("species","Region"),by.y=c("keyword","location"),all.x=T)
