@@ -8,11 +8,9 @@
 library(dplyr)
 
 # Get species list
-# datos <- read.csv(file = "timeLags_21_10_13.csv",sep=";")
-species <- unique(datos[,c("species","SeebName")])
+datos <- read.csv(file = "timeLags_all_variables_clean.csv",sep=";")
+species <- unique(datos[,c("species","LifeForm")])
 
-datos <- read.csv(file = "species_habitat.csv",sep=";")
-species <- data.frame(species=datos$species)
 
 # EU concern ####
 # https://github.com/trias-project/indicators/blob/master/data/input/eu_concern_species_under_consideration.tsv
@@ -29,54 +27,78 @@ concern <- rbind(concern[,c("species","eu_status")],concernuncer[,c("species","e
 species_1 <- merge(species,concern,by.x="species",by.y = "species",all.x = T )
 table(species_1$eu_status)
 
-
 # Google hits ####
-date_search <- as.POSIXct("2021-11-07")
+# Get species list
+datos <- read.csv(file = "timeLags_all_variables_clean.csv",sep=";")
+
+lags <- datos %>%
+  filter(!is.na(timeLag)) # we keep data only with both dates and with official first record later than 2000
+
+
+species <- unique(lags[,c("species","LifeForm")])
+
+
 library(gtrendsR)
-species_1$google <- NA
-for(i in 1:nrow(species_1)){
-  searchterm <- species_1$species[i]
-  searchgoo <- gtrends(searchterm,gprop = "web",time="today+5-y")
+species$google_sum <- NA
+species$google_mean <- NA
+
+# unique(searchgoo[[2]]$location)
+# Download all info
+for(i in 2:nrow(species)){
+  searchterm <- species$species[i]
+  searchgoo <- gtrends(c(searchterm,"Gingko biloba"),gprop = "web",time="2010-01-01 2021-12-31",low_search_volume = T)
   save(searchgoo,file=paste("species_variables/google/",searchterm," .RData",sep = ""))
-  hits <- searchgoo[[1]]
-  hits <- hits[hits$date<=fecha,]
-  species_1[i,"google"] <- sum(hits$hits)
   print(paste("Species ", i, " ", searchterm))
 }
-write.csv(species_1,"species_google_nz.csv")
 
+# Process hits
+for(i in 1:nrow(species)){
+  searchterm <- species[i,"species"]
+  load(file=paste("species_variables/google/",searchterm," .RData",sep=""))
+  
+  hits_time <- searchgoo[[1]]
+  hits_time[hits_time$hits=="" & !is.na(hits_time$hits),"hits"] <- 0
+  hits_time[is.na(hits_time$hits),"hits"] <- 0
+  hits_time[hits_time$hits=="<1" & !is.na(hits_time$hits),"hits"] <- 1
+  hits_time$hits <- as.numeric(hits_time$hits)
+  
+  species[i,"google_sum"] <- sum(hits_time[hits_time$keyword==searchterm,"hits"] )
+  species[i,"google_mean"] <- mean(hits_time[hits_time$keyword==searchterm,"hits"] ,na.rm = T)
+  print(paste("Species ", i, " ", searchterm))
+}
+
+write.csv(species,"species_variables/species_google.csv")
 
 # Google hits per country ####
   # we loop throught he previous saved files
 
-datos <- read.csv(file = "timeLags_22_03_04_all_variables_clean.csv",sep=";")
-datos <- datos %>%
-  filter(!is.na(timeLag)) # we keep data only with both dates and with official first record later than 2000
 
-species_country <- unique(datos[,c("species","Region")])
-species <- unique(datos[,c("species")])
-gogole_country <- data.frame(location=NA,hits=NA,keyword=NA,geo=NA,gprop=NA)
-for(i in 1:length(species)){
-  searchterm <- species[i]
+google_country <- data.frame(location=NA,hits=NA,keyword=NA,geo=NA,gprop=NA)
+for(i in 1:nrow(species)){
+  searchterm <- species[i,"species"]
   load(file=paste("species_variables/google/",searchterm," .RData",sep=""))
-  gogole_country <- rbind(gogole_country,searchgoo[[2]])
+  hits_country <- searchgoo[[2]] %>%
+    filter(keyword==searchterm)
+  google_country <- rbind(google_country,hits_country)
   print(paste("Species ", i, " ", searchterm))
 }
 
-gogole_country <- gogole_country %>%
+google_country <- google_country %>%
   filter(!is.na(keyword))
 
 # The hits are in % of the total. Change in to numeric
-gogole_country[gogole_country$hits=="" & !is.na(gogole_country$hits),"hits"] <- 0
-gogole_country[gogole_country$hits=="<1" & !is.na(gogole_country$hits),"hits"] <- 1
-gogole_country$hits <- as.numeric(gogole_country$hits)
+google_country[google_country$hits=="" & !is.na(google_country$hits),"hits"] <- 0
+google_country[google_country$hits=="<1" & !is.na(google_country$hits),"hits"] <- 1
+google_country[is.na(google_country$hits),"hits"] <- 0
+google_country$hits <- as.numeric(google_country$hits)
 
-gogole_country[gogole_country$location=="Czechia","location"] <- "Czech Republic"
-gogole_country[gogole_country$location=="Bosnia & Herzegovina","location"] <- "Bosnia and Herzegovina"	
-gogole_country[gogole_country$location=="North Macedonia","location"] <- "Macedonia"
+google_country[google_country$location=="Czechia","location"] <- "Czech Republic"
+google_country[google_country$location=="Bosnia & Herzegovina","location"] <- "Bosnia and Herzegovina"	
+google_country[google_country$location=="North Macedonia","location"] <- "Macedonia"
 
 
-write.csv(gogole_country,"species_country_google.csv")
+write.csv(google_country,"species_variables/species_country_google2.csv")
+
 
 
 
@@ -91,14 +113,12 @@ for(i in 1:nrow(species_1)){
   print(paste("Species ", i, " ", searchterm))
 }
 
-write.csv(species_1,"species_scopus_nz.csv")
 
 species_dicc <- read.csv("species_dicc.csv")
 species_dicc <- merge(species_dicc,species_1[,c(1,4)],by.x="species",by.y = "species",all.x = T )
 write.csv(species_dicc,"species_dicc.csv")
 
-datos <- merge(datos, species_dicc,by.x="species",by.y = "species",all.x = T )
-write.csv(datos,"timeLags_21_10_13_variables.csv")
+
 
 
 # EASIN ####
