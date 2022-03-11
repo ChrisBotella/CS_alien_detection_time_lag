@@ -527,10 +527,18 @@ for(i in 1:dim(TL)[1]){
   }
 }
 
-google_country <- read.csv("species_variables/species_country_google.csv")
+## Google trends
+google <- read.csv("species_variables/species_google.csv")
+TL <- merge(TL,google[,c(2,4,5)],by.x=c("species"),by.y=c("species"),all.x=T)
+
+google_country <- read.csv("species_variables/species_country_google2.csv")
 google_country$google_country_porc <- google_country$hits
 TL <- merge(TL,google_country[,c(2,4,7)],by.x=c("species","Region"),by.y=c("keyword","location"),all.x=T)
-TL$google_country_tot <- TL$google_country_porc/100 * TL$google
 
-write.table(TL,'timeLags_22_01_19_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
+TL$google_country <- TL$google_mean * TL$google_country
+
+TL <- unique(TL)
+
+
+write.table(TL,'timeLags_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
 
