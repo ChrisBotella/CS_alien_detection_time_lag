@@ -11,6 +11,7 @@ Input data:
 Scripts:
 - **make_time_lags_csv.R**: Produces the CSV table of time lags between the first year of observation in CS databases and official records along with explanatory covariables.
 - **analyse_time_lags.R**: Produces various Figure for analysis.
+- **models.RMD**: carry out regression analysis and data processing
 
 References:
 Seebens, H., Blackburn, T. M., Dyer, E. E., Genovesi, P., Hulme, P. E., Jeschke, J. M., ... & Essl, F. (2017). No saturation in the accumulation of alien species worldwide. Nature communications, 8(1), 1-9.
@@ -39,23 +40,24 @@ Species level variables:
 - LifeForm: The life form, namely one of "Vascular plants", "Birds", "Mammals", "Reptiles", "Insects", "Arthropods p.p. (Myriapods, Diplopods etc.)", "Molluscs", "Invertebrates (excl. Arthropods, Molluscs)", "Algae", "Crustaceans", "Fishes", "Amphibians", "Bryozoa", "Fungi" or "Bacteria and protozoans". See the code for their taxonomic description.
 - nOccTotSp: Total number of records in all CS databases since 1990.
 - scopus: number of records in scopus database for the scientific name of the species
-- google: Number of Google hits in the last 5 years  for the scientific name of the species
-- google_country_porc: % of Google hits in the last 5 years  for the scientific name of the species per country
-- google_country_tot: Number of Google hits in the last 5 years  for the scientific name of the species per country
+- google_mean: mean of the trend per species in comparison to baseline species (Gingko biloba) for 2010-2020
+- google_sum: sum of the trend per species in comparison to baseline species (Gingko biloba) for 2010-2020
 - EASIN_Id: 
 - Status: 
 - eu_status: ... is accepted as EU concern or under consideration for it... according to # https://github.com/trias-project/indicators/blob/master/data/input/eu_concern_species_under_consideration.tsv
 
 - mentioned_in_EU_quarantine_species:
-- habitat:
+- habitat:according to EASIN dataset
 - TER:
 - FRW:
 - MAR:
 - EST:
 - worst_100_world_ISSG: 
 - worst_100_Europe_DAISIE:
-- partly_native: 
+- partly_native: according to EASIN dataset
 
 Species AND country level variables:
 - count: Number of CS records for the species in the country since 1990.
 - obsInNeigborCountryBefore: Is there a CS record of the species in a neighborhing country that is earlier than its official first record year in the current country ? This variable is computed using the Country Borders data from: https://www.geodatasource.com 
+- google_country_porc: relative importance of Google trend from 2010 to 2020 in each country per species (0 to 100). 
+- google_country: simple multiplication of google_mean times google_country_porc 
