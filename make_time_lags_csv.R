@@ -501,7 +501,7 @@ for(i in 1:dim(countries)[1]){
 TL$nOccTotSp = NA
 TL$obsInNeigborCountryBefore = NA
 for(i in 1:dim(TL)[1]){
-  TL$nOccTotSp[i] = sum(TL$count[TL$species==TL$species[i]])
+  TL$nOccTotSp[i] = sum(TL$count[TL$species==TL$species[i]],na.rm=T)
   if(!is.na(TL$off_FirstRec[i]) | !is.na(TL$firstRec[i])){
     adjReg = bord2$country_border_name[bord2$country_name==as.character(TL$Region[i])] 
     adjReg = c(adjReg , bord2$country_name[bord2$country_border_name==as.character(TL$Region[i])] ) 
@@ -541,4 +541,3 @@ TL <- unique(TL)
 
 
 write.table(TL,'timeLags_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
-
