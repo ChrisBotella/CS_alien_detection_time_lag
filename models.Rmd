@@ -7,7 +7,7 @@ library(ggplot2)
 
 lags <-  read.csv(file = "timeLags_all_variables_clean.csv",sep=";")
 lags <- lags %>%
-  filter(!is.na(timeLag)) # we keep data only with both dates and with official first record later than 2000
+  filter(!is.na(timeLag) & off_FirstRec!=0) # we keep data only with both dates and with official first record later than 2000
 
 # Change the name of some variables for clarity
 
@@ -54,11 +54,11 @@ plot(lags$off_FirstRec,lags$firstRec)
 - There is a long tail towards negative lags ( citizen science very early). Now they correspond to Belgium and Sweden. - Be aware of very early citizen science dates. Up to 1990
 
 Dataset
-- Check NumRecCS_Species (nOccTotSp) for NA values. There are 155 records without this variable. Not using it at the moment
-- There are some species with NA in top lists. Double check species_variable.csv
+-  NumRecCS_Species (nOccTotSp) has been corrected and there aren't gaps
+- <10 records without google info
+- Check Belgium data again (some 0 in official records)
 
-- separating in two models depending on the tail
-- belgium overrepresented. Check with Tim. 
+
 
 
 
@@ -96,9 +96,11 @@ table(lags$priority)
 lags$priority <- as.factor(lags$priority)
 
 
-
+lags <- filter(lags,!is.na(google_sum))
 
 summary(lags)
+
+
 
 ```
 
@@ -163,7 +165,7 @@ There isn't large correlation among continuous variables apart from google data
 
 # Model with all variables
 
-- N= 568. as we have gaps in NumRecCS_Species
+- N= 720 
 
 ```{r allvariables model}
 
@@ -202,44 +204,8 @@ plot_model(modelbas,show.vales=T,type="re")
 - Faster for vertebrates than plants
 - Faster when there are more citizen records of the species
 - No effect of google or scopus hits
-- being in a priority list is marginally significant. worth completing gaps
+- being in a priority list is significant. 
 
-# Model with all data
-
-- N= 723 not considering NumRecCS_Species as it has >100
-
-```{r basic model}
-
-# lme4
-library(lme4)
-library(multcomp)
-library(lmerTest)
-library(MuMIn);options(na.action = "na.fail")
-
-modelbas <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_CountryLifeform + priority+(1|Region),data=lags )
-summary(modelbas)
-
-comp <- dredge(modelbas)
-comp
-
-summary(model.avg(comp,subset = delta < 4))
-
-boxplot(lags$timeLag~lags$habitat2)
-test <- glht(modelbas, linfct = mcp(habitat2 = "Tukey"))
-summary(test) #no differences
-
-boxplot(lags$timeLag~lags$LifeForm3)
-test <- glht(modelbas, linfct = mcp(LifeForm3 = "Tukey"))
-summary(test)  # significant differences between invertebrates and vertebrates
-# groups <- cld(test)
-
-library(sjPlot)
-plot_model(modelbas,show.vales=T)
-plot_model(modelbas,show.vales=T,type="re")
-
-
-
-```
 
 - obs in neighbouring country is significant
 - more records in scopus, faster is CS
@@ -249,7 +215,7 @@ plot_model(modelbas,show.vales=T,type="re")
 
 # Model with only exotic to EU
 
-- N= 500 not considering NumRecCS_Species as it has >100
+- N= 497 
 
 ```{r EU model}
 
@@ -264,7 +230,7 @@ library(multcomp)
 library(lmerTest)
 library(MuMIn);options(na.action = "na.fail")
 
-modelbas <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_CountryLifeform + priority+(1|Region),data=lags_eu )
+modelbas <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species+NumRecCS_CountryLifeform + priority+(1|Region),data=lags_eu )
 summary(modelbas)
 
 comp <- dredge(modelbas)
@@ -393,7 +359,7 @@ plot_model(modelbas,show.vales=T,type="re")
 ```{r positive model}
 
 lags2 <- lags %>%
-  filter(timeLag>=0)
+  filter(timeLag>0)
 
 hist(lags2$timeLag)
 
@@ -455,7 +421,9 @@ plot_model(modelpos,show.vales=T,type="re")
 - ACcounting for overdispersion ther isn't any other significant effect. 
 
 Next steps
-- Check gaps in data
+- maybe logs of scopus/ google variables
+- mosaic plot between positive / negative / records
+- update belgium data lags
 - Randomize and select similar number of records per country. 
 
 
