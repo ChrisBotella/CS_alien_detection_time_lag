@@ -8,8 +8,8 @@
 library(dplyr)
 
 # Get species list
-datos <- read.csv(file = "timeLags_all_variables_clean.csv",sep=";")
-species <- unique(datos[,c("species","LifeForm")])
+species <- read.csv(file = "species_variables.csv",sep=";")
+
 
 
 # EU concern ####
@@ -32,7 +32,7 @@ table(species_1$eu_status)
 datos <- read.csv(file = "timeLags_all_variables_clean.csv",sep=";")
 
 lags <- datos %>%
-  filter(!is.na(timeLag)) # we keep data only with both dates and with official first record later than 2000
+  filter(!is.na(timeLag) & is.na(google_mean)) # we keep data only with both dates and with official first record later than 2000
 
 
 species <- unique(lags[,c("species","LifeForm")])
@@ -44,7 +44,7 @@ species$google_mean <- NA
 
 # unique(searchgoo[[2]]$location)
 # Download all info
-for(i in 2:nrow(species)){
+for(i in 1:nrow(species)){
   searchterm <- species$species[i]
   searchgoo <- gtrends(c(searchterm,"Gingko biloba"),gprop = "web",time="2010-01-01 2021-12-31",low_search_volume = T)
   save(searchgoo,file=paste("species_variables/google/",searchterm," .RData",sep = ""))
@@ -67,7 +67,10 @@ for(i in 1:nrow(species)){
   print(paste("Species ", i, " ", searchterm))
 }
 
-write.csv(species,"species_variables/species_google.csv")
+species_orig <- read.csv(file = "species_variables/species_google.csv")
+species <- rbind(species_orig[,2:5],species)
+
+write.csv(species,"species_variables/species_google3.csv")
 
 # Google hits per country ####
   # we loop throught he previous saved files
@@ -96,8 +99,9 @@ google_country[google_country$location=="Czechia","location"] <- "Czech Republic
 google_country[google_country$location=="Bosnia & Herzegovina","location"] <- "Bosnia and Herzegovina"	
 google_country[google_country$location=="North Macedonia","location"] <- "Macedonia"
 
-
-write.csv(google_country,"species_variables/species_country_google2.csv")
+google_country_orig <- read.csv(file = "species_variables/species_country_google2.csv",row.names = T)
+google_country <- rbind(google_country_orig[,2:6],google_country)
+write.csv(google_country,"species_variables/species_country_google3.csv")
 
 
 
