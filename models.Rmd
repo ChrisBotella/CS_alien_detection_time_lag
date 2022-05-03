@@ -22,17 +22,19 @@ names(lags)[names(lags)=="obsEffort_LF"] <- "NumRecCS_CountryLifeform"
 summary(lags)
 
 
-table(lags$partly_native)
-table(lags$Region)
-table(lags$LifeForm)
-table(lags$partly_native)
-table(lags$habitat)
-table(lags$eu_status)
-table(lags$mentioned_in_EU_quarantine_species)
-table(lags$worst_100_world_ISSG)
-table(lags$worst_100_Europe_DAISIE)
-table(lags$mentioned_in_EU_quarantine_species)
+barplot(table(lags$partly_native))
+barplot(table(lags$Region),las=2)
+barplot(table(lags$LifeForm),las=2)
+barplot(table(lags$partly_native))
+barplot(table(lags$habitat))
+barplot(table(lags$eu_status))
+barplot(table(lags$mentioned_in_EU_quarantine_species))
+barplot(table(lags$worst_100_world_ISSG))
+barplot(table(lags$worst_100_Europe_DAISIE))
+barplot(table(lags$mentioned_in_EU_quarantine_species))
 # Dataset
+
+
 
 hist(lags$timeLag)
 
@@ -55,7 +57,6 @@ plot(lags$off_FirstRec,lags$firstRec)
 
 Dataset
 -  NumRecCS_Species (nOccTotSp) has been corrected and there aren't gaps
-- <10 records without google info
 - Check Belgium data again (some 0 in official records)
 
 
@@ -67,11 +68,12 @@ lags$Region <- as.factor(lags$Region)
 lags$obsInNeigborCountryBefore <- as.factor(lags$obsInNeigborCountryBefore)
 
 lags$habitat2 <- as.factor(lags$habitat)
-levels(lags$habitat2) <- c("FW", "SAL","SAL","SAL","FW","MAR","TER","SAL","SAL","FW")
+summary(lags$habitat2)
+levels(lags$habitat2) <- c("FW", "SAL","SAL","SAL","SAL","FW","MAR","SAL","SAL","TER","SAL","SAL","SAL","FW","SAL")
 ggplot(lags,aes(y=timeLag,habitat2)) + geom_boxplot() 
-
+barplot(table(lags$habitat2))
 lags$habitat3 <- as.factor(lags$habitat)
-levels(lags$habitat3) <- c("AQ", "AQ","AQ","AQ","AQ","AQ","TER","AQ","AQ","AQ")
+levels(lags$habitat3) <- c("AQ", "AQ","AQ","AQ","AQ","AQ","AQ","AQ","AQ","TER","AQ","AQ","AQ","AQ")
 ggplot(lags,aes(y=timeLag,habitat3)) + geom_boxplot() 
 
 lags$LifeForm2 <- as.factor(lags$LifeForm)
@@ -85,18 +87,26 @@ lags$LifeForm3 <- as.factor(lags$LifeForm)
 levels(lags$LifeForm3) <- c("PLANTS&ALGAE","VERT","INV","MICRO","VERT","INV","INV","VERT","MICRO","INV","INV","VERT","INV","VERT","PLANTS&ALGAE")
 ggplot(lags,aes(y=timeLag,LifeForm3)) + geom_boxplot() + theme(axis.text.x = element_text(angle = 90))
 
-#create a variable indicating that at least ot is in one of the priority lists (ISSGS, DAISIE, EU)
-lags$priority <- lags$worst_100_world_ISSG; table(lags$priority)
-lags[lags$worst_100_Europe_DAISIE=="YES" &!is.na(lags$worst_100_Europe_DAISIE),"priority"] <- "YES" ; table(lags$priority)
-lags[lags$eu_status!="NO","priority"] <- "YES" ; 
+#create a variable indicating that at least ot is in one of the worst lists lists (ISSGS, DAISIE, EU)
+lags$worst <- lags$worst_100_world_ISSG; table(lags$worst)
+lags[lags$worst_100_Europe_DAISIE=="YES" &!is.na(lags$worst_100_Europe_DAISIE),"worst"] <- "YES" ; table(lags$worst)
+lags[is.na(lags$worst),"worst"] <- "NO" # until we get more data we consider species without info not priority
 
-lags[is.na(lags$priority),"priority"] <- "NO" # until we get more data we consider species without info not priority
-
-table(lags$priority)
-lags$priority <- as.factor(lags$priority)
+lags$worst <- as.factor(lags$worst)
 
 
-lags <- filter(lags,!is.na(google_sum))
+#create a variable indicating that at least ot is in one of european or quarantine satuts
+lags$eu_priority <- lags$eu_status; table(lags$eu_priority)
+lags[lags$eu_status!="NO","eu_priority"] <- "YES" ; 
+
+lags[is.na(lags$eu_priority),"eu_priority"] <- "NO" # until we get more data we consider species without info not priority
+
+table(lags$eu_priority)
+lags$eu_priority <- as.factor(lags$eu_priority)
+
+# create variable for both worst and prioriy
+lags$priority <- lags$eu_priority
+lags[lags$worst=="YES" ,"priority"] <- "YES" ; table(lags$priority)
 
 summary(lags)
 
@@ -111,11 +121,11 @@ summary(lags)
 
 
 
-variables <- c("habitat2","habitat3", "LifeForm2","LifeForm3","Region","priority","obsInNeigborCountryBefore", "google_sum","google_mean","google_country","scopus","NumRecCS_CountryLifeform","NumAliensOff_Country","timeLag","NumRecCS_Species")
+variables <- c("habitat2","habitat3", "LifeForm2","LifeForm3","Region","priority","eu_priority","worst","obsInNeigborCountryBefore", "google_sum","google_mean","google_country","scopus","NumRecCS_CountryLifeform","NumAliensOff_Country","timeLag","NumRecCS_Species")
 
-plot(lags[,variables[8:14]])
+plot(lags[,variables[10:17]])
 
-for(i in 1:7) {
+for(i in 1:9) {
     name_var <- lags[,variables[i]]
     p<- ggplot(lags,aes(y=timeLag,x=(name_var))) + geom_boxplot() + theme(axis.text.x = element_text(angle = 90)) 
     print(p)
@@ -123,12 +133,12 @@ for(i in 1:7) {
 
 library(corrplot)
 
-cormat <- cor(lags[,variables[8:14]])
+cormat <- cor(lags[,variables[10:17]])
 
 corrplot(cormat,order = 'hclust',addrect = 3,addCoef.col = "black")
 
 library(lsr)
-str(lags[,variables[1:7]])
+str(lags[,variables[1:9]])
 cramersV(table(lags[,c("habitat2","LifeForm2")]))
 cramersV(table(lags[,c("habitat3","LifeForm3")]))
 cramersV(table(lags[,c("habitat2","LifeForm3")]))
@@ -138,17 +148,10 @@ cramersV(table(lags[,c("habitat3","LifeForm2")]))
 
 
 # Scale variables to improve convergence
-lags[,variables[c(8:13,15)]] <- scale(lags[,variables[c(8:13,15)]])
+lags[,variables[c(10:15,17)]] <- scale(lags[,variables[c(10:15,17)]])
 
 
 
-# considering also NumRecCS
-
-lags_full <- filter(lags,!is.na(NumRecCS_Species))
-
-cormat <- cor(lags_full[,variables[8:15]])
-
-corrplot(cormat,order = 'hclust',addrect = 3,addCoef.col = "black")
 
 ```
 
@@ -156,10 +159,8 @@ corrplot(cormat,order = 'hclust',addrect = 3,addCoef.col = "black")
 There isn't large correlation among continuous variables apart from google data
 - Google_sum and google_mean are the same
 - We can use the google_country or google_mean but not both together
-
 - Least association between habitat and lifeform is using habitat2 and lifeform3
 
-- When considering all no empty records NumRecCS shows strong effect. Worth filling the gaps!
 
 
 
@@ -175,7 +176,7 @@ library(multcomp)
 library(lmerTest)
 library(MuMIn);options(na.action = "na.fail")
 
-modelbas <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species+NumRecCS_CountryLifeform + priority+(1|Region),data=lags_full )
+modelbas <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species+NumRecCS_CountryLifeform + eu_priority+worst+(1|Region),data=lags )
 summary(modelbas)
 
 comp <- dredge(modelbas)
@@ -183,11 +184,11 @@ comp
 
 summary(model.avg(comp,subset = delta < 4))
 
-boxplot(lags_full$timeLag~lags_full$habitat2)
+boxplot(lags$timeLag~lags$habitat2)
 test <- glht(modelbas, linfct = mcp(habitat2 = "Tukey"))
 summary(test) #no differences
 
-boxplot(lags_full$timeLag~lags_full$LifeForm3)
+boxplot(lags$timeLag~lags$LifeForm3)
 test <- glht(modelbas, linfct = mcp(LifeForm3 = "Tukey"))
 summary(test)  # significant differences between invertebrates and vertebrates
 # groups <- cld(test)
@@ -215,7 +216,7 @@ plot_model(modelbas,show.vales=T,type="re")
 
 # Model with only exotic to EU
 
-- N= 497 
+- N= 504 
 
 ```{r EU model}
 
@@ -230,7 +231,7 @@ library(multcomp)
 library(lmerTest)
 library(MuMIn);options(na.action = "na.fail")
 
-modelbas <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species+NumRecCS_CountryLifeform + priority+(1|Region),data=lags_eu )
+modelbas <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species+NumRecCS_CountryLifeform + eu_priority+worst+(1|Region),data=lags_eu )
 summary(modelbas)
 
 comp <- dredge(modelbas)
@@ -262,7 +263,7 @@ plot_model(modelbas,show.vales=T,type="re")
 
 # Model with only Belgium
 
-- N= 319  considering NumRecCS_Species as it has only 25 empty species
+- N= 353  considering NumRecCS_Species as it has only 25 empty species
 
 ```{r Belgium model}
 
@@ -279,7 +280,7 @@ library(multcomp)
 library(lmerTest)
 library(MuMIn);options(na.action = "na.fail")
 
-modelbas <- lm(timeLag~  google_country+ scopus + habitat2 + LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species + priority,data=lags_bel )
+modelbas <- lm(timeLag~  google_country+ scopus + habitat2 + LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species + eu_priority+worst,data=lags_bel )
 summary(modelbas)
 
 comp <- dredge(modelbas)
@@ -363,7 +364,7 @@ lags2 <- lags %>%
 
 hist(lags2$timeLag)
 
-modelpos <- glmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_CountryLifeform + priority+ (1|Region),data=lags2,family="poisson" )
+modelpos <- glmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_CountryLifeform + eu_priority+worst+ (1|Region),data=lags2,family="poisson" )
 summary(modelpos)
 
 #################Probar overdispersion - https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#fitting-models-with-overdispersion
