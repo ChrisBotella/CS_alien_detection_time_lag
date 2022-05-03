@@ -225,6 +225,7 @@ firstObs = read.csv('official_first_rec.csv',sep=";",header=T,stringsAsFactors =
 # I removed the rows where first rec year < 2010
 # I kept the earliest first rec year when there was several
 # I removed rows fully highlighted in red
+# keep for Belgium only the oldest official record from GRIIS or Seebens
 
 # firstObs$PresentStatus%in%c('casual',"Invasive",'invasive','established','eradicated','alien','In captivity/culture') & 
 spTable = data.frame(unique(firstObs[,c('TaxonName')]))
@@ -282,6 +283,10 @@ load(file = 'Europe_light')
 matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)
 
 firstObs = read.csv('official_first_rec.csv',sep=";",header=T,stringsAsFactors = F)
+
+
+
+
 
 firstObs = firstObs[firstObs$TaxonName%in%matchin$SeebName,colnames(firstObs)!='LifeForm']
 firstObs = unique(firstObs[,c('TaxonName','Region','FirstRecord')])
@@ -528,10 +533,10 @@ for(i in 1:dim(TL)[1]){
 }
 
 ## Google trends
-google <- read.csv("species_variables/species_google.csv")
+google <- read.csv("species_variables/species_google3.csv")
 TL <- merge(TL,google[,c(2,4,5)],by.x=c("species"),by.y=c("species"),all.x=T)
 
-google_country <- read.csv("species_variables/species_country_google2.csv")
+google_country <- read.csv("species_variables/species_country_google3.csv")
 google_country$google_country_porc <- google_country$hits
 TL <- merge(TL,google_country[,c(2,4,7)],by.x=c("species","Region"),by.y=c("keyword","location"),all.x=T)
 
