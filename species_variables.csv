@@ -1,4 +1,4 @@
-species;eu_status;scopus;EASIN_Id;Status;TER;FRW;MAR;OLI;habitat;worst_100_world_ISSG;worst_100_Europe_DAISIE;mentioned_in_EU_quarantine_species;partly_native
+species;eu_status;scopus;EASIN_Id;Status;TER;FRW;MAR;OLI;habitat;worst_100_world_ISSG;worst_100_Europe_DAISIE;mentioned_in_quarantine_species_regulations;partly_native
 Abies grandis;NO;5513;R00011;A;1;0;0;0;Terrestrial;NO;NO;NO;NO
 Abies homolepis;NO;150;NA;A;1;0;0;0;Terrestrial;NO;NO;NO;NO
 Abies nordmanniana;NO;1053;NA;NA;1;0;0;0;Terrestrial;NO;NO;NO;YES
@@ -1648,7 +1648,7 @@ Blaste lignicola;NO;0;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Casuarinicola australis;NO;7;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Cheiloneurus flaccus;NO;2;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Clematostigma maculiceps;NO;0;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
-Crassula natans;NO;21;NA;NA;0;1;0;0;Freshwater;NA;NA;NO;NA
+Crassula natans;NO;21;NA;NA;0;1;0;0;Freshwater;NA;NA;YES;NA
 Ctenoplusia limbirena;NO;2;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Cyrtaspis scutata;NO;3;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Epilobium hirsutum;NO;623;NA;NA;1;1;0;0;Freshwater_Terrestrial;NA;NA;NO;NA
@@ -1656,16 +1656,16 @@ Erysiphe corylacearum;NO;27;NA;NA;1;1;1;1;Terrestrial_Freshwater_Marine_Oligohal
 Eukoebelea australiensis;NO;0;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Eupholidoptera schmidti;NO;5;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Exomias pellucidus;NO;4;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
-Gryllus bimaculatus;NO;7745;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
+Gryllus bimaculatus;NO;7745;NA;NA;1;0;0;0;Terrestrial;NA;NA;YES;NA
 Henosepilachna vigintioctopunctata;NO;453;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Hylaeus euxanthus;NO;1;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
-Lachnus tatakaensis;NO;0;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
+Lachnus tatakaensis;NO;0;NA;NA;1;0;0;0;Terrestrial;NA;NA;YES;NA
 Nephrolepis exaltata;NO;570;R09963;A;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Neurogalesus militis;NO;1;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Paropsisterna beata;NO;8;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Phellopsylla formicosa;NO;1;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
-Pieris brassicae;NO;11475;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
+Pieris brassicae;NO;11475;NA;NA;1;0;0;0;Terrestrial;NA;NA;YES;NA
 Rhacocleis annulata;NO;22;NA;NA;1;0;0;0;Terrestrial;NA;NA;NO;NA
-Rhyzobius lophanthae;NO;114;R13023;A;1;0;0;0;Terrestrial;NA;NA;NO;NA
+Rhyzobius lophanthae;NO;114;R13023;A;1;0;0;0;Terrestrial;NA;NA;YES;NA
 Scutellista caerulea;NO;15;R13761;A;1;0;0;0;Terrestrial;NA;NA;NO;NA
 Tinocallis ulmiparvifoliae;NO;3;R15224;A;1;0;0;0;Terrestrial;NA;NA;NO;NA
