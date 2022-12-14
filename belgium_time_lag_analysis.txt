@@ -1,0 +1,2153 @@
+species	time_lag	first_observed	griis_first_observed
+Abies homolepis	0	2019	2019
+Abies nordmanniana	-7	2009	2016
+Acaena caesiiglauca	0	2019	2019
+Acaena magellanica		2017	
+Acalitus phyllereus		2018	
+Acalypha virginica		2021	
+Acanalonia conica		2021	
+Acanthus hungaricus	2	2018	2016
+Acanthus spinosus	-1	2015	2016
+Acer buergerianum		2020	
+Acer cappadocicum		2006	
+Acer cissifolium	0	2014	2014
+Acer davidii		2020	
+Acer japonicum	2	2012	2010
+Acer macrophyllum		2017	
+Acer monspessulanum	0	2015	2015
+Acer palmatum	1	2014	2013
+Acer pensylvanicum	0	2010	2010
+Acer pseudoplatanus		2008	
+Acer rubrum		2008	
+Acer rufinerve		2010	
+Acer saccharinum			2020
+Acer tataricum		2008	
+Achatina achatina		2017	
+Achatina fulica			2018
+Acheta domesticus			2018
+Achillea ageratum		2018	
+Achillea filipendulina		2007	
+Achillea millefolium		2010	
+Achillea nobilis		2007	
+Achillea ptarmica		2020	
+Achnatherum calamagrostis		2016	
+Achnatherum miliaceum		2007	
+Acipenser ruthenus		2010	
+Acridotheres cristatellus		2009	
+Acridotheres ginginianus		2009	
+Actias selene		2012	
+Actinidia chinensis		2006	
+Adelges abietis		2008	
+Adelges laricis		2010	
+Adiantum aleuticum	0	2016	2016
+Adiantum raddianum		2006	
+Adistemia watsoni		2021	
+Adonis annua		2015	
+Adonis flammea		2017	
+Aegilops cylindrica		2009	
+Aegopodium podagraria		2017	
+Aesculus flava		2018	
+Aesculus parviflora	4	2017	2013
+Aesculus pavia		2011	
+Agama agama			2015
+Agapornis fischeri		2009	
+Agapornis personatus	0	2014	2014
+Agastache rugosa		2007	
+Agave americana		2007	
+Ageratina altissima		2021	
+Ageratum houstonianum		2014	
+Agonoscena succincta		2021	
+Agropogon lutosus			2015
+Agropyron cristatum		2011	
+Agrostemma brachyloba		2007	
+Agrostis scabra		2007	
+Ajuga reptans		2010	
+Akebia quinata		2009	
+Alcea rosea		2018	
+Alcea rugosa	0	2010	2010
+Aldrovanda vesiculosa			2020
+Alectoris barbara		2021	
+Alectoris chukar	0	2010	2010
+Aleurodothrips fasciapennis			2018
+Aleurotuba jelinekii		2018	
+Alisterus scapularis		2020	
+Alkekengi officinarum		2017	
+Allium ampeloprasum		2014	
+Allium carinatum		2016	
+Allium cepa	-11	2006	2017
+Allium cristophii	0	2011	2011
+Allium hollandicum	0	2012	2012
+Allium karataviense	1	2020	2019
+Allium lusitanicum	0	2018	2018
+Allium macleanii	0	2014	2014
+Allium moly		2020	
+Allium nigrum	0	2013	2013
+Allium paradoxum		2011	
+Allium pendulinum	0	2014	2014
+Allium ramosum	8	2018	2010
+Allium roseum	0	2017	2017
+Allium sativum		2020	
+Allium scorodoprasum		2010	
+Allium siculum		2017	
+Allium triquetrum	0	2013	2013
+Allium zebdanense	0	2018	2018
+Alnus glutinosa		2019	
+Alnus spaethii			2012
+Alonsoa linearis			2017
+Alopecurus magellanicus		2020	
+Althaea cannabina		2017	
+Alyssum montanum		2016	
+Amaranthus blitoides		2008	
+Amaranthus blitum		2017	
+Amaranthus bouchonii		2006	
+Amaranthus caudatus		2008	
+Amaranthus cruentus		2016	
+Amaranthus deflexus		2006	
+Amaranthus emarginatus		2012	
+Amaranthus graecizans		2020	
+Amaranthus hybridus		2008	
+Amaranthus hypochondriacus		2006	
+Amaranthus palmeri		2009	
+Amaranthus powellii		2017	
+Amaranthus powellii x retroflexus		2011	
+Amaranthus quitensis		2013	
+Amaranthus spinosus		2007	
+Amaranthus standleyanus		2007	
+Amaranthus viridis		2013	
+Amazona ochrocephala		2007	
+Ambigolimax valentianus		2008	
+Amblonyx cinereus		2009	
+Ambrosia trifida		2006	
+Ambystoma macrodactylum	0	2018	2018
+Amelanchier spicata		2010	
+Ammannia coccinea	0	2016	2016
+Ammobium alatum		2016	
+Amorpha fruticosa		2006	
+Amphitomeus attemsi		2015	
+Amsinckia intermedia		2019	
+Amsinckia lycopsoides		2018	
+Anacridium aegyptium	0	2010	2010
+Anacyclus clavatus		2006	
+Anaphalis margaritacea		2009	
+Anaphalis triplinervis		2017	
+Anas erythrorhyncha			2015
+Anas gibberifrons			2011
+Anas laysanensis			2012
+Anas luzonica	0	2014	2014
+Anas puna	0	2012	2012
+Anas superciliosa	-7	2006	2013
+Anastomus lamelligerus		2018	
+Anchusa azurea		2021	
+Anchusa officinalis		2010	
+Anchusa procera		2008	
+Anchusa thessala		2021	
+Andryala integrifolia	0	2019	2019
+Anemonastrum canadense		2019	
+Anemone apennina		2009	
+Anemone blanda		2009	
+Anemone coronaria		2016	
+Anemone hybrida		2019	
+Anemone sylvestris		2021	
+Anethum graveolens		2009	
+Angaria delphinus		2018	
+Anisocampium niponicum			2017
+Anoda cristata		2006	
+Anolis sagrei			2018
+Anopheles pharoensis			2017
+Anoplophora glabripennis		2008	
+Antaresia childreni			2018
+Anthrenocerus australis		2008	
+Anthrenus angustefasciatus		2012	
+Anthropoides paradiseus			2016
+Anthyllis vulneraria		2007	
+Antithamnionella ternifolia		2013	
+Apalone ferox			2020
+Apera intermedia		2013	
+Aphanomyces astaci			2018
+Apium graveolens		2017	
+Apodiphus amygdali		2018	
+Aponogeton distachyos		2009	
+Aproceros leucopoda	1	2014	2013
+Aquilegia vulgaris		2007	
+Ara ararauna		2008	
+Ara severus		2019	
+Arabidopsis halleri		2011	
+Arabis alpina		2006	
+Arabis procurrens	3	2014	2011
+Arachis hypogaea		2020	
+Aralia elata		2006	
+Araucaria araucana		2019	
+Arctotheca calendula		2012	
+Arenaria montana		2021	
+Argyranthemum frutescens	1	2018	2017
+Arisaema dracontium		2021	
+Armeria arenaria		2015	
+Armeria humilis		2021	
+Armeria maritima		2008	
+Armeria pseudarmeria		2020	
+Aronia melanocarpa		2021	
+Artemisia abrotanum		2011	
+Artemisia annua		2009	
+Artemisia biennis		2008	
+Artemisia crithmifolia		2006	
+Artemisia dracunculus		2010	
+Artemisia ludoviciana		2015	
+Artemisia mongolica		2019	
+Artemisia princeps	0	2011	2011
+Artemisia rubripes		2012	
+Artemisia scoparia		2008	
+Artemisia sieversiana	0	2011	2011
+Artemisia verlotiorum		2006	
+Arthurdendyus triangulatus		2022	
+Arum italicum		2008	
+Aruncus dioicus		2012	
+Arundo donax	0	2011	2011
+Asarina procumbens		2019	
+Asarum europaeum		2009	
+Asclepias incarnata		2009	
+Asclepias speciosa		2021	
+Asclepias syriaca		2013	
+Asparagus aethiopicus		2020	
+Asperugo procumbens		2009	
+Asperula aristata		2020	
+Asperula arvensis		2014	
+Asperula laevigata		2021	
+Asphodelus tenuifolius		2019	
+Asplenium scolopendrium		2016	
+Aster ageratoides	0	2014	2014
+Aster alpinus		2018	
+Aster amellus		2016	
+Astrantia major		2007	
+Atriplex hortensis		2009	
+Atriplex micrantha		2009	
+Atriplex rosea		2019	
+Atriplex tatarica		2018	
+Attacus atlas		2011	
+Attalea funifera		2019	
+Aubrieta columnae		2012	
+Aubrieta deltoidea		2008	
+Aucuba japonica		2006	
+Aulacaspis rosae		2020	
+Aurantothrips orchidaceus			2018
+Aurinia saxatilis		2006	
+Avena barbata		2016	
+Avena fatua		2015	
+Avena nuda		2009	
+Avena sterilis		2015	
+Badonnelia titei	-3	2015	2018
+Balanus glandula	2	2017	2015
+Ballerus ballerus			2016
+Ballota nigra		2010	
+Baptisia australis		2020	
+Barbronia weberi		2014	
+Barnardius zonarius		2021	
+Basiliscus plumifrons			2017
+Batocera lineolata		2011	
+Batrachochytrium dendrobatidis			2018
+Batrachochytrium salamandrivorans			2013
+Bellardia trixago		2011	
+Belonochilus numenius		2017	
+Berberis gagnepainii		2010	
+Berberis hybridogagnepainii			2011
+Berberis interposita			2017
+Berberis julianae		2010	
+Berberis thunbergii		2008	
+Berberis wilsoniae	8	2020	2012
+Bergenia crassifolia	-3	2008	2011
+Beta macrocarpa		2014	
+Betonica macrantha		2019	
+Bidens bipinnata		2020	
+Bidens frondosa		2015	
+Bidens pilosa		2006	
+Bidens radiata		2008	
+Bidens triplinervia		2009	
+Bifora radians		2011	
+Bifora testiculata		2014	
+Bispira polyomma		2018	
+Bistorta affinis	0	2012	2012
+Bistorta amplexicaulis		2011	
+Blaptica dubia		2020	
+Blastobasis adustella		2019	
+Blastobasis lacticolella		2017	
+Blitum capitatum		2019	
+Boccardia proboscidea			2011
+Boccardiella hamata			2011
+Bolboschoenus glaucus	0	2015	2015
+Bolboschoenus planiculmis		2019	
+Bolboschoenus yagara	-5	2015	2020
+Bombina orientalis		2018	
+Bombus terrestris		2012	
+Bombycilla japonica		2009	
+Botrylloides diegensis		2019	
+Brachiaria platyphylla		2007	
+Brachiaria ramosa		2018	
+Brachypodium distachyon		2010	
+Brachypodium phoenicoides		2017	
+Brachyscome iberidifolia		2016	
+Branchiodrilus hortensis			2010
+Brassica barrelieri	0	2013	2013
+Brassica carinata	0	2017	2017
+Brassica juncea		2007	
+Brassica oleracea		2013	
+Brassica rapa		2017	
+Brassica tournefortii		2012	
+Briza maxima		2008	
+Bromus carinatus		2007	
+Bromus catharticus		2006	
+Bromus ferronii		2013	
+Bromus hordeaceus		2013	
+Bromus inermis		2009	
+Bromus japonicus		2007	
+Bromus lepidus		2012	
+Bromus madritensis		2007	
+Bromus sitchensis		2007	
+Broussonetia papyrifera	-2	2009	2011
+Brunnera macrophylla		2009	
+Bucculatrix ainsliella		2006	
+Bucculatrix chrysanthemella		2010	
+Buchananiella continua		2018	
+Bucorvus leadbeateri	-8	2010	2018
+Buddleja albiflora		2017	
+Bufotes viridis	0	2015	2015
+Bupleurum subovatum		2014	
+Buxus sempervirens		2016	
+Cabomba caroliniana		2013	
+Cacopsylla fulguralis		2011	
+Cacyreus marshalli		2008	
+Cadra calidella		2016	
+Cadra figulilella		2020	
+Caenoplana bicolor			2015
+Caenoplana coerulea			2018
+Caiman crocodilus			2017
+Calendula arvensis		2009	
+Calibrachoa parviflora		2021	
+Callicarpa bodinieri	6	2020	2014
+Callidiellum rufipennis		2012	
+Callinectes sapidus		2011	
+Callipepla californica		2011	
+Callistephus chinensis		2012	
+Callobius nomeus			2014
+Callopistria floridensis	0	2016	2016
+Callosciurus erythraeus		2008	
+Callosciurus finlaysonii		2018	
+Callosciurus prevostii	0	2011	2011
+Callosobruchus maculatus		2019	
+Calocephalus brownii		2016	
+Calystegia pulchra		2008	
+Calystegia silvatica		2008	
+Camassia leichtlinii		2013	
+Camelina microcarpa		2007	
+Camelina sativa		2018	
+Cameraria gaultheriella	0	2018	2018
+Campanula carpatica		2012	
+Campanula erinus		2009	
+Campanula fenestrellata		2011	
+Campanula garganica		2015	
+Campanula lactiflora		2011	
+Campanula medium		2014	
+Campanula persicifolia		2021	
+Campanula portenschlagiana		2006	
+Campanula poscharskyana		2007	
+Campanula pyramidalis		2011	
+Camponotus vagus		2016	
+Campsis grandiflora		2014	
+Campsis radicans		2012	
+Canna generalis		2009	
+Canna indica		2015	
+Capitites ramulosa		2015	
+Caprella equilibra		2008	
+Capsicum annuum		2012	
+Carabus rutilans		2013	
+Caragana arborescens		2015	
+Carausius morosus		2020	
+Cardamine corymbosa		2009	
+Cardamine graeca	0	2014	2014
+Cardamine occulta		2010	
+Cardinalis cardinalis		2010	
+Carduus nutans		2012	
+Carduus pycnocephalus		2015	
+Carex agastachys			2017
+Carex crawfordii		2010	
+Carex grayi	0	2011	2011
+Carex loliacea	0	2015	2015
+Carex melanostachya	0	2010	2010
+Carex morrowii		2014	
+Carex muricata		2012	
+Carex muskingumensis	4	2014	2010
+Carex pendula		2012	
+Carex plantaginea		2020	
+Carex scoparia	1	2014	2013
+Carex secalina		2009	
+Carex vulpinoidea		2009	
+Cariblatta lutea		2020	
+Carpobrotus edulis		2017	
+Carpophilus dimidiatus		2017	
+Carpophilus lugubris		2021	
+Carpophilus obsoletus			2018
+Carthamus lanatus		2015	
+Caryopteris incana	0	2017	2017
+Castor canadensis	0	2018	2018
+Catalpa bignonioides		2006	
+Catalpa ovata		2007	
+Caulacanthus okamurae		2013	
+Caulacanthus ustulatus		2013	
+Caylusea abyssinica		2015	
+Cedrus atlantica		2009	
+Cedrus deodara		2021	
+Celastrus orbiculatus		2012	
+Celosia cristata	0	2019	2019
+Celtis australis		2020	
+Cenchrus alopecuroides	-3	2008	2011
+Cenchrus echinatus		2020	
+Cenchrus flaccidus		2014	
+Cenchrus longisetus		2020	
+Centaurea adami		2012	
+Centaurea calocephala			2014
+Centaurea cyanus		2019	
+Centaurea diffusa		2018	
+Centaurea diluta		2009	
+Centaurea macrocephala		2012	
+Centaurea melitensis		2009	
+Centaurea napifolia		2018	
+Centaurea nigrescens		2014	
+Centaurea phrygia		2020	
+Centaurea solstitialis		2011	
+Centaurea stoebe		2010	
+Centranthus calcitrapae		2019	
+Centrochelys sulcata			2017
+Cephalaria gigantea		2006	
+Cephalaria syriaca		2011	
+Cerastium arvense subsp. arvense x tomentosum			2020
+Ceratitis capitata		2014	
+Ceratomegilla notata		2016	
+Ceratostigma plumbaginoides		2016	
+Cercidiphyllum japonicum	0	2014	2014
+Cercis siliquastrum		2011	
+Cerinthe major		2018	
+Cerithium vulgatum		2011	
+Cernuella aginnica		2008	
+Cernuella cisalpina		2015	
+Cernuella neglecta		2008	
+Cerobasis annulata			2018
+Cervus nippon			2018
+Chaenomeles japonica		2006	
+Chaenomeles speciosa		2008	
+Chaenorhinum origanifolium		2006	
+Chaenostoma cordatum		2007	
+Chaerophyllum aureum	-7	2013	2020
+Chaerophyllum bulbosum		2015	
+Chaerophyllum byzantinum		2017	
+Chaetanaphothrips orchidii			2018
+Chaetopelma olivaceum			2011
+Chalcides ocellatus			2017
+Chalcophaps indica		2019	
+Chamaeleo calyptratus	0	2014	2014
+Chamaenerion dodonaei		2008	
+Charadrius pecuarius		2006	
+Charonia lampas		2021	
+Cheiracanthium furculatum			2013
+Cheiracanthium mildei		2014	
+Chelicorophium curvispinum		2010	
+Chelicorophium robustum		2021	
+Chelidonium majus		2010	
+Chelone obliqua	1	2012	2011
+Chelydra serpentina		2006	
+Chenopodium berlandieri		2006	
+Chenopodium borbasii		2009	
+Chenopodium desiccatum		2016	
+Chenopodium giganteum		2007	
+Chenopodium opulifolium		2013	
+Chenopodium probstii		2006	
+Chenopodium quinoa		2016	
+Chenopodium reynieri			2015
+Chlorophorus annularis		2020	
+Chlorophytum comosum	4	2015	2011
+Chondrilla juncea		2010	
+Chorispora tenella		2012	
+Chrysemys picta		2017	
+Chrysogonum virginianum		2021	
+Chrysolina americana	-12	2006	2018
+Chrysomus icterocephalus		2006	
+Chrysopelea ornata			2014
+Cicada orni		2018	
+Cicer arietinum		2021	
+Cichorium calvum	0	2012	2012
+Cichorium intybus		2019	
+Ciconia abdimii		2014	
+Cipangopaludina chinensis	0	2016	2016
+Cirsium heterophyllum		2017	
+Cirsium rivulare		2012	
+Citrullus lanatus		2007	
+Cladanthus mixtus		2011	
+Cladrastis kentukea		2019	
+Clambus simsoni		2012	
+Clarkia amoena	7	2019	2012
+Clarkia unguiculata		2013	
+Clematis flammula		2021	
+Clematis montana	0	2014	2014
+Clematis recta		2019	
+Clematis tangutica		2007	
+Clematis viticella		2008	
+Clepsis peritana		2021	
+Clerodendrum bungei	0	2016	2016
+Clerodendrum trichotomum		2006	
+Clethra alnifolia		2010	
+Clinopodium menthifolium		2008	
+Coccinella miranda	0	2013	2013
+Coccus hesperidum		2010	
+Cochlicella barbara		2007	
+Colchicum byzantinum	0	2013	2013
+Coleosoma floridanum	0	2014	2014
+Colinus virginianus			2011
+Collinsia heterophylla		2012	
+Colobotettix morbillosus		2020	
+Columbella rustica		2021	
+Columbina passerina		2021	
+Colutea orientalis		2020	
+Commelina communis		2012	
+Conringia planisiliqua	0	2013	2013
+Conus ventricosus		2017	
+Convolvulus tricolor		2013	
+Coracias abyssinicus		2018	
+Coracias cyanogaster		2019	
+Corbicula fluminalis		2008	
+Cordioniscus stebbingi		2015	
+Coreopsis lanceolata		2007	
+Coreopsis tinctoria		2008	
+Coriandrum sativum		2007	
+Corispermum declinatum		2009	
+Cornus alba		2015	
+Cornus canadensis		2020	
+Cornus sanguinea		2008	
+Coronilla scorpioides		2014	
+Coronilla securidaca		2020	
+Cortaderia selloana		2007	
+Corvus albus		2007	
+Corvus splendens		2012	
+Corydalis cava		2008	
+Corydalis cheilanthifolia		2013	
+Corydalis linstowiana	0	2019	2019
+Corydalis solida		2021	
+Corylus colurna	0	2012	2012
+Corylus maxima			2018
+Corythucha ciliata		2013	
+Coscoroba coscoroba		2009	
+Cosmos bipinnatus		2007	
+Cosmos sulphureus	0	2015	2015
+Cota altissima		2013	
+Cota austriaca		2007	
+Cotinus coggygria		2011	
+Cotoneaster ambiguus	0	2010	2010
+Cotoneaster ascendens	1	2011	2010
+Cotoneaster beimashanensis		2011	
+Cotoneaster boisianus			2011
+Cotoneaster bullatus		2008	
+Cotoneaster conspicuus	5	2015	2010
+Cotoneaster coriaceus		2010	
+Cotoneaster dammeri		2007	
+Cotoneaster dielsianus		2006	
+Cotoneaster divaricatus		2006	
+Cotoneaster fangianus		2010	
+Cotoneaster foveolatus		2010	
+Cotoneaster franchetii		2006	
+Cotoneaster fruticosus		2017	
+Cotoneaster ganghobaensis			2011
+Cotoneaster hylmoei	2	2013	2011
+Cotoneaster integrifolius		2006	
+Cotoneaster laetevirens			2017
+Cotoneaster lucidus			2011
+Cotoneaster mairei	1	2011	2010
+Cotoneaster moupinensis			2010
+Cotoneaster nanshan			2010
+Cotoneaster qungbixiensis	2	2013	2011
+Cotoneaster salicifolius		2006	
+Cotoneaster simonsii		2007	
+Cotoneaster sternianus		2006	
+Cotoneaster villosulus		2006	
+Cotoneaster zabelii			2010
+Cotula australis		2015	
+Cotula coronopifolia		2008	
+Crambe hispanica		2016	
+Crangonyx pseudogracilis		2010	
+Crataegus coccinea		2017	
+Crataegus pedicellata	0	2010	2010
+Crataegus persimilis		2007	
+Crataemespilus grandiflora		2011	
+Crepis bursifolia	0	2016	2016
+Crepis foetida		2007	
+Crepis pulchra		2010	
+Crepis sancta		2016	
+Crepis tectorum		2008	
+Crinifer zonurus	0	2017	2017
+Crocidophora butleri		2015	
+Crocothemis servilia		2020	
+Crocus biflorus		2011	
+Crocus chrysanthus	-3	2010	2013
+Crocus luteus			2013
+Crocus speciosus		2017	
+Crocus tommasinianus	-12	2008	2020
+Crotalus atrox			2019
+Cryptoblabes gnidiella		2018	
+Cryptolaemus montrouzieri	-2	2016	2018
+Cryptomeria japonica		2008	
+Cryptophilus obliteratus		2016	
+Cryptorchestia garbinii		2009	
+Ctenochares bicolorus		2019	
+Ctenolepisma lineata	-9	2009	2018
+Ctenolepisma longicaudata			2018
+Ctenolepisma longicaudatum		2008	
+Cucumis dipsaceus	0	2018	2018
+Cucumis melo		2008	
+Cucumis myriocarpus		2018	
+Cucumis sativus		2015	
+Cucurbita ficifolia		2020	
+Cucurbita maxima	-7	2010	2017
+Cucurbita moschata	0	2014	2014
+Cucurbita pepo		2006	
+Cuscuta epilinum			2011
+Cuscuta lupuliformis			2013
+Cyanopica cooki	1	2016	2015
+Cyanoramphus novaezelandiae	-2	2011	2013
+Cyclachaena xanthiifolia		2006	
+Cyclamen coum	-1	2010	2011
+Cyclamen hederifolium		2010	
+Cyclospermum leptophyllum		2015	
+Cydalima perspectalis			2018
+Cydonia oblonga		2006	
+Cylindroiulus britannicus			2015
+Cymbalaria muralis		2016	
+Cymbalaria pallida		2013	
+Cynara cardunculus	0	2015	2015
+Cynara scolymus	0	2015	2015
+Cynoglossum amabile	0	2011	2011
+Cynomys ludovicianus			2018
+Cynops orientalis		2021	
+Cynosurus echinatus		2011	
+Cyperus alternifolius		2011	
+Cyperus eragrostis		2006	
+Cyperus imbricatus		2021	
+Cyperus longus		2007	
+Cyperus rotundus		2009	
+Cyrtomium falcatum		2006	
+Cyrtomium fortunei		2006	
+Cytisus multiflorus		2016	
+Cytisus scoparius		2010	
+Cytisus striatus		2012	
+Daboecia cantabrica	0	2012	2012
+Dacelo novaeguineae		2008	
+Dactyloctenium aegyptium		2016	
+Dahlia coccinea	-4	2011	2015
+Dahlia cultorum		2014	
+Daktulosphaira vitifoliae		2018	
+Dama dama			2018
+Danae racemosa	0	2015	2015
+Daphnia ambigua		2020	
+Daphnia parvula		2021	
+Darmera peltata	2	2013	2011
+Dasiphora davurica		2008	
+Dasypyrum villosum		2011	
+Datura ferox		2006	
+Datura stramonium		2007	
+Daucus aureus		2015	
+Daucus carota		2006	
+Davidia involucrata		2010	
+Decaisnea insignis	0	2015	2015
+Delosperma aberdeenense		2018	
+Delosperma cooperi		2014	
+Delphinium orientale		2011	
+Dendrocygna arcuata		2012	
+Descurainia pinnata		2011	
+Deutzia crenata		2017	
+Deutzia scabra		2006	
+Dianthus barbatus		2011	
+Dianthus caryophyllus		2013	
+Dianthus giganteus		2010	
+Dianthus plumarius		2017	
+Dianthus superbus		2011	
+Dicentra formosa		2010	
+Dichondra argentea	0	2015	2015
+Dichondra micrantha	0	2017	2017
+Dicyphus escalerae		2019	
+Dieuches armatipes		2022	
+Digitalis ferruginea		2019	
+Digitalis lanata		2020	
+Digitaria abyssinica			2012
+Digitaria aequiglumis		2006	
+Digitaria ciliaris		2006	
+Digitaria sanguinalis		2007	
+Dikerogammarus haemobaphes		2021	
+Dikerogammarus villosus		2010	
+Dimorphotheca pluvialis		2007	
+Diplachne fusca		2016	
+Diplosoma listerianum		2008	
+Diplotaxis erucoides		2009	
+Diplotaxis virgata		2009	
+Dipsacus laciniatus		2008	
+Dipsacus strigosus	-3	2009	2012
+Dittrichia viscosa		2012	
+Dolichoplana striata			2018
+Dolichotis patagonum	0	2014	2014
+Donax serra		2018	
+Doronicum columnae		2010	
+Doronicum orientale		2014	
+Dorypteryx domestica	-6	2012	2018
+Dorypteryx longipennis	2	2020	2018
+Dorypteryx pallida			2018
+Dracocephalum moldavica		2021	
+Dracocephalum parviflorum		2015	
+Dracunculus vulgaris		2021	
+Dromaius novaehollandiae	-2	2016	2018
+Drosanthemum floribundum			2018
+Drosophila suzukii			2011
+Dryas iulia		2012	
+Drymosiphon grandiflorus		2015	
+Dryopteris affinis		2020	
+Dryopteris cycadina		2006	
+Dryopteris erythrosora	0	2015	2015
+Dryopteris filix-mas		2012	
+Dryopteris lacunosa		2018	
+Dysphania anthelmintica	0	2016	2016
+Dysphania aristata		2016	
+Dysphania botrys		2006	
+Dysphania schraderiana		2011	
+Echinacea purpurea		2017	
+Echinochloa colona		2009	
+Echinochloa crus-galli		2011	
+Echinochloa esculenta		2006	
+Echinochloa muricata		2018	
+Echinochloa oryzoides		2016	
+Echinops bannaticus		2010	
+Echinops exaltatus		2009	
+Echinops sphaerocephalus		2006	
+Echinopsis albispinosa		2012	
+Echinopsis silvestrii			2012
+Echinothrips americanus			2018
+Echis carinatus			2017
+Echium pininana		2020	
+Echium plantagineum		2011	
+Eclectus roratus	0	2010	2010
+Eclipta prostrata		2020	
+Ectobius vittiventris		2021	
+Ectopsocus briggsi			2018
+Ectopsocus petersi			2018
+Edwardsiana candidula		2015	
+Edwardsiana platanicola		2018	
+Egeria densa		2009	
+Egretta novaehollandiae		2015	
+Eichhornia crassipes		2008	
+Elaeagnus angustifolia		2006	
+Elaeagnus macrophylla			2013
+Elaeagnus multiflora		2012	
+Elaeagnus pungens	0	2012	2012
+Elaeagnus umbellata		2006	
+Elaphe quatuorlineata			2012
+Elaphe sauromates			2014
+Elaphe schrenckii			2019
+Elaphe taeniura		2006	
+Eleocharis engelmannii	0	2014	2014
+Eleocharis mamillata		2006	
+Eleocharis obtusa		2009	
+Eleusine indica		2006	
+Eleusine tristachya		2009	
+Ellisiophyllum pinnatum			2016
+Elymus canadensis		2014	
+Empicoris rubromaculatus		2015	
+Emys orbicularis			2010
+Eobania vermiculata		2014	
+Eolophus roseicapilla		2016	
+Eophona migratoria		2013	
+Ephedra intermedia		2006	
+Epilobium brachycarpum	0	2012	2012
+Epimedium alpinum		2009	
+Epimedium pinnatum	0	2012	2012
+Epiphyas postvittana		2014	
+Eptesicus fuscus		2015	
+Epuraea imperialis	3	2015	2012
+Equisetum hyemale		2007	
+Equisetum scirpoides		2009	
+Eragrostis cilianensis		2007	
+Eragrostis curvula		2008	
+Eragrostis mexicana		2006	
+Eragrostis pectinacea		2012	
+Eragrostis pilosa		2006	
+Eragrostis tef		2011	
+Erica carnea		2011	
+Erica darleyensis			2016
+Erigeron annuus		2014	
+Erigeron bonariensis		2006	
+Erigeron daveauanus		2018	
+Erigeron floribundus		2006	
+Erigeron muralis		2013	
+Erigeron speciosus		2017	
+Erigone dentosa			2012
+Erinus alpinus		2008	
+Eriocapitella tomentosa		2019	
+Eriochloa villosa			2016
+Erodium malacoides		2008	
+Erodium stephanianum		2012	
+Erodium trifolium	0	2017	2017
+Eruca vesicaria		2006	
+Eryngium bourgatii	0	2013	2013
+Eryngium planum		2006	
+Erysimum bicolor		2021	
+Erysimum repandum		2010	
+Erythranthe cuprea		2016	
+Erythranthe lutea		2015	
+Erythranthe moschata		2015	
+Erythronium dens-canis		2019	
+Eublepharis macularius	9	2021	2012
+Euborellia annulipes			2016
+Euclidium syriacum		2011	
+Eudianthe coeli-rosa		2013	
+Eudocimus ruber	0	2015	2015
+Eumodicogryllus bordigalensis	0	2018	2018
+Euodice malabarica	0	2013	2013
+Euonymus alatus	4	2015	2011
+Euonymus fortunei		2007	
+Euonymus japonicus	0	2010	2010
+Euonymus latifolius		2011	
+Eupholidoptera chabrieri	0	2019	2019
+Euphorbia amygdaloides		2015	
+Euphorbia characias		2007	
+Euphorbia epithymoides		2013	
+Euphorbia esula		2009	
+Euphorbia falcata		2017	
+Euphorbia heterophylla		2018	
+Euphorbia humifusa		2017	
+Euphorbia maculata		2008	
+Euphorbia myrsinites		2009	
+Euphorbia oblongata		2008	
+Euphorbia palustris		2007	
+Euphorbia prostrata		2006	
+Euphorbia serpens		2008	
+Euphorbia vermiculata		2008	
+Euplectes macroura			2010
+Euplectes progne		2020	
+Eurybia divaricata		2011	
+Euscorpius flavicaudis		2011	
+Euscorpius italicus		2020	
+Eutrochium maculatum		2013	
+Exaireta spinigera		2016	
+Fagopyrum tataricum		2007	
+Fagus orientalis		2014	
+Fagus sylvatica		2012	
+Fatshedera lizei		2016	
+Fatsia japonica		2008	
+Favolaschia calocera			2018
+Felis catus			2018
+Fenestrulina delicia		2009	
+Filago congesta	0	2019	2019
+Filipendula palmata		2014	
+Flaveria trinervia		2011	
+Forsythia suspensa		2008	
+Frankenia pulverulenta		2022	
+Frankliniella fusca		2019	
+Frankliniella occidentalis			2018
+Fraxinus americana		2016	
+Fraxinus angustifolia		2011	
+Fraxinus latifolia		2009	
+Fraxinus ornus		2006	
+Fraxinus pennsylvanica		2008	
+Fritillaria imperialis	-4	2015	2019
+Fumaria bastardii	0	2017	2017
+Fumaria muralis		2006	
+Furcifer pardalis			2015
+Gafrarium pectinatum		2021	
+Galanthus elwesii		2009	
+Galanthus nivalis		2013	
+Galanthus plicatus	0	2017	2017
+Galanthus woronowii	-5	2010	2015
+Galeopsis pubescens		2014	
+Galium murale		2014	
+Galium parisiense		2009	
+Galium verrucosum		2021	
+Galium verum		2011	
+Gammarus roeselii		2012	
+Gammarus tigrinus		2011	
+Gamochaeta antillanum		2020	
+Gamochaeta coarctata		2021	
+Gamochaeta pensylvanica		2007	
+Gaudinia fragilis		2014	
+Gaultheria procumbens		2010	
+Gaultheria shallon		2018	
+Gekko gecko			2010
+Gentiana lutea		2011	
+Geranium carolinianum		2013	
+Geranium divaricatum		2011	
+Geranium macrorrhizum		2007	
+Geranium nodosum		2009	
+Geranium oxonianum		2007	
+Geranium psilostemon	0	2013	2013
+Geranium renardii		2021	
+Geranium sanguineum		2020	
+Geranium versicolor		2020	
+Geranium wallichianum	0	2019	2019
+Geranoaetus melanoleucus		2017	
+Geum ternatum		2010	
+Gilia achilleifolia		2013	
+Gilia capitata		2014	
+Gilia tricolor		2013	
+Ginkgo biloba			2011
+Girardia tigrina		2008	
+Gladiolus hortulanus		2009	
+Gladiolus italicus	0	2012	2012
+Glandora diffusa		2020	
+Glandularia aristigera		2014	
+Glaucium corniculatum		2011	
+Glaucium grandiflorum	0	2016	2016
+Glebionis coronaria		2009	
+Glechoma hederacea		2014	
+Gleditsia triacanthos		2009	
+Glyceria canadensis		2014	
+Glycine max		2006	
+Gobiosoma bosc			2018
+Gomphocarpus fruticosus	0	2017	2017
+Gonionemus vertens		2014	
+Gracilaria vermiculophylla		2013	
+Gracupica nigricollis		2019	
+Grandidierella japonica			2019
+Graphocephala fennahi			2018
+Graptemys geographica			2010
+Graptemys ouachitensis	-7	2011	2018
+Graptemys pseudogeographica	-4	2006	2010
+Graptostethus servus		2021	
+Grindelia squarrosa		2007	
+Grus japonensis		2007	
+Grus vipio	0	2011	2011
+Gryllodes sigillatus	-5	2013	2018
+Gryllomorpha dalmatina	3	2021	2018
+Gryllus bimaculatus	-1	2017	2018
+Guizotia scabra		2015	
+Guizotia schimperi			2015
+Gunnera tinctoria		2018	
+Gutenbergia rueppellii	0	2013	2013
+Gymnorhina tibicen		2018	
+Gypsophila elegans		2010	
+Gypsophila repens		2013	
+Gyrodactylus proterorhini			2011
+Halesia carolina		2019	
+Haliaeetus leucocephalus	0	2013	2013
+Haliaeetus pelagicus		2009	
+Haliaeetus vocifer		2018	
+Halimium lasianthum		2012	
+Halyomorpha halys	0	2017	2017
+Hanseniella caldaria			2018
+Harmonia axyridis		2014	
+Hasarius adansoni		2008	
+Hawaiia minuscula		2019	
+Hedera colchica		2008	
+Hedera helix		2014	
+Hedera hibernica	-12	2008	2020
+Hedera maroccana	11	2021	2010
+Hedlundia hybrida		2019	
+Heleobia charruana		2019	
+Helianthus decapetalus	4	2015	2011
+Helianthus maximiliani	0	2019	2019
+Helianthus salicifolius		2021	
+Helichrysum italicum		2008	
+Helichrysum petiolare		2008	
+Heliconius hecale		2014	
+Heliophanus kochii		2020	
+Heliopsis helianthoides		2006	
+Heliothrips haemorrhoidalis			2018
+Heliotropium europaeum		2008	
+Helleborus lividus	0	2011	2011
+Helleborus orientalis		2009	
+Hemerocallis fulva		2007	
+Hemerocallis lilioasphodelus	-8	2010	2018
+Hemidactylus turcicus		2021	
+Hemigrapsus sanguineus		2008	
+Heracleum sphondylium		2017	
+Hercinothrips bicinctus			2018
+Hercinothrips femoralis			2018
+Hermetia illucens		2021	
+Herniaria cinerea		2017	
+Heterodon nasicus			2020
+Heuchera micrantha		2009	
+Heuchera sanguinea		2007	
+Hexaplex cichoreum		2016	
+Hexaplex trunculus		2019	
+Hibiscus syriacus		2007	
+Hieracium glaucinum		2018	
+Hieracium pulmonarioides		2011	
+Hierophis viridiflavus			2010
+Himantoglossum robertianum	3	2017	2014
+Himantopus mexicanus			2019
+Hippodamia convergens			2018
+Hippophae rhamnoides		2013	
+Holodiscus discolor		2019	
+Homarus americanus		2019	
+Homoeogryllus reticulatus		2010	
+Homotoma ficus		2018	
+Hordeum murinum		2013	
+Hordeum vulgare		2015	
+Hornungia alpina	0	2013	2013
+Hornungia petraea	0	2020	2020
+Hornungia procumbens		2017	
+Houttuynia cordata	2	2012	2010
+Hydrangea arborescens		2013	
+Hydrangea macrophylla	1	2014	2013
+Hydrangea paniculata		2016	
+Hydrocotyle sibthorpioides		2012	
+Hydrocotyle verticillata		2013	
+Hygromia cinctella		2009	
+Hyla meridionalis	-5	2015	2020
+Hylotelephium maximum		2017	
+Hylotelephium spectabile	-4	2006	2010
+Hymenoscyphus pseudoalbidus		2012	
+Hyoscyamus albus		2008	
+Hypania invalida		2015	
+Hypericum calycinum		2008	
+Hypericum densiflorum		2016	
+Hypericum hidcoteense			2015
+Hypericum hircinum		2017	
+Hypericum olympicum	0	2014	2014
+Hypolimnas bolina		2018	
+Hypophthalmichthys molitrix		2009	
+Hypophthalmichthys nobilis		2011	
+Hypsopygia nostralis		2017	
+Hyssopus officinalis		2006	
+Ianiropsis serricaudis		2020	
+Iberis pinnata		2020	
+Iberodes linifolia		2015	
+Icerya purchasi		2016	
+Idiopterus nephrelepidis		2019	
+Iguana iguana	4	2014	2010
+Ilex aquifolium		2010	
+Ilex crenata	-1	2011	2012
+Ilex meserveae			2014
+Impatiens balfourii		2008	
+Impatiens capensis		2006	
+Impatientinum asiaticum		2017	
+Imperatoria ostruthium		2013	
+Incarvillea delavayi		2016	
+Inula racemosa		2006	
+Ipheion uniflorum	2	2014	2012
+Ipomoea coccinea		2007	
+Ipomoea hederacea		2006	
+Ipomoea lacunosa		2016	
+Ipomoea leucantha		2009	
+Ipomoea purpurea		2007	
+Iris foetidissima		2010	
+Iris pseudacorus		2013	
+Iris pumila		2012	
+Iris reticulata		2017	
+Iris sibirica		2007	
+Iris xiphium		2020	
+Isatis tinctoria		2008	
+Ischnura senegalensis	8	2021	2013
+Isotrema durius		2014	
+Jacobaea albescens			2019
+Jacobaea maritima		2008	
+Jacquemontia tamnifolia		2016	
+Jaera istri		2017	
+Jaltomata procumbens		2009	
+Jasminum nudiflorum		2012	
+Juglans ailanthifolia		2021	
+Juglans cinerea	0	2012	2012
+Juglans mandshurica	-2	2018	2020
+Juglans nigra		2008	
+Juncus dudleyi		2009	
+Juncus ensifolius		2011	
+Juncus foliosus		2010	
+Juncus pallidus		2021	
+Juncus striatus	5	2020	2015
+Juncus tenuis		2012	
+Juncus xiphioides	0	2016	2016
+Junonia iphita		2018	
+Kalanchoe blossfeldiana	0	2012	2012
+Kalimeris incisa		2018	
+Kalmia angustifolia		2010	
+Karpatiosorbus latifolia		2013	
+Kerria japonica		2008	
+Kitaibelia vitifolia		2008	
+Knautia macedonica	3	2014	2011
+Kniphofia praecox	0	2015	2015
+Koeleria glauca	0	2016	2016
+Koelreuteria paniculata		2008	
+Koenigia campanulata	0	2013	2013
+Koenigia fennica			2014
+Koenigia polystachya		2007	
+Kolkwitzia amabilis	0	2012	2012
+Kontikia ventrolineata			2016
+Lacerta agilis			2017
+Lachnagrostis filiformis		2013	
+Lagarosiphon major		2006	
+Lamium confertum			2018
+Lamium orvala	6	2017	2011
+Lamprocapnos spectabilis	0	2010	2010
+Lampropeltis californiae		2017	
+Lampropeltis getula		2014	
+Lampropeltis triangulum	7	2017	2010
+Lamprotornis chalybaeus		2007	
+Lamprotornis nitens			2018
+Lamprotornis purpureus		2006	
+Lamprotornis splendidus	0	2018	2018
+Lantana camara		2011	
+Laonome calida			2014
+Laonome xeprovala			2017
+Laportea aestuans		2016	
+Larix decidua			2017
+Larosterna inca		2020	
+Lasioderma serricorne		2010	
+Lasius neglectus		2014	
+Lathyrus heterophyllus	0	2011	2011
+Lathyrus niger		2012	
+Lathyrus odoratus		2008	
+Lathyrus oleraceus		2010	
+Lathyrus sativus		2017	
+Lathyrus sylvestris		2016	
+Lathyrus vernus		2020	
+Latrodectus hasselti		2012	
+Latrodectus hesperus			2013
+Latrodectus mactans		2014	
+Lauritrioza alacris		2009	
+Laurus nobilis		2009	
+Lavandula dentata		2006	
+Lavandula stoechas		2009	
+Lemna turionifera		2007	
+Lentinula edodes	-11	2007	2018
+Leonurus quinquelobatus		2014	
+Lepidium bonariense		2012	
+Lepidium draba		2019	
+Lepidium heterophyllum		2019	
+Lepidium latifolium		2021	
+Lepidium perfoliatum		2012	
+Lepidium sativum		2007	
+Lepidium schinzii		2021	
+Lepidotarphius perornatella		2011	
+Lepinotus patruelis	-9	2009	2018
+Lepinotus reticulatus			2018
+Lepiota elaiophylla		2019	
+Lepisma saccharina			2018
+Leptinella dispersa		2016	
+Leptinella squalida		2016	
+Leptinotarsa decemlineata			2018
+Leptoglossus occidentalis		2007	
+Lepyrodiclis holosteoides		2010	
+Leucanthemella serotina		2021	
+Leucothrips nigripennis			2018
+Levisticum officinale		2008	
+Leycesteria formosa		2006	
+Liatris spicata	0	2011	2011
+Ligularia dentata	0	2010	2010
+Ligularia przewalskii	2	2018	2016
+Liguropia juniperi		2016	
+Ligustrum sinense		2007	
+Ligustrum vicaryi			2011
+Lilium hollandicum	0	2016	2016
+Lilium martagon		2009	
+Limnanthes douglasii		2013	
+Limnobium laevigatum	0	2013	2013
+Limnodrilus maumeensis			2014
+Limnomysis benedeni		2009	
+Limonium gerberi		2020	
+Limonium sinuatum		2018	
+Linaria maroccana		2009	
+Linaria purpurea		2006	
+Linaria simplex		2013	
+Linaria supina		2006	
+Linaria triornithophora		2019	
+Linepithema humile		2009	
+Linum austriacum		2007	
+Linum grandiflorum		2013	
+Liposcelis bostrychophila			2018
+Liposcelis brunnea			2018
+Liposcelis paeta			2018
+Liquidambar styraciflua		2007	
+Liriope muscari	0	2015	2015
+Lithotoma axillaris		2017	
+Lobelia pedunculata		2013	
+Lobelia siphilitica		2009	
+Lolium persicum		2012	
+Lolium rigidum		2009	
+Lomelosia caucasica		2020	
+Lomelosia stellata	0	2017	2017
+Lonchura oryzivora		2014	
+Lonchura punctulata			2016
+Lonchura striata		2020	
+Lonicera acuminata		2009	
+Lonicera caprifolium		2010	
+Lonicera chrysantha	0	2012	2012
+Lonicera etrusca		2018	
+Lonicera involucrata	4	2018	2014
+Lonicera japonica		2006	
+Lonicera maackii	0	2015	2015
+Lonicera morrowii	0	2010	2010
+Lonicera pileata		2006	
+Lonicera sempervirens		2017	
+Lonicera tatarica		2010	
+Lophodytes cucullatus			2011
+Lophophorus impejanus		2020	
+Lophura leucomelanos	0	2012	2012
+Lotus corniculatus		2006	
+Lotus hispidus	0	2019	2019
+Lotus tetragonolobus		2021	
+Ludwigia peploides		2006	
+Lupinus albus		2016	
+Luzula nivea	2	2015	2013
+Lybius dubius		2020	
+Lycium chinense		2011	
+Lycodon capucinus			2013
+Lycopsis arvensis		2019	
+Lyctus cavicollis		2021	
+Lysichiton americanus		2011	
+Lysichiton camtschatcensis		2020	
+Lysimachia clethroides		2015	
+Lysimachia fortunei	0	2016	2016
+Lythrum junceum		2006	
+Lythrum virgatum		2021	
+Macleaya cordata		2006	
+Macomopsis melo		2021	
+Macropsis vicina		2017	
+Macropus rufogriseus		2017	
+Mahonia bealei		2020	
+Maianthemum dilatatum			2013
+Maianthemum stellatum	0	2016	2016
+Malacorhynchus membranaceus	0	2016	2016
+Malcolmia africana		2011	
+Malcolmia flexuosa		2019	
+Malcolmia maritima		2011	
+Malope trifida		2014	
+Malus purpurea			2010
+Malva arborea		2020	
+Malva maroccana		2021	
+Malva multiflora		2007	
+Malva nicaeensis		2007	
+Malva parviflora		2007	
+Malva punctata		2017	
+Malva sylvestris		2008	
+Malva thuringiaca		2009	
+Malva trimestris		2006	
+Malva verticillata		2009	
+Malvastrum americanum		2011	
+Malvastrum coromandelianum		2019	
+Manihot grahamii			2017
+Marenzelleria neglecta		2012	
+Marionfyfea adventor		2021	
+Marumba quercus		2021	
+Massylaea vermiculata			2014
+Matthiola incana	0	2012	2012
+Matthiola longipetala		2013	
+Mauranthemum paludosum		2013	
+Mauremys reevesii			2014
+Mazus miquelii		2015	
+Mazus pumilus	0	2014	2014
+Medicago laciniata		2010	
+Medicago littoralis		2015	
+Medicago monspeliaca	0	2015	2015
+Medicago orbicularis		2017	
+Medicago scutellata		2009	
+Medicago truncatula		2009	
+Medicago varia		2011	
+Megabalanus tintinnabulum		2011	
+Megabunus diadema		2018	
+Megascops kennicottii		2020	
+Megastigmus spermotrophus		2020	
+Melampodium montanum		2007	
+Melampyrum nemorosum	0	2015	2015
+Melanoides tuberculata		2016	
+Melia azedarach		2021	
+Melica altissima		2020	
+Melilotus elegans		2019	
+Melilotus infestus	0	2012	2012
+Melilotus sulcatus		2009	
+Melita nitida		2019	
+Meloidogyne artiellia			2011
+Menetus dilatatus		2013	
+Mentha cervina	0	2012	2012
+Mentha piperita		2007	
+Mentha requienii	-2	2011	2013
+Mentha villosa		2017	
+Mephitis mephitis	0	2014	2014
+Mercenaria mercenaria		2017	
+Meretrix lyrata		2018	
+Meriones unguiculatus	0	2010	2010
+Merionoeda hirsuta		2013	
+Mermessus trilobatus		2007	
+Mesembryanthemum crystallinum		2017	
+Mesembryanthemum nodiflorum		2017	
+Metasequoia glyptostroboides		2013	
+Microscolex phosphoreus		2015	
+Milax gagates			2018
+Milvago chimachima		2020	
+Mimulus ringens	0	2019	2019
+Mirabilis jalapa		2009	
+Miscanthus sacchariflorus		2007	
+Miscanthus sinensis		2007	
+Misgurnus anguillicaudatus		2006	
+Misgurnus mohoity		2019	
+Misopates calycinum		2017	
+Mnemiopsis leidyi		2008	
+Modiola caroliniana		2015	
+Molinia caerulea		2021	
+Monarda didyma	0	2014	2014
+Monetaria moneta		2010	
+Monochamus galloprovincialis		2010	
+Monochamus sartor		2009	
+Morelia spilota			2013
+Moricandia arvensis	0	2017	2017
+Morimus asper		2019	
+Morlina glabra		2020	
+Morpho menelaus		2019	
+Morus alba		2010	
+Morus nigra			2014
+Muehlenbeckia complexa	0	2016	2016
+Mulinia lateralis	0	2019	2019
+Mummenhoffia alliacea		2015	
+Muntiacus reevesi		2009	
+Musa basjoo	-4	2016	2020
+Muscari aucheri		2021	
+Muscari latifolium	4	2018	2014
+Myagrum perfoliatum		2011	
+Mycale micracanthoxea		2008	
+Myocastor coypus			2018
+Myriophyllum heterophyllum		2006	
+Myzus ornatus		2016	
+Nagurus cristatus	0	2015	2015
+Naja melanoleuca			2020
+Nandayus nenday	0	2013	2013
+Narcissus bulbocodium		2019	
+Narcissus cyclazetta			2011
+Narcissus jonquilla		2016	
+Narcissus tazetta	0	2013	2013
+Narcissus triandrus		2018	
+Nassella tenuissima		2008	
+Natrix maura	5	2020	2015
+Natrix tessellata		2020	
+Navarretia squarrosa		2012	
+Neillia incisa		2013	
+Neillia tanakae	9	2021	2012
+Nemesia caerulea		2007	
+Nemophila maculata	1	2017	2016
+Nemophila menziesii		2013	
+Nemopsis bachei			2012
+Neochmia modesta		2021	
+Neochmia ruficauda		2009	
+Neoclytus acuminatus		2017	
+Neogobius fluviatilis	4	2019	2015
+Neogobius melanostomus	0	2010	2010
+Neomysis americana			2012
+Neophema pulchella		2021	
+Neotoxoptera formosana		2008	
+Nepeta subsessilis		2019	
+Nepytia phantasmaria		2012	
+Nerium oleander		2016	
+Neslia paniculata		2018	
+Netta erythrophthalma		2021	
+Nettapus auritus		2010	
+Nettapus coromandelianus	0	2017	2017
+Nezara viridula		2008	
+Nicoletia phytophila	0	2016	2016
+Nicotiana alata		2009	
+Nicotiana forgetiana		2014	
+Nicotiana glauca	0	2011	2011
+Nicotiana langsdorffii		2015	
+Nicotiana sylvestris		2007	
+Nicotiana tabacum		2009	
+Nigella sativa		2020	
+Ninox connivens		2010	
+Nonea lutea		2009	
+Notobasis syriaca		2014	
+Nyctereutes procyonoides			2018
+Nymphaea marliacea			2020
+Obama nungara	0	2017	2017
+Ocimum basilicum		2016	
+Ocyphaps lophotes		2012	
+Odontarrhena muralis		2011	
+Odontites luteus		2009	
+Oecobius navus		2008	
+Oedaleus decorus		2018	
+Oenothera angustissima		2020	
+Oenothera cambrica		2007	
+Oenothera canovirens		2016	
+Oenothera casimiri	0	2017	2017
+Oenothera drawertii	0	2018	2018
+Oenothera elata		2007	
+Oenothera ersteinensis		2007	
+Oenothera glazioviana		2017	
+Oenothera laciniata		2021	
+Oenothera lindheimeri		2009	
+Oenothera moravica	0	2017	2017
+Oenothera oakesiana		2010	
+Oenothera oehlkersii		2007	
+Oenothera paradoxa		2017	
+Oenothera pycnocarpa		2007	
+Oenothera royfraseri		2016	
+Oenothera rubricalyx	-4	2010	2014
+Oenothera rubricaulis		2007	
+Oenothera rubricauloides		2017	
+Oenothera speciosa	-3	2014	2017
+Oenothera stricta		2017	
+Oenothera suaveolens	2	2017	2015
+Oenothera subterminalis		2017	
+Oenothera victorinii		2007	
+Oenothera villosa		2007	
+Oligota parva		2012	
+Olios argelasius			2011
+Omphalodes verna		2012	
+Oncosiphon piluliferum	0	2017	2017
+Ondatra zibethicus			2018
+Onopordum beckianum			2018
+Onopordum tauricum	0	2014	2014
+Ophiopogon jaburan	0	2018	2018
+Opopanax chironium	0	2019	2019
+Opsius stactogalus		2008	
+Oreochromis niloticus		2008	
+Orientus ishidae		2008	
+Origanum onites	0	2020	2020
+Origanum vulgare		2010	
+Oriolus auratus	0	2017	2017
+Ornithogalum boucheanum		2021	
+Ornithogalum divergens		2020	
+Ornithogalum narbonense		2011	
+Ornithogalum pyramidale		2012	
+Ornithopus compressus		2019	
+Orobanche flava		2021	
+Orthomorpha coarctata		2020	
+Oryctolagus cuniculus			2018
+Oryza sativa	0	2018	2018
+Osmanthus heterophyllus		2021	
+Ostrya carpinifolia		2014	
+Otala lactea		2012	
+Otiorhynchus indefinitus			2013
+Ovis ammon			2018
+Oxalis articulata		2010	
+Oxalis corniculata		2017	
+Oxalis debilis		2006	
+Oxalis dillenii	3	2015	2012
+Oxalis latifolia		2007	
+Oxalis tetraphylla		2009	
+Oxalis triangularis	0	2011	2011
+Oxalis valdiviensis		2019	
+Oxidus gracilis		2009	
+Oxybasis salina		2006	
+Oxycarenus lavaterae		2014	
+Oxyria digyna		2020	
+Oxyura vittata	0	2014	2014
+Pachysandra terminalis		2007	
+Pacifastacus leniusculus		2007	
+Paeonia lactiflora	0	2014	2014
+Paeonia officinalis		2019	
+Panchlora nivea		2017	
+Panicum capillare		2009	
+Panicum dichotomiflorum		2007	
+Panicum hillmanii		2011	
+Panicum miliaceum		2006	
+Panicum schinzii		2007	
+Panicum virgatum		2010	
+Pantherophis guttatus	-4	2006	2010
+Pantherophis obsoletus			2013
+Papaver atlanticum		2006	
+Papaver bracteatum		2014	
+Papaver cambricum		2006	
+Papaver commutatum	0	2015	2015
+Papaver hybridum		2017	
+Papaver nudicaule	0	2014	2014
+Papaver orientale		2010	
+Papaver pavoninum		2021	
+Papaver rhoeas		2020	
+Papaver setiferum		2008	
+Papaver setigerum		2020	
+Papaver somniferum		2010	
+Parakontikia ventrolineata		2019	
+Paralaoma servilis			2014
+Parapholis incurva		2010	
+Paratillus carus		2015	
+Parentucellia latifolia	0	2016	2016
+Paronychia argentea	1	2017	2016
+Parthenium hysterophorus		2013	
+Parthenocissus vitacea		2008	
+Parthenothrips dracaenae	2	2020	2018
+Paspalum dilatatum		2017	
+Paspalum distichum		2008	
+Paspalum notatum		2014	
+Paspalum saurae			2014
+Passerina caerulea		2011	
+Passerina ciris		2019	
+Paulownia tomentosa		2006	
+Paysandisia archon			2011
+Pectinatella magnifica		2014	
+Pelargonium candicans	0	2017	2017
+Pelecanus conspicillatus	0	2017	2017
+Pelodiscus sinensis		2020	
+Pelomedusa subrufa			2020
+Pelophylax ridibundus		2011	
+Pelusios castaneus			2020
+Penaeus aztecus			2018
+Penstemon digitalis	0	2019	2019
+Pentarthrum confine		2020	
+Perilla frutescens		2008	
+Periplaneta americana		2020	
+Periplaneta australasiae		2014	
+Perovskia abrotanoides	9	2019	2010
+Perovskia abrotanoides x Perovskia atriplicifolia		2009	
+Perovskia atriplicifolia		2018	
+Persea americana	-3	2014	2017
+Persicaria capitata		2009	
+Persicaria filiformis		2021	
+Persicaria nepalensis	0	2010	2010
+Persicaria orientalis		2009	
+Persicaria pensylvanica		2020	
+Petasites albus		2008	
+Petasites japonicus		2006	
+Petrosedum sediforme	0	2013	2013
+Petroselinum crispum		2007	
+Petunia integrifolia		2011	
+Phacelia campanularia	0	2012	2012
+Phalaris aquatica		2014	
+Phalaris arundinacea		2008	
+Phalaris brachystachys		2016	
+Phalaris minor		2009	
+Phalaris paradoxa		2007	
+Phalcoboenus megalopterus		2016	
+Phaseolus coccineus		2013	
+Phedimus aizoon		2016	
+Phedimus hybridus		2008	
+Phedimus kamtschaticus		2012	
+Phedimus stoloniferus		2011	
+Pheidole anastasii			2018
+Philadelphus coronarius		2006	
+Philadelphus microphyllus		2014	
+Philadelphus pubescens		2010	
+Philadelphus virginalis		2008	
+Philaeus chrysops	5	2019	2014
+Philonthus rectangulus		2014	
+Phlebodium aureum		2015	
+Phleum exaratum		2013	
+Phleum paniculatum		2009	
+Phlomis russeliana		2009	
+Phlox paniculata		2012	
+Phlox subulata		2009	
+Phoenix dactylifera		2010	
+Phoneutria boliviensis			2015
+Phuopsis stylosa		2010	
+Phyla nodiflora		2011	
+Phyllocnistis citrella		2007	
+Phyllostachys sulphurea		2012	
+Phyllostachys viridiglaucescens	0	2017	2017
+Physalis angulata		2009	
+Physalis grisea		2017	
+Physalis peruviana		2006	
+Physalis philadelphica		2008	
+Physalis pubescens		2017	
+Physignathus cocincinus			2012
+Physocarpus opulifolius		2010	
+Physostegia virginiana		2007	
+Phytomyza jucunda			2015
+Picea omorika	0	2013	2013
+Picea sitchensis			2010
+Pieris japonica	-8	2010	2018
+Pilea microphylla		2019	
+Pilosella stoloniflora			2016
+Pimephales promelas		2009	
+Pimpinella peregrina		2006	
+Pinus rigida		2009	
+Pinus sylvestris			2020
+Pinus wallichiana	1	2013	2012
+Pionus menstruus		2020	
+Pistia stratiotes		2007	
+Pithyotettix abietinus		2014	
+Pituophis catenifer			2010
+Pituophis melanoleucus			2013
+Placobdella ornata		2014	
+Plantago afra		2011	
+Plantago lagopus		2011	
+Plantago sempervirens	0	2016	2016
+Platalea alba		2012	
+Platanus orientalis		2009	
+Platycercus adscitus			2012
+Platycercus elegans		2009	
+Platycercus eximius		2008	
+Platycercus icterotis	0	2015	2015
+Platycodon grandiflorus	0	2013	2013
+Plectranthus caninus		2020	
+Pleurodeles waltl	0	2011	2011
+Ploceus jacksoni		2009	
+Ploceus melanocephalus		2009	
+Poa annua		2013	
+Poa infirma	0	2016	2016
+Podarcis siculus		2008	
+Podophyllum peltatum		2020	
+Pogona henrylawsoni			2020
+Pogona vitticeps			2010
+Polygonum arenarium		2010	
+Polygonum aviculare		2009	
+Polygonum bellardii		2011	
+Polypogon maritimus		2007	
+Polysiphonia senticulosa		2012	
+Polystichum acrostichoides	0	2019	2019
+Polystichum luctuosum		2015	
+Polystichum munitum	0	2019	2019
+Polystichum polyblepharum	1	2014	2013
+Polytelis anthopeplus	-1	2017	2018
+Polytelis swainsonii	0	2017	2017
+Pontastacus leptodactylus		2008	
+Pontederia cordata		2007	
+Ponticola kessleri	0	2012	2012
+Populicerus albicans		2011	
+Populus balsamifera		2015	
+Populus canescens			2020
+Populus jackii			2010
+Portulaca grandiflora		2009	
+Portulaca granulatostellulata		2016	
+Portulaca sativa		2019	
+Potamocorbula amurensis	1	2019	2018
+Potamothrix heuscheri			2014
+Potentilla argyrophylla		2018	
+Potentilla inclinata		2007	
+Potentilla intermedia			2020
+Potentilla nepalensis	0	2010	2010
+Potentilla norvegica		2018	
+Potentilla recta		2009	
+Potentilla rivalis		2015	
+Potentilla supina		2017	
+Poterium sanguisorba		2007	
+Pourthiaea villosa		2010	
+Prays citri		2013	
+Primula denticulata	0	2016	2016
+Primula florindae	0	2010	2010
+Primula vulgaris		2011	
+Proasellus meridianus		2012	
+Procambarus acutus		2013	
+Procambarus virginalis		2017	
+Prokelisia marginata		2011	
+Proterorhinus semilunaris	-2	2008	2010
+Prunella grandiflora		2009	
+Prunus armeniaca		2013	
+Prunus avium		2017	
+Prunus cerasifera		2008	
+Prunus domestica		2012	
+Prunus fruticans			2019
+Prunus incisa		2019	
+Prunus lusitanica		2006	
+Prunus persica		2006	
+Prunus serrulata		2006	
+Prunus syriaca		2017	
+Prunus tomentosa	0	2014	2014
+Prunus virginiana		2010	
+Psephellus dealbatus		2021	
+Pseudagrion microcephalum			2011
+Pseudemys concinna	0	2017	2017
+Pseudemys nelsoni	0	2018	2018
+Pseudemys rubriventris	6	2021	2015
+Pseudococcus longispinus		2014	
+Pseudodiaptomus marinus			2015
+Pseudomuscari azureum	0	2019	2019
+Pseudotsuga menziesii		2013	
+Pseudoturritis turrita		2008	
+Psittacula alexandri			2014
+Psittacula derbiana	0	2016	2016
+Psoquilla marginepunctata			2018
+Psyllipsocus ramburii			2018
+Ptelea trifoliata		2012	
+Pteris cretica		2006	
+Pteris multifida		2007	
+Pteris vittata			2015
+Pterocarya pterocarpa		2006	
+Pteronetta hartlaubii		2016	
+Pterostyrax hispidus	1	2013	2012
+Pulicaria arabica		2011	
+Pulmonaria longifolia		2015	
+Pulmonaria mollis		2013	
+Pulmonaria rubra	0	2015	2015
+Pulmonaria saccharata		2012	
+Pulvinaria floccifera		2011	
+Pulvinaria hydrangeae		2009	
+Pulvinaria regalis		2009	
+Puschkinia scilloides	6	2016	2010
+Pycnanthemum verticillatum		2018	
+Pycnomerus sulcicollis		2021	
+Pycnonotus barbatus	0	2016	2016
+Pycnonotus leucotis	0	2013	2013
+Pyracantha coccinea		2006	
+Pyracantha fortuneana		2015	
+Pyrrhura molinae		2021	
+Pyrrhura perlata	0	2017	2017
+Pyrus calleryana		2019	
+Python molurus			2010
+Python regius	7	2017	2010
+Quercus frainetto		2009	
+Quercus ilex	0	2011	2011
+Quercus pyrenaica		2015	
+Quercus suber		2019	
+Quiscalus major		2008	
+Quiscalus quiscula	0	2012	2012
+Radix rubiginosa		2019	
+Rangia cuneata		2011	
+Ranunculus marginatus		2014	
+Ranunculus muricatus		2008	
+Ranunculus parviflorus		2011	
+Ranunculus pensylvanicus	0	2012	2012
+Ranunculus polyanthemophyllus		2019	
+Ranunculus trilobus		2015	
+Rapana venosa		2019	
+Raphanus sativus		2011	
+Rapistrum rugosum		2009	
+Rattus norvegicus			2018
+Reductoniscus costulatus	0	2015	2015
+Reesa vespulae		2015	
+Reseda alba		2008	
+Reseda odorata		2014	
+Reynoutria compacta		2011	
+Reynoutria japonica		2011	
+Rhagoletis cingulata		2009	
+Rhagoletis completa		2016	
+Rhaphiolepis loquata		2007	
+Rhea americana		2018	
+Rheum rhabarbarum		2006	
+Rhinella marina			2010
+Rhododendron luteum		2009	
+Rhodotypos scandens		2017	
+Rhus glabra		2013	
+Rhynchophorus ferrugineus		2020	
+Rhyzobius forestieri		2007	
+Rhyzobius lophanthae		2019	
+Rhyzopertha dominica		2017	
+Ribes aureum		2008	
+Ribes divaricatum	0	2010	2010
+Ridolfia segetum		2009	
+Rodgersia aesculifolia			2011
+Rodgersia podophylla	0	2016	2016
+Roemeria hybrida		2011	
+Rorippa austriaca		2008	
+Rosa carolina		2012	
+Rosa chinensis		2011	
+Rosa glauca		2006	
+Rosa nitida	0	2015	2015
+Rosa pendulina		2018	
+Rostraria cristata		2015	
+Rubus cockburnianus	0	2011	2011
+Rubus fruticosus		2014	
+Rubus nutkanus		2018	
+Rubus odoratus		2009	
+Rubus setchuenensis		2011	
+Rubus tricolor		2012	
+Rudbeckia fulgida		2013	
+Ruditapes philippinarum		2011	
+Rumex confertus		2019	
+Rumex confusus			2011
+Rumex crispus		2012	
+Rumex cristatus	0	2011	2011
+Rumex hybridus			2013
+Rumex kerneri	0	2011	2011
+Rumex longifolius		2012	
+Rumex obovatus		2020	
+Rumex obtusifolius		2012	
+Rumex persicarioides		2011	
+Rumex pseudonatronatus	1	2011	2010
+Rumex pulcher		2015	
+Rumex salicifolius		2010	
+Rumex sanguineus		2010	
+Rumex stenophyllus		2007	
+Rupicapra rupicapra	0	2013	2013
+Ruscus aculeatus		2011	
+Ruta graveolens		2008	
+Sabulina mediterranea		2006	
+Sagina alexandrae		2014	
+Sagina japonica	0	2018	2018
+Sagittaria graminea		2021	
+Sagittaria latifolia		2007	
+Saissetia oleae		2013	
+Salamandra atra	0	2017	2017
+Salix acutifolia		2011	
+Salix babylonica		2006	
+Salix daphnoides	-12	2006	2018
+Salix elaeagnos		2012	
+Salix eleagnos		2011	
+Salix eriocephala	-9	2009	2018
+Salix euxina		2010	
+Salix exigua		2013	
+Salix fragilis		2009	
+Salix interior		2014	
+Salix irrorata		2013	
+Salix myrsinifolia	1	2015	2014
+Salix purpurea		2011	
+Salix sepulcralis		2017	
+Salix udensis			2018
+Salvia hispanica	0	2014	2014
+Salvia officinalis		2021	
+Salvia reflexa		2006	
+Salvia sclarea		2012	
+Salvia splendens		2008	
+Salvia uliginosa		2021	
+Salvia verbenaca		2011	
+Salvia viridis		2013	
+Salvinia auriculata		2016	
+Sambucus canadensis		2010	
+Sambucus nigra		2009	
+Samia cynthia		2015	
+Sanicula epipactis		2021	
+Santolina chamaecyparissus		2015	
+Sanvitalia procumbens		2021	
+Saponaria ocymoides		2010	
+Sarcococca coriacea		2015	
+Sarracenia purpurea		2009	
+Sarracenia rubra		2009	
+Sasa palmata		2010	
+Sasaella ramosa		2010	
+Sassafras albidum		2015	
+Satureja hortensis		2014	
+Satureja montana		2008	
+Sauromatum venosum	4	2014	2010
+Saururus cernuus		2014	
+Saxifraga arendsii		2012	
+Saxifraga rotundifolia		2012	
+Saxifraga stolonifera		2021	
+Scabiosa lucida	-3	2016	2019
+Scabiosa ochroleuca	0	2015	2015
+Scaevola aemula			2014
+Scandix stellata			2013
+Sceliphron caementarium	0	2015	2015
+Sceliphron curvatum		2021	
+Sceliphron destillatorium		2020	
+Sceliphron spirifex		2021	
+Schistocerca gregaria		2011	
+Schkuhria pinnata		2009	
+Schoenoplectiella bucharica	0	2014	2014
+Scilla forbesii		2013	
+Scilla forbesii × luciliae		2009	
+Scilla luciliae		2010	
+Scilla sardensis		2009	
+Scilla siberica		2010	
+Scirpus atrovirens		2008	
+Scirpus cyperinus	0	2018	2018
+Scirpus georgianus		2016	
+Scirtothrips longipennis			2018
+Sciurus niger	0	2014	2014
+Scolymus hispanicus		2020	
+Scrophularia canina	0	2019	2019
+Scrophularia nodosa		2010	
+Scrophularia peregrina			2020
+Scutellaria altissima		2013	
+Scutellaria columnae		2017	
+Sedum cepaea		2019	
+Sedum dasyphyllum		2018	
+Sedum hispanicum		2013	
+Sedum lydium		2016	
+Sedum mexicanum		2020	
+Sedum pallidum		2013	
+Sedum palmeri	0	2018	2018
+Sedum sarmentosum		2008	
+Sedum spathulifolium	0	2019	2019
+Selaginella kraussiana		2009	
+Semiarundinaria fastuosa	0	2015	2015
+Sempervivum arachnoideum		2020	
+Sempervivum tectorum		2009	
+Senecio sarracenicus		2006	
+Senna obtusifolia		2006	
+Sequoiadendron giganteum		2020	
+Sesbania herbacea		2016	
+Setaria faberi		2006	
+Setaria parviflora		2008	
+Setaria viridis		2011	
+Shinnersia rivularis		2019	
+Sibbaldia tridentata		2018	
+Sibine stimulea		2018	
+Sicyos angulatus		2015	
+Sida rhombifolia		2007	
+Sida spinosa		2013	
+Sidalcea oregana		2016	
+Sideritis montana		2011	
+Sigesbeckia jorullensis		2020	
+Silene baccifera		2020	
+Silene chalcedonica		2010	
+Silene conoidea		2011	
+Silene gallica		2006	
+Silene italica		2007	
+Silene pendula		2019	
+Silene schafta		2013	
+Silene stricta		2011	
+Silene uniflora		2017	
+Silphium perfoliatum		2016	
+Sinanodonta woodiana		2009	
+Sinomalus baccata		2007	
+Sinomalus sieboldii		2011	
+Siren intermedia			2014
+Sisymbrium erysimoides		2019	
+Sisymbrium volgense		2011	
+Sisyrinchium angustifolium		2021	
+Sisyrinchium californicum	0	2015	2015
+Sisyrinchium montanum		2008	
+Sisyrinchium striatum	0	2016	2016
+Sixalix atropurpurea		2017	
+Skimmia japonica	3	2015	2012
+Smilax aspera		2008	
+Smyrnium olusatrum		2016	
+Smyrnium perfoliatum		2009	
+Solanum aethiopicum		2008	
+Solanum americanum		2007	
+Solanum angustifolium		2006	
+Solanum chenopodioides		2011	
+Solanum pimpinellifolium		2009	
+Solanum pseudocapsicum	0	2015	2015
+Solanum sarachoides		2006	
+Solanum sisymbriifolium		2009	
+Solanum triflorum		2010	
+Solanum villosum		2008	
+Solidago altissima	0	2016	2016
+Soliva sessilis		2016	
+Sonchus glaucescens		2018	
+Sonchus tenerrimus		2009	
+Sorbaria kirilowii	0	2013	2013
+Sorbaria tomentosa		2009	
+Sorghum bicolor		2006	
+Spartium junceum		2009	
+Spergularia bocconei	0	2016	2016
+Sphaeralcea bonariensis		2016	
+Spilopelia chinensis		2020	
+Spilotes pullatus			2010
+Spinacia oleracea		2010	
+Spinus magellanicus		2020	
+Spiraea canescens		2009	
+Spiraea chamaedryfolia		2011	
+Spiraea japonica		2006	
+Spiraea nipponica	0	2010	2010
+Spiraea salicifolia		2021	
+Spiraea thunbergii		2020	
+Spiraea tomentosa		2008	
+Spiranthes cernua		2021	
+Spizaetus melanoleucus			2017
+Sporobolus indicus		2007	
+Sporobolus michauxianus		2010	
+Stachys byzantina		2006	
+Stachys cretica		2019	
+Staphylea pinnata		2010	
+Steatoda nobilis		2017	
+Stelidota geminata			2018
+Stellaria cupaniana	0	2013	2013
+Stenopelmus rufinasus		2013	
+Stephanitis rhododendri			2018
+Sternochetus mangiferae		2021	
+Sternotherus carinatus			2020
+Stictocephala bisonia		2010	
+Stigmaeopsis nanjingensis		2018	
+Stipiturus malachurus		2020	
+Stranvaesia davidiana		2010	
+Streptopelia lugens		2016	
+Streptopelia tranquebarica		2015	
+Striosubulina striatella	0	2013	2013
+Strix uralensis		2019	
+Stropholoma aurantiacum			2018
+Sturnia pagodarum		2020	
+Styphnolobium japonicum	-8	2011	2019
+Sufetula diminutalis		2020	
+Suricata suricatta		2021	
+Symphoricarpos orbiculatus	7	2019	2012
+Symphyotrichum ciliatum		2009	
+Symphyotrichum dumosum		2017	
+Symphyotrichum lateriflorum		2008	
+Symphyotrichum novae-angliae		2006	
+Symphyotrichum pilosum		2007	
+Symphyotrichum subulatum		2008	
+Symphytum asperum		2010	
+Symphytum caucasicum		2010	
+Symphytum grandiflorum		2007	
+Symphytum orientale	0	2020	2020
+Symphytum tuberosum		2021	
+Synidotea laticauda		2017	
+Syringa josikaea		2008	
+Tachycines asynamorus			2018
+Taeniatherum caput-medusae		2011	
+Tagetes erecta		2008	
+Tagetes minuta		2007	
+Tamarix africana		2007	
+Tamarix gallica		2008	
+Tamarix parviflora		2008	
+Tamiasciurus hudsonicus	0	2015	2015
+Tanacetum balsamita		2016	
+Tanacetum macrophyllum		2007	
+Tarenaya guaranitica		2007	
+Tarentola mauritanica	2	2015	2013
+Tauraco leucotis		2021	
+Tauraco persa		2020	
+Taxus baccata		2015	
+Telekia speciosa		2007	
+Telmatogeton japonicus	-10	2009	2019
+Terapon jarbua			2018
+Terrapene carolina			2012
+Testudo graeca	1	2011	2010
+Testudo hermanni	0	2013	2013
+Tetragonia tetragonioides		2016	
+Tetramoera langmaidi		2013	
+Teucrium hircanicum	7	2019	2012
+Teucrium lucidrys			2011
+Thalia dealbata	-1	2015	2016
+Thalictrum delavayi	0	2020	2020
+Thalictrum lucidum		2021	
+Thalictrum speciosissimum	0	2011	2011
+Thamnophis sirtalis		2021	
+Thaumatotibia leucotreta	0	2016	2016
+Thecaphora oxalidis			2014
+Theristicus melanopis		2015	
+Thermobia domestica	-4	2014	2018
+Thermopsis montana		2015	
+Thladiantha dubia	0	2010	2010
+Threskiornis spinicollis		2008	
+Thuja occidentalis		2007	
+Thunbergia alata	0	2013	2013
+Thysanoplusia orichalcea		2021	
+Tiarella cordifolia	1	2013	2012
+Tiaris canorus		2020	
+Tinantia erecta		2017	
+Tinantia pringlei		2019	
+Tithonia rotundifolia	0	2015	2015
+Tolmiea menziesii	0	2015	2015
+Tordylium maximum		2010	
+Torilis africana		2014	
+Trachelium caeruleum		2010	
+Trachelospermum jasminoides		2019	
+Trachemys scripta		2006	
+Trachycarpus fortunei	-2	2013	2015
+Trachylepis striata			2018
+Trachystemon orientale		2008	
+Tradescantia fluminensis		2007	
+Tradescantia pallida		2013	
+Tradescantia virginiana		2007	
+Tradescantia zebrina		2021	
+Tragopogon dubius		2019	
+Tragopogon orientalis		2013	
+Tragus racemosus		2011	
+Trapa natans		2015	
+Tremulicerus distinguendus		2017	
+Triaeris stenaspis			2018
+Trialeurodes vaporariorum		2018	
+Tribulus terrestris		2020	
+Trichiusa immigrata		2014	
+Trichoglossus haematodus	0	2015	2015
+Trichopsocus clarus			2018
+Trichorhina tomentosa		2015	
+Trifolium angustifolium		2021	
+Trifolium diffusum		2011	
+Trifolium echinatum		2018	
+Trifolium glomeratum		2016	
+Trifolium hybridum		2008	
+Trifolium incarnatum		2016	
+Trifolium lappaceum		2021	
+Trifolium michelianum		2016	
+Trifolium nigrescens	0	2016	2016
+Trifolium pallidum		2013	
+Trifolium retusum		2020	
+Trifolium suffocatum	0	2015	2015
+Trifolium sylvaticum	0	2016	2016
+Trifolium tomentosum		2015	
+Trifolium vesiculosum		2014	
+Trigonella caelesyriaca		2011	
+Trigonella caerulea		2011	
+Trigonella foenum-graecum		2015	
+Trigonella procumbens		2016	
+Trioceros hoehnelii			2019
+Triodanis perfoliata	0	2018	2018
+Tripleurospermum decipiens	0	2011	2011
+Trisetaria panicea		2015	
+Triteleia laxa	0	2014	2014
+Triticum aestivum		2011	
+Triticum turgidum		2012	
+Triturus marmoratus	0	2018	2018
+Trochus maculatus		2019	
+Trogium pulsatorium			2018
+Tropidosteptes pacificus		2018	
+Tulipa gesneriana		2006	
+Tulipa urumiensis		2013	
+Tupiocoris rhododendri		2011	
+Tuponia brevirostris		2017	
+Tuponia mixticolor		2017	
+Turdus dissimilis		2011	
+Turdus hortulorum		2017	
+Tuta absoluta		2011	
+Typha laxmannii	0	2010	2010
+Typha minima		2016	
+Typha provincialis			2012
+Ulex minor		2011	
+Uloborus plumipes		2008	
+Umbilicus rupestris		2010	
+Urochloa panicoides		2009	
+Urocissa erythroryncha	1	2018	2017
+Uroctea durandi			2018
+Urtica membranacea	0	2011	2011
+Vaccinium corymbosum		2010	
+Vaccinium macrocarpum		2018	
+Valeriana calcitrapae			2019
+Valerianella dentata		2014	
+Valerianella eriocarpa		2011	
+Valerianella locusta		2010	
+Vallisneria americana			2016
+Vallisneria australis		2016	
+Vallisneria spiralis		2009	
+Varanus niloticus			2011
+Varroa destructor		2006	
+Verbascum brockmuelleri			2010
+Verbascum chaixii		2021	
+Verbascum nigrum x speciosum			2014
+Verbascum phoeniceum		2014	
+Verbascum speciosum		2009	
+Verbascum virgatum		2007	
+Verbena bracteata	0	2016	2016
+Verbena hastata		2009	
+Verbena hybrida		2012	
+Verbena incompta	0	2018	2018
+Verbena rigida		2013	
+Verbesina alternifolia		2015	
+Vernonia fasciculata	2	2015	2013
+Veronica austriaca			2015
+Veronica cymbalaria	1	2016	2015
+Veronica orchidea		2013	
+Veronica pinguifolia		2017	
+Veronica repens	0	2020	2020
+Veronica teucrium		2010	
+Veronica triloba		2017	
+Veronicastrum virginicum	3	2016	2013
+Vespa orientalis		2021	
+Vespa velutina	0	2011	2011
+Viburnum davidii	1	2015	2014
+Viburnum opulus		2021	
+Viburnum plicatum	0	2013	2013
+Viburnum rhytidophylloides			2013
+Viburnum rhytidophyllum		2007	
+Viburnum tinus		2007	
+Vicia bithynica		2011	
+Vicia cuspidata	0	2016	2016
+Vicia dalmatica		2012	
+Vicia grandiflora		2011	
+Vicia lens		2007	
+Vicia monantha		2015	
+Vicia narbonensis		2007	
+Vicia pannonica		2010	
+Vicia serratifolia		2015	
+Vinca minor		2021	
+Vincetoxicum nigrum		2011	
+Viola cornuta		2019	
+Viola hederacea	0	2020	2020
+Viola riviniana		2013	
+Viola sororia	0	2018	2018
+Viridicerus ustulatus		2010	
+Visnaga daucoides		2006	
+Vitis vinifera		2007	
+Volvariella volvacea			2018
+Vulpes lagopus		2021	
+Vulpia ciliata		2006	
+Weigela floribunda		2009	
+Wolffia columbiana	0	2017	2017
+Xanthium orientale		2020	
+Xanthium spinosum		2011	
+Xanthocyparis nootkatensis		2018	
+Xenopus laevis		2006	
+Xerochrysum bracteatum		2013	
+Xylocopa virginica	0	2015	2015
+Yersinella raymondii	0	2012	2012
+Yucca flaccida		2010	
+Yucca gloriosa		2006	
+Zamenis longissimus	3	2019	2016
+Zantedeschia aethiopica	3	2016	2013
+Zantedeschia albomaculata	10	2021	2011
+Zelkova serrata	0	2015	2015
+Zingeria pisidica	0	2011	2011
+Zinnia elegans		2011	
+Zinnia violacea			2011
+Zizania latifolia	-1	2009	2010
+Ziziphus lotus		2007	
+Zonotrichia capensis	0	2018	2018
+Zophobas atratus		2021	
+Zoropsis spinimana		2007	
+Zygina nivea		2016	
+			2010
