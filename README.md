@@ -10,17 +10,16 @@ Input data:
 
 Scripts:
 - **make_time_lags_csv.R**: Produces the CSV table of time lags between the first year of observation in CS databases and official records along with explanatory covariables.
-- **analyse_time_lags.R**: Produces various Figure for analysis.
 - **models.RMD**: carry out regression analysis and data processing
 
 References:
 Seebens, H., Blackburn, T. M., Dyer, E. E., Genovesi, P., Hulme, P. E., Jeschke, J. M., ... & Essl, F. (2017). No saturation in the accumulation of alien species worldwide. Nature communications, 8(1), 1-9.
 
-## Generate Time Lags table
+## Generate Time Lags table from first record tables (timeLags_all_variables_clean.csv)
 
 Requires R installed (tested under R 3.5.1) and the following packages: rgbif, data.table, maptools, rgeos, raster.
 - Download all scripts and csv files.
-- **make_time_lags_csv.R** and change directory paths in the header of the script to your local paths.  
+- Edit **make_time_lags_csv.R** to change directory paths in the header of the script to your local paths.  
 - Run R script **make_time_lags_csv.R**.
 
 ## Variable descriptions
