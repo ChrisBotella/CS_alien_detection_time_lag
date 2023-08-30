@@ -1,4 +1,12 @@
-# Dependencies
+# This script produces the main table of time lags between 
+# the first official record and first Citizen Science record 
+# per species and country (timeLags_all_variables_clean.csv). 
+# It uses as input: 
+# - official_first_rec.csv
+# - CS_1st_rec.csv
+# - species_variables.csv
+
+# And the following dependencies
 require(rgbif)
 require(data.table)
 require(maptools)
@@ -6,7 +14,7 @@ require(rgeos)
 require(raster)
 
 #####
-# Functions
+# 1) Functions to load
 #####
 
 regions =c('Belgium','Italy','Norway',
@@ -173,7 +181,7 @@ change.country=function(tab,
 
 
 #####
-# EU countries 
+# 2) Prepare EU countries data 
 #####
 
 data(wrld_simpl)
@@ -217,7 +225,8 @@ save(countries,EU_simpl,EU_rast,file = 'Europe_light')
 
 
 #####
-# UPDATE Species list under GBIF taxo 
+# 3) Match species names with GBIF backbone taxonomy
+# for the official first records
 #####
 
 firstObs = read.csv('official_first_rec.csv',sep=";",header=T,stringsAsFactors = F)
@@ -270,27 +279,23 @@ spTableFinal$matchType[spTableFinal$matchType=="HIGHERRANK" & spTableFinal$rank=
 spTableFinal = spTableFinal[!spTableFinal$matchType%in%c('HIGHERRANK','NONE'),]
 spTableFinal = spTableFinal[!spTableFinal$rank=="GENUS",]
 
-toSave = unique(spTableFinal[!is.na(spTableFinal$species),c('SeebName','species',"phylum","class","kingdom")])
-toSave$LifeForm = get.LifeForm(toSave)
+matching = unique(spTableFinal[!is.na(spTableFinal$species),c('SeebName','species',"phylum","class","kingdom")])
+matching$LifeForm = get.LifeForm(matching)
 
-write.table(toSave,'matching_names_Seeb_with_GBIF.csv',sep=";",row.names=F,col.names=T)
+write.table(matching,'matching_names_Seeb_with_GBIF.csv',sep=";",row.names=F,col.names=T)
 
 #####
-# Official first rec DF
+# 4) Prepare official first records table
 #####
 
 load(file = 'Europe_light')
-matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)
+matching=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)
 
 firstObs = read.csv('official_first_rec.csv',sep=";",header=T,stringsAsFactors = F)
 
-
-
-
-
-firstObs = firstObs[firstObs$TaxonName%in%matchin$SeebName,colnames(firstObs)!='LifeForm']
+firstObs = firstObs[firstObs$TaxonName%in%matching$SeebName,colnames(firstObs)!='LifeForm']
 firstObs = unique(firstObs[,c('TaxonName','Region','FirstRecord')])
-firstObs = merge(firstObs,matchin[,c('SeebName','species','LifeForm')],by.x='TaxonName',by.y="SeebName",all.x=T)
+firstObs = merge(firstObs,matching[,c('SeebName','species','LifeForm')],by.x='TaxonName',by.y="SeebName",all.x=T)
 firstObs = aggregate(list(FirstRecord=firstObs$FirstRecord),
                      by=list(species=firstObs$species,
                              LifeForm=firstObs$LifeForm,
@@ -313,8 +318,10 @@ colnames(firstRecDf) = c("species",'LifeForm',
 write.table(firstRecDf,'official_firstRec_clean.csv',sep=";",col.names=T,row.names=F)
 
 #####
-# Extract species FirstObs GBIF
-# (Not reproducible yet: files too heavy)
+# (Preprocessing step) 
+# Extract species CS first records from GBIF
+# -> NOT reproducible from the repository 
+# occurrence files must be extracted from GBIF
 #####
 
 if(F){
@@ -431,9 +438,8 @@ if(F){
 }
 
 #####
-#### Time lag table ####
+#### 5) Time lag table ####
 #####
-
 
 firstRecDf=read.csv('official_firstRec_clean.csv',sep=";",header=T,stringsAsFactors = F)
 varTab= read.csv('species_variables.csv',sep=";",header=T,stringsAsFactors = F)
@@ -480,7 +486,7 @@ rEff = data.frame(ResearchEffort= as.numeric(tab),Region=names(tab))
 TL = merge(TL,rEff,by=c('Region'),all.x=T)
 
 ### Add nOccTot, detecInNeigborCountryBefore
-bord = read.csv('GEODATASOURCE-COUNTRY-BORDERS.csv',sep=",",header=T,stringsAsFactors = F)
+bord = read.csv('GEODATASOURCE-COUNTRY-BORDERS.CSV',sep=",",header=T,stringsAsFactors = F)
 bord = bord[complete.cases(bord),]
 countries$ISO2=as.character(countries$ISO2)
 bord2 = bord
