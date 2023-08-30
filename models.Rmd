@@ -10,7 +10,7 @@ lags <-  read.csv(file = "timeLags_all_variables_clean.csv",sep=";")
 lags <- lags %>%
   filter(!is.na(timeLag) & off_FirstRec!=0) # we keep data only with both dates and with official first record later than 2000
 
-# Change the name of some variables for clarityç
+# Change the name of some variables for clarity
 
 names(lags)[names(lags)=="ResearchEffort"] <- "NumAliensOff_Country"
 names(lags)[names(lags)=="nOccTotSp"] <- "NumRecCS_Species"
@@ -50,6 +50,17 @@ byregion <- lags %>%
   
 sd(byregion$`length(timeLag)`)/sqrt(length(byregion))
 
+
+# Proportion per lag type
+lags$lagsbin <- lags$timeLag
+lags[lags$timeLag>0,"lagsbin"] <- 1
+lags[lags$timeLag<0,"lagsbin"] <- -1
+
+table(lags$lagsbin)/nrow(lags)
+
+length(unique(lags$Region))
+length(unique(lags$species))
+
 ```
 
 - habitat is very heterogeneous and they are mixed (one species can be marine and freshwater??). We group in two variables:
@@ -83,6 +94,7 @@ ggplot(lags,aes(y=timeLag,habitat2)) + geom_boxplot()
 barplot(table(lags$habitat2))
 lags$habitat3 <- as.factor(lags$habitat)
 levels(lags$habitat3) <- c("AQ", "AQ","AQ","AQ","AQ","AQ","AQ","AQ","AQ","TER","AQ","AQ","AQ","AQ")
+
 ggplot(lags,aes(y=timeLag,habitat3)) + geom_boxplot() 
 
 lags$LifeForm2 <- as.factor(lags$LifeForm)
@@ -122,7 +134,94 @@ lags[lags$worst=="YES" ,"priority"] <- "YES" ; table(lags$priority)
 summary(lags)
 
 lags$quarantine <- as.factor(lags$quarantine)
+```
 
+
+```{r Plots for appendix}
+library(gridExtra)
+p1 <- ggplot(lags, aes(x=habitat2))+
+  geom_bar(stat="count", width=0.7)+theme_minimal()+xlab("Habitat")
+p2 <- ggplot(lags, aes(x=LifeForm3))+
+  geom_bar(stat="count", width=0.7)+theme_minimal()+xlab("Life form")
+grid.arrange(p1,p2,nrow=1,ncol=2)
+
+
+ggplot(lags, aes(x=Region))+
+  geom_bar(stat="count", width=0.7)+theme_minimal()+xlab("")+ coord_flip()
+
+# Table top 50
+library(tidyverse)
+lags_top <- lags %>%
+  group_by(species,LifeForm3,habitat2) %>%
+  dplyr::summarise(mean_TimeLag=mean(timeLag,na.rm=T),min_TimeLag=min(timeLag,na.rm=T),max_TimeLag=max(timeLag,na.rm=T)) %>%
+  dplyr::arrange(mean_TimeLag)
+
+lags_topA <- lags %>%
+  dplyr::select(species,Region,LifeForm3,timeLag,off_FirstRec,cs_FirstRec=firstRec) %>%
+  dplyr::arrange(timeLag)
+
+write.csv(lags_topA,"lags_top.csv")
+
+library(knitr)
+kable(lags_topA[1:10,])
+```
+
+
+```{r Temporal change in lags}
+library(lme4)
+library(multcomp)
+library(lmerTest)
+library(cowplot)
+
+lags_neg <- droplevels(lags[lags$timeLag<0,])
+
+ggplot(lags_neg,aes(x=off_FirstRec,y=timeLag,colour=LifeForm3))+geom_point()+theme_minimal()+
+  xlab("year official first record")+
+  stat_smooth(mapping=aes(x=off_FirstRec,y=timeLag),method = "lm",
+      formula = y ~ x,
+      geom = "smooth",inherit.aes=FALSE)
+
+ggplot(lags_neg,aes(x=off_FirstRec,y=timeLag,colour=LifeForm3))+geom_point()+theme_minimal()+
+  xlab("year official first record")+
+  stat_smooth(,method = "lm",
+      formula = y ~ x,
+      geom = "smooth",inherit.aes=T)
+
+
+
+# Lmer with interaction with habitat and lifeform
+
+model_time <- lmer(timeLag~ off_FirstRec * LifeForm3+(1|Region),data=lags_neg )
+summary(model_time)
+
+newlags <- data.frame(rbind(expand_grid(off_FirstRec = seq('2010','2021'),
+                                       Region = "Belgium",
+                                       LifeForm3 = levels(lags_neg$LifeForm3),
+                                       ))) 
+
+
+newlags$predlme  = predict(model_time,newdata = newlags,level = 0)
+
+p1 <- ggplot(lags_neg,aes(x=off_FirstRec,y=timeLag,colour=LifeForm3))+
+  geom_point()+geom_jitter()+
+  theme_minimal()+  xlab("year official first record")+ylab("CSlags")+ labs(colour = "Life form")+scale_x_continuous(breaks = seq('2010','2020'))+
+  geom_line(data = newlags, aes(y = predlme), size = 1)
+
+#Habitat
+model_time <- lmer(timeLag~ off_FirstRec * habitat2+(1|Region),data=lags_neg )
+summary(model_time)
+
+newlags <- data.frame(rbind(expand_grid(off_FirstRec = seq('2010','2020'),
+                                       Region = "Belgium",
+                                       habitat2= levels(lags_neg$habitat2)))) 
+
+newlags$predlme  = predict(model_time,newdata = newlags,level = 0)
+
+p2 <-ggplot(lags_neg,aes(x=off_FirstRec,y=timeLag,colour=habitat2))+geom_point()+theme_minimal()+
+  xlab("year first official record")+geom_jitter()+ylab("CSlags")+labs(colour = "Habitat")+scale_x_continuous(breaks = seq('2010','2020'))+
+  geom_line(data = newlags, aes(y = predlme), size = 1)
+
+plot_grid(p1,p2,ncol=1, nrow=2,align = "v")
 
 ```
 
@@ -211,7 +310,7 @@ test <- glht(modelbest[[1]], linfct = mcp(habitat2 = "Tukey"))
 summary(test) #no differences
 groups_hab <- cld(summary(test));
 p1 <- ggplot(lags,aes(x=(habitat2),y=timeLag)) + geom_violin() + xlab("Habitat") + ylab("CSlag")+
-   geom_text(data=data.frame(), aes(x=levels(lags$habitat2),y=rep(max(lags$timeLag),4),label=groups_hab$mcletters$Letters), col='grey', size=8)
+   geom_text(data=data.frame(), aes(x=levels(lags$habitat2),y=rep(max(lags$timeLag),4),label=groups_hab$mcletters$Letters), col='black', size=8)
 
 # boxplot(lags$timeLag~lags$LifeForm3)
 test <- glht(modelbest[[1]], linfct = mcp(LifeForm3 = "Tukey"))
@@ -219,7 +318,7 @@ summary(test)  # significant differences between invertebrates and vertebrates
 # groups <- cld(test)
 groups_life <- cld(summary(test));
 p2<- ggplot(lags,aes(x=(LifeForm3),y=timeLag)) + geom_violin() + xlab("Life form") + ylab("CSlag")+
-   geom_text(data=data.frame(), aes(x=levels(lags$LifeForm3), y=rep(max(lags$timeLag),4),label=groups_life$mcletters$Letters), col='grey', size=8)
+   geom_text(data=data.frame(), aes(x=levels(lags$LifeForm3), y=rep(max(lags$timeLag),4),label=groups_life$mcletters$Letters), col='black', size=8)
 
 grid.arrange(p1,p2)
 
@@ -250,6 +349,8 @@ plot_model(modelbest[[1]],type="re",show.vales=T,title = " ",sort.est = "sort.al
 
 
 
+
+
 # Interaction plots
 
 ```{r interaction plots}
@@ -264,9 +365,64 @@ ggplot(data=lags,aes(y=timeLag,x=NumRecCS_Species,colour=LifeForm3)) + geom_poin
 ggplot(data=lags,aes(y=timeLag,x=NumRecCS_Species,colour=LifeForm3)) + geom_point() + theme(axis.text.x = element_text(angle = 90)) + facet_grid(rows=vars(worst),cols=vars(quarantine),labeller = label_both)
 
 ```
+
 - Row: eu_species ; column: observed in Neigbouring country
 - It seems the effect of eu_species of concern is mostly due to Cydalima perspectalis (under consideration)
 
+
+# Model with all variables including year
+
+- N= 720 
+
+```{r allvariables + year model}
+
+
+modelbasyear <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species+NumRecCS_SpCountry+NumRecCS_CountryLifeform + eu_priority+worst+quarantine+off_FirstRec + (1|Region),data=lags )
+summary(modelbasyear)
+
+comp1 <- dredge(modelbasyear)
+comp1
+
+result <- summary(model.avg(comp1,subset = delta < 4))
+MuMIn::sw(comp1)
+kable(result[10])
+result
+# str(result)
+
+modelbest <- get.models(comp1,subset = delta == 0)
+summary(modelbest[[1]])
+boxplot(lags$timeLag~lags$obsInNeigborCountryBefore)
+
+# boxplot(lags$timeLag~lags$habitat2)
+test <- glht(modelbest[[1]], linfct = mcp(habitat2 = "Tukey"))
+summary(test) #no differences
+groups_hab <- cld(summary(test));
+p1 <- ggplot(lags,aes(x=(habitat2),y=timeLag)) + geom_violin() + xlab("Habitat") + ylab("CSlag")+
+   geom_text(data=data.frame(), aes(x=levels(lags$habitat2),y=rep(max(lags$timeLag),4),label=groups_hab$mcletters$Letters), col='grey', size=8)
+
+# boxplot(lags$timeLag~lags$LifeForm3)
+test <- glht(modelbest[[1]], linfct = mcp(LifeForm3 = "Tukey"))
+summary(test)  # significant differences between invertebrates and vertebrates
+# groups <- cld(test)
+groups_life <- cld(summary(test));
+p2<- ggplot(lags,aes(x=(LifeForm3),y=timeLag)) + geom_violin() + xlab("Life form") + ylab("CSlag")+
+   geom_text(data=data.frame(), aes(x=levels(lags$LifeForm3), y=rep(max(lags$timeLag),4),label=groups_life$mcletters$Letters), col='grey', size=8)
+
+grid.arrange(p1,p2)
+
+library(sjPlot)
+library(sjlabelled)
+library(sjmisc)
+library(ggplot2)
+set_theme(base = theme_light())
+plot_model(modelbest[[1]],show.vales=T)
+plot_model(modelbest[[1]],show.vales=T,terms = c("google_country","scopus","NumAliensOff_Country","obsInNeigborCountryBefore","NumRecCS_Species","NumRecCS_CountryLifeform","eu_priority","worst","quarantine") )
+
+plot_model(modelbest[[1]],type="re",show.vales=T,title = " ",sort.est = "sort.all",grid = F)
+
+
+
+```
 
 
 
@@ -292,22 +448,39 @@ summary(modelbas)
 
 comp <- dredge(modelbas)
 comp
-
+MuMIn::sw(comp)
 summary(model.avg(comp,subset = delta < 4))
 
-boxplot(lags_eu$timeLag~lags_eu$habitat2)
-test <- glht(modelbas, linfct = mcp(habitat2 = "Tukey"))
-summary(test) #no differences
+modelbest <- get.models(comp,subset = delta == 0)
+summary(modelbest[[1]])
+boxplot(lags$timeLag~lags$obsInNeigborCountryBefore)
 
-boxplot(lags_eu$timeLag~lags_eu$LifeForm3)
-test <- glht(modelbas, linfct = mcp(LifeForm3 = "Tukey"))
+# boxplot(lags$timeLag~lags$habitat2)
+test <- glht(modelbest[[1]], linfct = mcp(habitat2 = "Tukey"))
+summary(test) #no differences
+groups_hab <- cld(summary(test));
+p1 <- ggplot(lags,aes(x=(habitat2),y=timeLag)) + geom_violin() + xlab("Habitat") + ylab("CSlag")+
+   geom_text(data=data.frame(), aes(x=levels(lags$habitat2),y=rep(max(lags$timeLag),4),label=groups_hab$mcletters$Letters), col='grey', size=8)
+
+# boxplot(lags$timeLag~lags$LifeForm3)
+test <- glht(modelbest[[1]], linfct = mcp(LifeForm3 = "Tukey"))
 summary(test)  # significant differences between invertebrates and vertebrates
 # groups <- cld(test)
+groups_life <- cld(summary(test));
+p2<- ggplot(lags,aes(x=(LifeForm3),y=timeLag)) + geom_violin() + xlab("Life form") + ylab("CSlag")+
+   geom_text(data=data.frame(), aes(x=levels(lags$LifeForm3), y=rep(max(lags$timeLag),4),label=groups_life$mcletters$Letters), col='grey', size=8)
+
+grid.arrange(p1,p2)
 
 library(sjPlot)
-plot_model(modelbas,show.vales=T)
-plot_model(modelbas,show.vales=T,type="re")
+library(sjlabelled)
+library(sjmisc)
+library(ggplot2)
+set_theme(base = theme_light())
+plot_model(modelbest[[1]],show.vales=T)
+plot_model(modelbest[[1]],show.vales=T,terms = c("google_country","scopus","NumAliensOff_Country","obsInNeigborCountryBefore","NumRecCS_Species","NumRecCS_CountryLifeform","eu_priority","worst","quarantine") )
 
+plot_model(modelbest[[1]],type="re",show.vales=T,title = " ",sort.est = "sort.all",grid = F)
 
 
 ```
@@ -344,18 +517,37 @@ comp
 
 summary(model.avg(comp,subset = delta < 4))
 
-boxplot(lags_bel$timeLag~lags_bel$habitat2)
-library(emmeans)
-pairs(emmeans(modelbas, "habitat2"))
+modelbest <- get.models(comp,subset = delta == 0)
+summary(modelbest[[1]])
+boxplot(lags$timeLag~lags$obsInNeigborCountryBefore)
 
-boxplot(lags_bel$timeLag~lags_bel$LifeForm3)
-pairs(emmeans(modelbas, "LifeForm3"))
+# boxplot(lags$timeLag~lags$habitat2)
+test <- glht(modelbest[[1]], linfct = mcp(habitat2 = "Tukey"))
+summary(test) #no differences
+groups_hab <- cld(summary(test));
+p1 <- ggplot(lags,aes(x=(habitat2),y=timeLag)) + geom_violin() + xlab("Habitat") + ylab("CSlag")+
+   geom_text(data=data.frame(), aes(x=levels(lags$habitat2),y=rep(max(lags$timeLag),4),label=groups_hab$mcletters$Letters), col='grey', size=8)
 
+# boxplot(lags$timeLag~lags$LifeForm3)
+test <- glht(modelbest[[1]], linfct = mcp(LifeForm3 = "Tukey"))
+summary(test)  # significant differences between invertebrates and vertebrates
+# groups <- cld(test)
+groups_life <- cld(summary(test));
+p2<- ggplot(lags,aes(x=(LifeForm3),y=timeLag)) + geom_violin() + xlab("Life form") + ylab("CSlag")+
+   geom_text(data=data.frame(), aes(x=levels(lags$LifeForm3), y=rep(max(lags$timeLag),4),label=groups_life$mcletters$Letters), col='grey', size=8)
 
-boxplot(lags_bel$timeLag~lags_bel$obsInNeigborCountryBefore)
+grid.arrange(p1,p2)
 
 library(sjPlot)
-plot_model(modelbas,show.vales=T)
+library(sjlabelled)
+library(sjmisc)
+library(ggplot2)
+set_theme(base = theme_light())
+plot_model(modelbest[[1]],show.vales=T)
+plot_model(modelbest[[1]],show.vales=T,terms = c("google_country","scopus","NumAliensOff_Country","obsInNeigborCountryBefore","NumRecCS_Species","NumRecCS_CountryLifeform","eu_priority","worst","quarantine") )
+
+plot_model(modelbest[[1]],type="re",show.vales=T,title = " ",sort.est = "sort.all",grid = F)
+
 
 
 ```
@@ -383,82 +575,50 @@ library(multcomp)
 library(lmerTest)
 library(MuMIn);options(na.action = "na.fail")
 
-modelbas <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species+NumRecCS_CountryLifeform + eu_priority+worst+qurantine+(1|Region),data=lags_nobel )
+modelbas <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species+NumRecCS_CountryLifeform + eu_priority+worst+quarantine+(1|Region),data=lags_nobel )
 summary(modelbas)
 
 comp <- dredge(modelbas)
 comp
 
+MuMIn::sw(comp)
+
 summary(model.avg(comp,subset = delta < 4))
 
-boxplot(lags_nobel$timeLag~lags_nobel$habitat2)
+modelbest <- get.models(comp,subset = delta == 0)
+summary(modelbest[[1]])
+boxplot(lags$timeLag~lags$obsInNeigborCountryBefore)
 
-boxplot(lags_nobel$timeLag~lags_nobel$eu_priority)
-table(lags_nobel$eu_priority,lags_nobel$LifeForm3)
-table(lags_nobel$eu_status,lags_nobel$LifeForm3)
+# boxplot(lags$timeLag~lags$habitat2)
+test <- glht(modelbest[[1]], linfct = mcp(habitat2 = "Tukey"))
+summary(test) #no differences
+groups_hab <- cld(summary(test));
+p1 <- ggplot(lags,aes(x=(habitat2),y=timeLag)) + geom_violin() + xlab("Habitat") + ylab("CSlag")+
+   geom_text(data=data.frame(), aes(x=levels(lags$habitat2),y=rep(max(lags$timeLag),4),label=groups_hab$mcletters$Letters), col='grey', size=8)
 
-library(emmeans)
-pairs(emmeans(modelbas, "habitat2"))
+# boxplot(lags$timeLag~lags$LifeForm3)
+test <- glht(modelbest[[1]], linfct = mcp(LifeForm3 = "Tukey"))
+summary(test)  # significant differences between invertebrates and vertebrates
+# groups <- cld(test)
+groups_life <- cld(summary(test));
+p2<- ggplot(lags,aes(x=(LifeForm3),y=timeLag)) + geom_violin() + xlab("Life form") + ylab("CSlag")+
+   geom_text(data=data.frame(), aes(x=levels(lags$LifeForm3), y=rep(max(lags$timeLag),4),label=groups_life$mcletters$Letters), col='grey', size=8)
 
-boxplot(lags_nobel$timeLag~lags_nobel$LifeForm3)
-pairs(emmeans(modelbas, "LifeForm3"))
-
-
-boxplot(lags_nobel$timeLag~lags_nobel$obsInNeigborCountryBefore)
+grid.arrange(p1,p2)
 
 library(sjPlot)
-plot_model(modelbas,show.vales=T)
-plot_model(modelbas,show.vales=T,type="re")
+library(sjlabelled)
+library(sjmisc)
+library(ggplot2)
+set_theme(base = theme_light())
+plot_model(modelbest[[1]],show.vales=T)
+plot_model(modelbest[[1]],show.vales=T,terms = c("google_country","scopus","NumAliensOff_Country","obsInNeigborCountryBefore","NumRecCS_Species","NumRecCS_CountryLifeform","eu_priority","worst","quarantine") )
+
+plot_model(modelbest[[1]],type="re",show.vales=T,title = " ",sort.est = "sort.all",grid = F)
 
 
 ```
 
-# Model with balance number of records per country
-
-- Still we need to get randomized results. Just one iteration at the moment
-
-```{r Balanced model, eval=F}
-
-mean(table(lags$Region[lags$Region!="Belgium"]))
-# 12 records per country without Belgium
-lags_bal <- lags %>%
-  group_by(Region) %>%
-  slice_sample(n = 12)
-
-
-
-summary(lags_bal)
-table(lags_bal$habitat2) # almost all terrestrial. not consider habitat
-table(lags_bal$LifeForm3) # almost all plants
-# lme4
-library(lme4)
-library(multcomp)
-library(lmerTest)
-library(MuMIn);options(na.action = "na.fail")
-
-modelbas <- lmer(timeLag~  google_country+ scopus + habitat2 + LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species + priority + (1|Region),data=lags_bal )
-summary(modelbas)
-
-comp <- dredge(modelbas)
-comp
-
-summary(model.avg(comp,subset = delta < 4))
-
-boxplot(lags_bal$timeLag~lags_bal$habitat2)
-library(emmeans)
-pairs(emmeans(modelbas, "habitat2"))
-
-boxplot(lags_bal$timeLag~lags_bal$LifeForm3)
-pairs(emmeans(modelbas, "LifeForm3"))
-
-
-boxplot(lags_bel$timeLag~lags_bel$obsInNeigborCountryBefore)
-
-library(sjPlot)
-plot_model(modelbas,show.vales=T)
-plot_model(modelbas,show.vales=T,type="re")
-
-```
 
 # Model only with data with positive lags
 ```{r positive model}
