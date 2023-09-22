@@ -215,11 +215,10 @@ countries$Region_seeb[countries$NAME=='Luxembourg']='Luxembourg'
 countries$Region_seeb[countries$NAME=='The former Yugoslav Republic of Macedonia']='Macedonia'
 countries$Region_seeb[countries$NAME=="Sea or Ocean"]='Sea'
 countries = rbind(countries,
-                  data.frame(ISO2=c('CY','TR'),UN=NA,
-                             NAME=c("Cyprus","Turkey"),
+                  data.frame(ISO2=c('CY','TR','NZ'),UN=NA,
+                             NAME=c("Cyprus","Turkey","New Zealand"),
                              AREA=NA,
-                             Region_seeb=c("Cyprus","Turkey")))
-
+                             Region_seeb=c("Cyprus","Turkey","New Zealand")))
 
 save(countries,EU_simpl,EU_rast,file = 'Europe_light')
 
