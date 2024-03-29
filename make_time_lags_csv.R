@@ -316,6 +316,8 @@ colnames(firstRecDf) = c("species",'LifeForm',
 
 write.table(firstRecDf,'official_firstRec_clean.csv',sep=";",col.names=T,row.names=F)
 
+
+
 #####
 # (Preprocessing step) 
 # Extract species CS first records from GBIF
@@ -441,6 +443,7 @@ if(F){
 #####
 
 firstRecDf=read.csv('official_firstRec_clean.csv',sep=";",header=T,stringsAsFactors = F)
+
 varTab= read.csv('species_variables.csv',sep=";",header=T,stringsAsFactors = F)
 
 matchin=read.csv('matching_names_Seeb_with_GBIF.csv',sep=";",header=T,stringsAsFactors = F)[,c('species','phylum','class',"LifeForm")]
@@ -550,4 +553,6 @@ TL$google_country <- TL$google_mean * TL$google_country
 TL <- unique(TL)
 
 
-write.table(TL,'timeLags_all_variables_clean.csv',sep=";",row.names=F,col.names=T)
+write.table(TL,'timeLags_all_variables_clean2023.csv',sep=";",row.names=F,col.names=T)
+
+

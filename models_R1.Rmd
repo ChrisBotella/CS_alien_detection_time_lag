@@ -9,14 +9,17 @@ knitr::opts_chunk$set(fig.width=6, fig.height=4, echo=FALSE, warning=FALSE, mess
 lags <-  read.csv(file = "timeLags_all_variables_clean.csv",sep=";")
 
 lags_off <- lags %>%
-  filter(off_FirstRec!=0)
+  filter(off_FirstRec!=0) %>%
+    filter(Region!="New Zealand", Region!="Turkey")
 
 lags <- lags %>%
-  filter(!is.na(timeLag) & off_FirstRec!=0) # we keep data only with both dates and with official first record later than 2000
+  filter(!is.na(timeLag) & off_FirstRec!=0) %>% # only with both dates
+  filter(Region!="New Zealand")
 
-# Add obseffort for NZ missing
-lags[lags$Region=="New Zealand" & lags$LifeForm=="Insects","obsEffort_LF"] <- 114149
-lags[lags$Region=="New Zealand" & lags$LifeForm=="Vascular plants","obsEffort_LF"] <- 418047
+# 
+# # Add obseffort for NZ missing
+# lags[lags$Region=="New Zealand" & lags$LifeForm=="Insects","obsEffort_LF"] <- 114149
+# lags[lags$Region=="New Zealand" & lags$LifeForm=="Vascular plants","obsEffort_LF"] <- 418047
 
 # Change the name of some variables for clarity
 
