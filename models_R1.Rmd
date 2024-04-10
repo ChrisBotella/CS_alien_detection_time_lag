@@ -6,15 +6,28 @@ library(ggplot2)
 
 knitr::opts_chunk$set(fig.width=6, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE) 
 
-lags <-  read.csv(file = "timeLags_all_variables_clean.csv",sep=";")
-
-lags_off <- lags %>%
-  filter(off_FirstRec!=0) %>%
-    filter(Region!="New Zealand", Region!="Turkey")
+lags <-  read.csv(file = "timeLags_all_variables_clean_R1.csv",sep=";")
 
 lags <- lags %>%
-  filter(!is.na(timeLag) & off_FirstRec!=0) %>% # only with both dates
-  filter(Region!="New Zealand")
+  filter(Region!="New Zealand", Region!="Turkey")
+
+species_list <- unique(lags$species)
+
+summary(lags)
+
+lags_off <- lags %>%
+  filter(off_FirstRec!=0)
+
+species_list <- unique(lags_off$species)
+
+lags_cs <- lags %>%
+  filter(firstRec!=0) %>%
+  filter(species %in% species_list)
+
+
+lags <- lags %>%
+  filter(!is.na(timeLag) & off_FirstRec!=0) # only with both dates
+
 
 # 
 # # Add obseffort for NZ missing
@@ -326,7 +339,7 @@ There isn't large correlation among continuous variables apart from google data
 
 # Model with all variables
 
-- N= 720 
+- N= 707 
 
 ```{r allvariables model}
 
@@ -421,7 +434,7 @@ ggplot(data=lags,aes(y=timeLag,x=NumRecCS_Species,colour=LifeForm3)) + geom_poin
 
 # Model with all variables including year
 
-- N= 720 
+- N= 707
 
 ```{r allvariables + year model}
 
@@ -607,7 +620,7 @@ faster than invertebrates or plants
 
 # Model without Belgium
 
-- N= 379 
+- N= 354 
 
 ```{r No Belgium model}
 
@@ -801,46 +814,67 @@ plot_model(modelpos,show.vales=T,type="re")
 ```
 
 
-# Model truncated years
+# Model truncated 
 
- <=2015 551 observations
+
 
 ```{r truncated}
+require(foreign)
+require(ggplot2)
+require(truncreg)
+require(boot)
+# library(emmeans)
+library(marginaleffects)
+library(GLMMadaptive)
 
-lags_trunc <- lags %>%
-  filter(off_FirstRec<=2015) %>%
-  droplevels()
+range(lags$timeLag) # right truncated at 11
 
-summary(lags_trunc)
-table(lags_nobel$habitat2) # almost all terrestrial. not consider habitat
-table(lags_nobel$LifeForm3) # almost all plants
+model_trunc <- truncreg::truncreg(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species+NumRecCS_CountryLifeform + eu_priority+worst+quarantine,data=lags,point = 11,direction="right" )
+summary(model_trunc)
 
+comp_trunc <- dredge(model_trunc)
+comp_trunc
 
-modelbas <- lmer(timeLag~  google_country+ scopus + NumAliensOff_Country +habitat2+ LifeForm3 + obsInNeigborCountryBefore+NumRecCS_Species+NumRecCS_CountryLifeform + eu_priority+worst+quarantine+(1|Region),data=lags_trunc )
-summary(modelbas)
-
-comp <- dredge(modelbas)
-comp
-
-summary(model.avg(comp,subset = delta < 4))
-
-boxplot(lags_trunc$timeLag~lags_trunc$habitat2)
-
-boxplot(lags_trunc$timeLag~lags_trunc$eu_priority)
-table(lags_trunc$eu_priority,lags_trunc$LifeForm3)
-table(lags_trunc$eu_status,lags_trunc$LifeForm3)
-
-pairs(emmeans(modelbas, "habitat2"))
-
-boxplot(lags_trunc$timeLag~lags_trunc$LifeForm3)
-pairs(emmeans(modelbas, "LifeForm3"))
+summary(model.avg(comp_trunc,subset = delta < 4))
 
 
-boxplot(lags_trunc$timeLag~lags_trunc$obsInNeigborCountryBefore)
+modelbest <- get.models(comp_trunc,subset = delta == 0)
+summary(modelbest[[1]])
 
 
-plot_model(modelbas,show.vales=T)
-plot_model(modelbas,show.vales=T,type="re")
+avg_comparisons(modelbest[[1]], variables = list(LifeForm3 = "pairwise"))
+
+avg_comparisons(modelbest[[1]], variables = list(habitat2 = "pairwise"))
+
+
+
+
 
 
 ```
+
+
+```{r truncated histogram}
+
+p_all <- list()
+
+for(y in 2010:2020) {
+lags_trunc <- lags %>%
+  filter(off_FirstRec>=y)
+media <- mean(lags_trunc$timeLag)
+p1 <- ggplot(lags_trunc,aes(timeLag))+
+          geom_histogram() + 
+          geom_vline(xintercept=media, colour=ifelse(sign(media)==1,"red","green")) +
+          labs(subtitle=paste("year>=",y)) + theme_bw()
+          
+print(p1)
+p_all[[y-2009]] <- p1
+  
+}
+
+
+library(gridExtra)
+do.call("grid.arrange", c(p_all, ncol=4))
+
+```
+
